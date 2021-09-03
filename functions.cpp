@@ -99,6 +99,9 @@ void sorting(char ** text, int string_amount){
                 strcpy(string_temp3, text[i]);
                 strcpy(text[i], text[j]);
                 strcpy(text[j], string_temp3);
+
+                
+                free(string_temp3);
             }
         }
     }
