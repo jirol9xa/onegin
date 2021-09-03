@@ -1,5 +1,15 @@
 #include "title.h"
 
+
+/*!
+    \brief Функция ввода текста из файла
+    \param[FILE*] fp указатель на файл, из которого считывается текст
+    \param[int*] string_amount указатель на число строк в тексте
+    \param[long int *] last указатель на общее число символов в тексте
+
+    Функция считывает текст из файла, записывая значения числа строк и общего числа символов.
+    Функция возвращает указатель на массив с текстом.
+*/
 char * input(FILE * fp, int * string_amount, long int * last){
     assert(fp);
 
@@ -25,17 +35,32 @@ char * input(FILE * fp, int * string_amount, long int * last){
     return text_temp;
 }
 
-void output(char ** text, int * string_amount){
-    assert(string_amount);
+
+/*!
+    \brief Функция вывода текста
+    \param[char**] text Массив, хранящий отсортированный текст построчно
+    \param[int] string_amount Число строк в массиве
+
+    Функция выыодит отсортированный текст построчно.
+*/
+void output(char ** text, int string_amount){
     assert(text);
 
 
-    for (int i = 0; i < (*string_amount); i++){
+    for (int i = 0; i < string_amount; i++){
         printf("%s", text[i]);
     }
 }
 
 
+/*!
+    \brief Функция преобразование массива текст в двумерный
+    \param[char*] text_temp УМассив всех символов текста
+    \param[char**] text Двумерный массив, хранящий текст построчно
+    \param[long int] last Общее число символов в тексте
+
+    Данная функция разбивает массив с текстом на строки для дальнейшей сортировки
+*/
 void to_strings(char * text_temp, char ** text, long int last){
 
     for (int i = 0, j = 0, g = 0; i < last; i++){
@@ -67,6 +92,11 @@ void to_strings(char * text_temp, char ** text, long int last){
 }
 
 
+/*!
+    \brief Функция сортировки
+    \param[char**] text Массив, хранящий текст построчно
+    \param[int] string_amount Число строк в тексте
+*/
 void sorting(char ** text, int string_amount){
 
     for (int i = 0; i < string_amount; i++){
@@ -100,7 +130,7 @@ void sorting(char ** text, int string_amount){
                 strcpy(text[i], text[j]);
                 strcpy(text[j], string_temp3);
 
-                
+
                 free(string_temp3);
             }
         }
@@ -108,6 +138,12 @@ void sorting(char ** text, int string_amount){
 }
 
 
+/*!
+    \brief Перевод в капс
+    \param[char*] string Строка, которую надо написать капсом
+
+    Функция меняет все маленькие буквы в строке на буквы капсом
+*/
 void ToUpper(char * string){
     for (int i = 0; i < strlen(string); i++){
         string[i] = toupper(string[i]);

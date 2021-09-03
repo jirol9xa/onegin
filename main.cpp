@@ -21,7 +21,7 @@ int main(void){
         text = (char **) malloc(string_amount * sizeof(char *));
         to_strings(text_temp, text, last);
         sorting(text, string_amount);
-        output(text, &string_amount);
+        output(text, string_amount);
         free(text);
     }
 

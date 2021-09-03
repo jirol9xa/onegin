@@ -1,0 +1,128 @@
+\hypertarget{title_8h}{}\doxysection{Файл title.\+h}
+\label{title_8h}\index{title.h@{title.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+Граф включаемых заголовочных файлов для title.\+h\+:
+% FIG 0
+Граф файлов, в которые включается этот файл\+:
+% FIG 1
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{title_8h_a5a349de09f10b42ca55809664403150d}{input}} (F\+I\+LE $\ast$fp, int $\ast$string\+\_\+amount, long int $\ast$last)
+\begin{DoxyCompactList}\small\item\em Функция ввода текста из файла \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{title_8h_a1b960290167c4b5d6c6c84146fc5cdfc}{to\+\_\+strings}} (char $\ast$text\+\_\+temp, char $\ast$$\ast$text, long int last)
+\begin{DoxyCompactList}\small\item\em Функция преобразование массива текст в двумерный \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{title_8h_a3c1e8d012913061f35f318aca472bf05}{output}} (char $\ast$$\ast$text, int string\+\_\+amount)
+\begin{DoxyCompactList}\small\item\em Функция вывода текста \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{title_8h_a88f829cece0226ab590706979538d514}{sorting}} (char $\ast$$\ast$text, int string\+\_\+amount)
+\begin{DoxyCompactList}\small\item\em Функция сортировки \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{title_8h_a84ecb5372f1a2b3b0327d80181bd7a4e}{To\+Upper}} (char $\ast$string)
+\begin{DoxyCompactList}\small\item\em Перевод в капс \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Переменные}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{title_8h_af08413a3ee12cf78b0ddeea71e2648b3}{S\+I\+ZE}} = 100
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{title_8h_a5a349de09f10b42ca55809664403150d}\label{title_8h_a5a349de09f10b42ca55809664403150d}} 
+\index{title.h@{title.h}!input@{input}}
+\index{input@{input}!title.h@{title.h}}
+\doxysubsubsection{\texorpdfstring{input()}{input()}}
+{\footnotesize\ttfamily char$\ast$ input (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{int $\ast$}]{string\+\_\+amount,  }\item[{long int $\ast$}]{last }\end{DoxyParamCaption})}
+
+
+
+Функция ввода текста из файла 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}\+F\+I\+L\+E$\ast$\mbox{]}} & fp указатель на файл, из которого считывается текст \\
+\hline
+{\em \mbox{[}int$\ast$\mbox{]}} & string\+\_\+amount указатель на число строк в тексте \\
+\hline
+{\em \mbox{[}long} & int $\ast$\mbox{]} last указатель на общее число символов в тексте\\
+\hline
+\end{DoxyParams}
+Функция считывает текст из файла, записывая значения числа строк и общего числа символов. Функция возвращает указатель на массив с текстом. \mbox{\Hypertarget{title_8h_a3c1e8d012913061f35f318aca472bf05}\label{title_8h_a3c1e8d012913061f35f318aca472bf05}} 
+\index{title.h@{title.h}!output@{output}}
+\index{output@{output}!title.h@{title.h}}
+\doxysubsubsection{\texorpdfstring{output()}{output()}}
+{\footnotesize\ttfamily void output (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{text,  }\item[{int}]{string\+\_\+amount }\end{DoxyParamCaption})}
+
+
+
+Функция вывода текста 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}char$\ast$$\ast$\mbox{]}} & text Массив, хранящий отсортированный текст построчно \\
+\hline
+{\em \mbox{[}int\mbox{]}} & string\+\_\+amount Число строк в массиве\\
+\hline
+\end{DoxyParams}
+Функция выыодит отсортированный текст построчно. \mbox{\Hypertarget{title_8h_a88f829cece0226ab590706979538d514}\label{title_8h_a88f829cece0226ab590706979538d514}} 
+\index{title.h@{title.h}!sorting@{sorting}}
+\index{sorting@{sorting}!title.h@{title.h}}
+\doxysubsubsection{\texorpdfstring{sorting()}{sorting()}}
+{\footnotesize\ttfamily void sorting (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{text,  }\item[{int}]{string\+\_\+amount }\end{DoxyParamCaption})}
+
+
+
+Функция сортировки 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}char$\ast$$\ast$\mbox{]}} & text Массив, хранящий текст построчно \\
+\hline
+{\em \mbox{[}int\mbox{]}} & string\+\_\+amount Число строк в тексте \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{title_8h_a1b960290167c4b5d6c6c84146fc5cdfc}\label{title_8h_a1b960290167c4b5d6c6c84146fc5cdfc}} 
+\index{title.h@{title.h}!to\_strings@{to\_strings}}
+\index{to\_strings@{to\_strings}!title.h@{title.h}}
+\doxysubsubsection{\texorpdfstring{to\_strings()}{to\_strings()}}
+{\footnotesize\ttfamily void to\+\_\+strings (\begin{DoxyParamCaption}\item[{char $\ast$}]{text\+\_\+temp,  }\item[{char $\ast$$\ast$}]{text,  }\item[{long int}]{last }\end{DoxyParamCaption})}
+
+
+
+Функция преобразование массива текст в двумерный 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}char$\ast$\mbox{]}} & text\+\_\+temp УМассив всех символов текста \\
+\hline
+{\em \mbox{[}char$\ast$$\ast$\mbox{]}} & text Двумерный массив, хранящий текст построчно \\
+\hline
+{\em \mbox{[}long} & int\mbox{]} last Общее число символов в тексте\\
+\hline
+\end{DoxyParams}
+Данная функция разбивает массив с текстом на строки для дальнейшей сортировки \mbox{\Hypertarget{title_8h_a84ecb5372f1a2b3b0327d80181bd7a4e}\label{title_8h_a84ecb5372f1a2b3b0327d80181bd7a4e}} 
+\index{title.h@{title.h}!ToUpper@{ToUpper}}
+\index{ToUpper@{ToUpper}!title.h@{title.h}}
+\doxysubsubsection{\texorpdfstring{ToUpper()}{ToUpper()}}
+{\footnotesize\ttfamily void To\+Upper (\begin{DoxyParamCaption}\item[{char $\ast$}]{string }\end{DoxyParamCaption})}
+
+
+
+Перевод в капс 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}char$\ast$\mbox{]}} & string Строка, которую надо написать капсом\\
+\hline
+\end{DoxyParams}
+Функция меняет все маленькие буквы в строке на буквы капсом 
+
+\doxysubsection{Переменные}
+\mbox{\Hypertarget{title_8h_af08413a3ee12cf78b0ddeea71e2648b3}\label{title_8h_af08413a3ee12cf78b0ddeea71e2648b3}} 
+\index{title.h@{title.h}!SIZE@{SIZE}}
+\index{SIZE@{SIZE}!title.h@{title.h}}
+\doxysubsubsection{\texorpdfstring{SIZE}{SIZE}}
+{\footnotesize\ttfamily const int S\+I\+ZE = 100}
+
