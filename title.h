@@ -3,6 +3,7 @@
 #include <assert.h>
 #include <string.h>
 #include <ctype.h>
+#include <math.h>
 
 const int SIZE = 100;
 
@@ -15,3 +16,7 @@ void output(char ** text, int string_amount);
 void sorting (char ** text, int string_amount);
 
 void ToUpper(char * string);
+
+size_t min(size_t a, size_t b);
+
+int comp(const void * str1, const void * str2);

@@ -29,11 +29,13 @@ char * input(FILE * fp, int * string_amount, long int * last){
             (*string_amount)++;
         }
     }
+
     text_temp[i] = '\0';
 
 
     return text_temp;
 }
+
 
 
 /*!
@@ -51,6 +53,7 @@ void output(char ** text, int string_amount){
         printf("%s", text[i]);
     }
 }
+
 
 
 /*!
@@ -92,50 +95,16 @@ void to_strings(char * text_temp, char ** text, long int last){
 }
 
 
+
 /*!
     \brief Функция сортировки
     \param[char**] text Массив, хранящий текст построчно
     \param[int] string_amount Число строк в тексте
 */
 void sorting(char ** text, int string_amount){
-
-    for (int i = 0; i < string_amount; i++){
-
-        for (int j = 0; j < string_amount; j++){
-
-            char * string_temp1 = NULL;
-            char * string_temp2 = NULL;
-
-
-            string_temp1 = (char *) malloc(strlen(text[i]) + 1);
-            strcpy(string_temp1, text[i]);
-            string_temp2 = (char *) malloc(strlen(text[j]) + 1);
-            strcpy(string_temp2, text[j]);
-
-
-            ToUpper(string_temp1);
-            ToUpper(string_temp2);
-
-
-            if (strcmp(string_temp1, string_temp2) < 0){ //меняем строки местами
-                free(string_temp2);
-                free(string_temp1);
-
-
-                char * string_temp3;
-                string_temp3 = (char *) malloc(strlen(text[i]) + 1);
-
-
-                strcpy(string_temp3, text[i]);
-                strcpy(text[i], text[j]);
-                strcpy(text[j], string_temp3);
-
-
-                free(string_temp3);
-            }
-        }
-    }
+    qsort(text, string_amount, sizeof(char *), comp);
 }
+
 
 
 /*!
@@ -148,4 +117,33 @@ void ToUpper(char * string){
     for (int i = 0; i < strlen(string); i++){
         string[i] = toupper(string[i]);
     }
+}
+
+
+
+size_t min(size_t a, size_t b){
+    return (a < b) ? a : b;
+}
+
+
+
+int comp(const void * str1, const void * str2){
+    const char * string1 = *(const char **) str1;
+    const char * string2 = *(const char **) str2;
+
+    char * string1_temp = (char *) malloc(strlen(string1) + 1);
+    char * string2_temp = (char *) malloc(strlen(string2) + 1);
+
+    strcpy(string1_temp, string1);
+    strcpy(string2_temp, string2);
+
+    ToUpper(string1_temp);
+    ToUpper(string2_temp);
+
+    int res = strncmp(string1_temp, string2_temp, min(strlen(string1_temp), strlen(string2_temp)));
+
+    free(string1_temp);
+    free(string2_temp);
+    
+    return res;
 }
