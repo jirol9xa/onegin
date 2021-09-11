@@ -20,7 +20,7 @@ char * input(FILE * fp, int * string_amount, long int * last){
     *last = ftell(fp);
     fseek(fp, 0L, SEEK_SET);
     
-    text_temp = (char *) malloc(*last + 1);
+    text_temp = (char *) calloc(*last + 1, sizeof(char));
 
     for (; i < *last; i++){
         text_temp[i] = getc(fp);
@@ -50,7 +50,7 @@ void output(char ** text, int string_amount){
 
 
     for (int i = 0; i < string_amount; i++){
-        printf("%s", text[i]);
+        printf("%s \n", text[i]);
     }
 }
 
@@ -64,34 +64,27 @@ void output(char ** text, int string_amount){
 
     Данная функция разбивает массив с текстом на строки для дальнейшей сортировки
 */
-void to_strings(char * text_temp, char ** text, long int last){
+void to_strings(char * text_temp, char ** text, int string_amount){
+    int in_string = 0;
 
-    for (int i = 0, j = 0, g = 0; i < last; i++){
+    for (int i = 0; i < string_amount; i++){
 
-        char * string_temp = NULL;
+        text[i] = text_temp;    
 
-        if (text_temp[i] == '\n'){
-            string_temp = (char *) malloc(i - g + 2);
+        while (*text_temp != '\n' && *text_temp != '\0'){
 
-
-            for (int n = g; n <= i; n++){
-                string_temp[n - g] = text_temp[n];
+            if (in_string == 0){
+                text[i] = text_temp;
+                in_string = 1;
             }
-            string_temp[i - g + 1] = '\0';
 
-
-            text[j] = (char *) malloc (i - g + 2);
-
-
-            strcpy(text[j], string_temp);
-
-            g = i + 1;
-            j++;
+            text_temp++;
         }
+
+        in_string = 0;
+        (*text_temp) = '\0';
+        text_temp++; 
     }
-
-
-    free(text_temp);
 }
 
 
@@ -121,29 +114,72 @@ void ToUpper(char * string){
 
 
 
+/*!
+    \brief Находит минимум из двух чисел
+*/
 size_t min(size_t a, size_t b){
     return (a < b) ? a : b;
 }
 
 
 
+
+/*!
+    \brief Аналогична функции strcmp1
+
+    Работает со строками исходного текста, определяя их очередность по алфавиту.
+*/
 int comp(const void * str1, const void * str2){
     const char * string1 = *(const char **) str1;
     const char * string2 = *(const char **) str2;
 
-    char * string1_temp = (char *) malloc(strlen(string1) + 1);
-    char * string2_temp = (char *) malloc(strlen(string2) + 1);
+    return strcmp1(string1, string2);
+}
 
-    strcpy(string1_temp, string1);
-    strcpy(string2_temp, string2);
 
-    ToUpper(string1_temp);
-    ToUpper(string2_temp);
 
-    int res = strncmp(string1_temp, string2_temp, min(strlen(string1_temp), strlen(string2_temp)));
+/*!
+    \brief Функция сравнения строк
+    \param [const char *] string1 Первая строка
+    \param [const char *] string2 Вторая строка
 
-    free(string1_temp);
-    free(string2_temp);
-    
-    return res;
+    Возвращает 1, если первая строка должна идти после второй.
+    Возвращает -1, если первая строка должна идти перед второй.
+*/
+int strcmp1(const char * string1, const char * string2){
+    int min_len = min(strlen(string1), strlen(string2));
+    int sum1 = 0, sum2 = 0;
+
+    for (int i = 0; i < min_len; i++){
+        if (isalpha(string1[i])){
+            char c = toupper(string1[i]);
+            sum1 += c;
+        }
+        else{
+            sum1 += string1[i];
+        }
+
+        
+
+        if (isalpha(string2[i])){
+            char c = toupper(string2[i]);
+            sum2 += c;
+        }
+        else{
+            sum2 += string2[i];
+        }
+
+
+        if (sum1 != sum2){
+            break;
+        }
+    }
+
+
+    if (sum1 == sum2){
+        return (strlen(string1) > strlen(string2)) ? 1 : -1;
+    }
+
+
+    return (sum1 > sum2) ? 1 : -1;
 }

@@ -18,11 +18,15 @@ int main(void){
     else {
         char * text_temp = NULL;
         text_temp = input(fp, &string_amount, &last);
-        text = (char **) malloc(string_amount * sizeof(char *));
-        to_strings(text_temp, text, last);
+        
+        text = (char **) calloc(string_amount, sizeof(char *));
+
+        to_strings(text_temp, text, string_amount);
         sorting(text, string_amount);
         output(text, string_amount);
+
         free(text);
+        free(text_temp);
     }
 
 
