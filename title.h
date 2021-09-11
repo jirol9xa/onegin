@@ -7,7 +7,7 @@
 
 const int SIZE = 100;
 
-const char PUNKTUATION_MARK[] = ".,!?-:; ";
+const char PUNKTUATION_MARK[] = ".,!?-:;  \" \\ \' «» () {} []";
 
 
 
