@@ -1,6 +1,10 @@
 #include "title.h"
 
 
+/*!
+    \brief Главная функция, вызывающая сортировку
+    \param [FILE *] fp Указатель на файл с исходным текстом
+*/ 
 void makeOneginGreatAgain(FILE * fp){
     assert(fp);
 
@@ -13,13 +17,16 @@ void makeOneginGreatAgain(FILE * fp){
     text = (char **) calloc(string_amount, sizeof(char *));
     assert(text);
 
+
     to_strings(text_temp, text, string_amount);
     sorting(text, string_amount);
+
     output(text, string_amount);
     printf("\n \n Now reverse: \n \n \n");
     output_reverse(text, string_amount);
     printf("\n \n Now original text: \n \n \n");
     output_original(text_temp, string_amount);
+
 
     free(text);
     free(text_temp);
@@ -279,9 +286,14 @@ int OneginTest(){
 
 
 
+/*!
+    \brief Выводит обратную сортировку
+    \param [char **] text Массив строк текста
+    \param [int] string_amount Число строк в тексте
+*/
 void output_reverse(char ** text, int string_amount){
     assert(text);
-    
+
     for (int i = string_amount - 1; i >= 0; i--){
         printf("%s \n", text[i]);
     }
@@ -289,6 +301,11 @@ void output_reverse(char ** text, int string_amount){
 
 
 
+/*!
+    \brief Выводит исходный текст
+    \param [char *] text_temp Массив, хранящий строки текста одну за одной
+    \param [int] string_amount Число строк в тексте
+*/
 void output_original(char * text_temp, int string_amount){
     assert(text_temp);
 

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['size_21',['SIZE',['../title_8h.html#af08413a3ee12cf78b0ddeea71e2648b3',1,'title.h']]]
+  ['punktuation_5fmark_32',['PUNKTUATION_MARK',['../title_8h.html#a188ca891a509dc8f2074df7178c81492',1,'title.h']]]
 ];

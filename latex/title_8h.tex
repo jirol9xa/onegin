@@ -5,6 +5,7 @@
 {\ttfamily \#include $<$assert.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
 Граф включаемых заголовочных файлов для title.\+h\+:
 % FIG 0
 Граф файлов, в которые включается этот файл\+:
@@ -12,29 +13,53 @@
 \doxysubsection*{Функции}
 \begin{DoxyCompactItemize}
 \item 
-char $\ast$ \mbox{\hyperlink{title_8h_a5a349de09f10b42ca55809664403150d}{input}} (F\+I\+LE $\ast$fp, int $\ast$string\+\_\+amount, long int $\ast$last)
+void \mbox{\hyperlink{title_8h_a8cf8275a25658460dc0ecfabecf00ba5}{make\+Onegin\+Great\+Again}} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em Главная функция, вызывающая сортировку \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{title_8h_ac41587d4673c0a1c4683d7509a7e2f68}{input}} (F\+I\+LE $\ast$fp, int $\ast$string\+\_\+amount)
 \begin{DoxyCompactList}\small\item\em Функция ввода текста из файла \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{title_8h_a1b960290167c4b5d6c6c84146fc5cdfc}{to\+\_\+strings}} (char $\ast$text\+\_\+temp, char $\ast$$\ast$text, long int last)
+void \mbox{\hyperlink{title_8h_ae5f03f70dec7ac5618c94235b4eacb70}{to\+\_\+strings}} (char $\ast$text\+\_\+temp, char $\ast$$\ast$text, int string\+\_\+amount)
 \begin{DoxyCompactList}\small\item\em Функция преобразование массива текст в двумерный \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{title_8h_a3c1e8d012913061f35f318aca472bf05}{output}} (char $\ast$$\ast$text, int string\+\_\+amount)
 \begin{DoxyCompactList}\small\item\em Функция вывода текста \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{title_8h_a88f829cece0226ab590706979538d514}{sorting}} (char $\ast$$\ast$text, int string\+\_\+amount)
 \begin{DoxyCompactList}\small\item\em Функция сортировки \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{title_8h_a84ecb5372f1a2b3b0327d80181bd7a4e}{To\+Upper}} (char $\ast$string)
-\begin{DoxyCompactList}\small\item\em Перевод в капс \end{DoxyCompactList}\end{DoxyCompactItemize}
+size\+\_\+t \mbox{\hyperlink{title_8h_a730477d73e21b348a2c3cb3e4e046cec}{min}} (size\+\_\+t a, size\+\_\+t b)
+\begin{DoxyCompactList}\small\item\em Находит минимум из двух чисел \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{title_8h_af19ca5bc1db37f263ab814a614bbb823}{comp}} (const void $\ast$str1, const void $\ast$str2)
+\begin{DoxyCompactList}\small\item\em Аналогична функции strcmp1. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{title_8h_aefd8a0af00542e58f089745391d6b811}{strcmp1}} (const char $\ast$string1, const char $\ast$string2)
+\begin{DoxyCompactList}\small\item\em Функция сравнения строк \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{title_8h_aa72568d0cf300221e9fea4e11ef224a7}{Onegin\+Test}} ()
+\begin{DoxyCompactList}\small\item\em Unitest. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{title_8h_af8745a81de93d376ae1aeb06678a4256}{output\+\_\+reverse}} (char $\ast$$\ast$text, int string\+\_\+amount)
+\begin{DoxyCompactList}\small\item\em Выводит обратную сортировку \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{title_8h_a6881fa816533bd98441563590449f4d0}{output\+\_\+original}} (char $\ast$text\+\_\+temp, int string\+\_\+amount)
+\begin{DoxyCompactList}\small\item\em Выводит исходный текст \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Переменные}
 \begin{DoxyCompactItemize}
 \item 
 const int \mbox{\hyperlink{title_8h_af08413a3ee12cf78b0ddeea71e2648b3}{S\+I\+ZE}} = 100
+\item 
+const char \mbox{\hyperlink{title_8h_a188ca891a509dc8f2074df7178c81492}{P\+U\+N\+K\+T\+U\+A\+T\+I\+O\+N\+\_\+\+M\+A\+RK}} \mbox{[}$\,$\mbox{]} = \char`\"{}.,!?-\/\+:; \char`\"{}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Функции}
-\mbox{\Hypertarget{title_8h_a5a349de09f10b42ca55809664403150d}\label{title_8h_a5a349de09f10b42ca55809664403150d}} 
+\mbox{\Hypertarget{title_8h_af19ca5bc1db37f263ab814a614bbb823}\label{title_8h_af19ca5bc1db37f263ab814a614bbb823}} 
+\index{title.h@{title.h}!comp@{comp}}
+\index{comp@{comp}!title.h@{title.h}}
+\doxysubsubsection{\texorpdfstring{comp()}{comp()}}
+{\footnotesize\ttfamily int comp (\begin{DoxyParamCaption}\item[{const void $\ast$}]{str1,  }\item[{const void $\ast$}]{str2 }\end{DoxyParamCaption})}
+
+
+
+Аналогична функции strcmp1. 
+
+Работает со строками исходного текста, определяя их очередность по алфавиту. \mbox{\Hypertarget{title_8h_ac41587d4673c0a1c4683d7509a7e2f68}\label{title_8h_ac41587d4673c0a1c4683d7509a7e2f68}} 
 \index{title.h@{title.h}!input@{input}}
 \index{input@{input}!title.h@{title.h}}
 \doxysubsubsection{\texorpdfstring{input()}{input()}}
-{\footnotesize\ttfamily char$\ast$ input (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{int $\ast$}]{string\+\_\+amount,  }\item[{long int $\ast$}]{last }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily char$\ast$ input (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{int $\ast$}]{string\+\_\+amount }\end{DoxyParamCaption})}
 
 
 
@@ -44,12 +69,45 @@ const int \mbox{\hyperlink{title_8h_af08413a3ee12cf78b0ddeea71e2648b3}{S\+I\+ZE}
 \begin{DoxyParams}{Аргументы}
 {\em \mbox{[}\+F\+I\+L\+E$\ast$\mbox{]}} & fp указатель на файл, из которого считывается текст \\
 \hline
-{\em \mbox{[}int$\ast$\mbox{]}} & string\+\_\+amount указатель на число строк в тексте \\
-\hline
-{\em \mbox{[}long} & int $\ast$\mbox{]} last указатель на общее число символов в тексте\\
+{\em \mbox{[}int$\ast$\mbox{]}} & string\+\_\+amount указатель на число строк в тексте\\
 \hline
 \end{DoxyParams}
-Функция считывает текст из файла, записывая значения числа строк и общего числа символов. Функция возвращает указатель на массив с текстом. \mbox{\Hypertarget{title_8h_a3c1e8d012913061f35f318aca472bf05}\label{title_8h_a3c1e8d012913061f35f318aca472bf05}} 
+Функция считывает текст из файла, записывая значения числа строк и общего числа символов. Функция возвращает указатель на массив с текстом. \mbox{\Hypertarget{title_8h_a8cf8275a25658460dc0ecfabecf00ba5}\label{title_8h_a8cf8275a25658460dc0ecfabecf00ba5}} 
+\index{title.h@{title.h}!makeOneginGreatAgain@{makeOneginGreatAgain}}
+\index{makeOneginGreatAgain@{makeOneginGreatAgain}!title.h@{title.h}}
+\doxysubsubsection{\texorpdfstring{makeOneginGreatAgain()}{makeOneginGreatAgain()}}
+{\footnotesize\ttfamily void make\+Onegin\+Great\+Again (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+
+
+Главная функция, вызывающая сортировку 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}\+F\+I\+LE} & $\ast$\mbox{]} fp Указатель на файл с исходным текстом \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{title_8h_a730477d73e21b348a2c3cb3e4e046cec}\label{title_8h_a730477d73e21b348a2c3cb3e4e046cec}} 
+\index{title.h@{title.h}!min@{min}}
+\index{min@{min}!title.h@{title.h}}
+\doxysubsubsection{\texorpdfstring{min()}{min()}}
+{\footnotesize\ttfamily size\+\_\+t min (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{a,  }\item[{size\+\_\+t}]{b }\end{DoxyParamCaption})}
+
+
+
+Находит минимум из двух чисел 
+
+\mbox{\Hypertarget{title_8h_aa72568d0cf300221e9fea4e11ef224a7}\label{title_8h_aa72568d0cf300221e9fea4e11ef224a7}} 
+\index{title.h@{title.h}!OneginTest@{OneginTest}}
+\index{OneginTest@{OneginTest}!title.h@{title.h}}
+\doxysubsubsection{\texorpdfstring{OneginTest()}{OneginTest()}}
+{\footnotesize\ttfamily int Onegin\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unitest. 
+
+\mbox{\Hypertarget{title_8h_a3c1e8d012913061f35f318aca472bf05}\label{title_8h_a3c1e8d012913061f35f318aca472bf05}} 
 \index{title.h@{title.h}!output@{output}}
 \index{output@{output}!title.h@{title.h}}
 \doxysubsubsection{\texorpdfstring{output()}{output()}}
@@ -66,7 +124,41 @@ const int \mbox{\hyperlink{title_8h_af08413a3ee12cf78b0ddeea71e2648b3}{S\+I\+ZE}
 {\em \mbox{[}int\mbox{]}} & string\+\_\+amount Число строк в массиве\\
 \hline
 \end{DoxyParams}
-Функция выыодит отсортированный текст построчно. \mbox{\Hypertarget{title_8h_a88f829cece0226ab590706979538d514}\label{title_8h_a88f829cece0226ab590706979538d514}} 
+Функция выыодит отсортированный текст построчно. \mbox{\Hypertarget{title_8h_a6881fa816533bd98441563590449f4d0}\label{title_8h_a6881fa816533bd98441563590449f4d0}} 
+\index{title.h@{title.h}!output\_original@{output\_original}}
+\index{output\_original@{output\_original}!title.h@{title.h}}
+\doxysubsubsection{\texorpdfstring{output\_original()}{output\_original()}}
+{\footnotesize\ttfamily void output\+\_\+original (\begin{DoxyParamCaption}\item[{char $\ast$}]{text\+\_\+temp,  }\item[{int}]{string\+\_\+amount }\end{DoxyParamCaption})}
+
+
+
+Выводит исходный текст 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}char} & $\ast$\mbox{]} text\+\_\+temp Массив, хранящий строки текста одну за одной \\
+\hline
+{\em \mbox{[}int\mbox{]}} & string\+\_\+amount Число строк в тексте \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{title_8h_af8745a81de93d376ae1aeb06678a4256}\label{title_8h_af8745a81de93d376ae1aeb06678a4256}} 
+\index{title.h@{title.h}!output\_reverse@{output\_reverse}}
+\index{output\_reverse@{output\_reverse}!title.h@{title.h}}
+\doxysubsubsection{\texorpdfstring{output\_reverse()}{output\_reverse()}}
+{\footnotesize\ttfamily void output\+\_\+reverse (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{text,  }\item[{int}]{string\+\_\+amount }\end{DoxyParamCaption})}
+
+
+
+Выводит обратную сортировку 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}char} & $\ast$$\ast$\mbox{]} text Массив строк текста \\
+\hline
+{\em \mbox{[}int\mbox{]}} & string\+\_\+amount Число строк в тексте \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{title_8h_a88f829cece0226ab590706979538d514}\label{title_8h_a88f829cece0226ab590706979538d514}} 
 \index{title.h@{title.h}!sorting@{sorting}}
 \index{sorting@{sorting}!title.h@{title.h}}
 \doxysubsubsection{\texorpdfstring{sorting()}{sorting()}}
@@ -83,11 +175,28 @@ const int \mbox{\hyperlink{title_8h_af08413a3ee12cf78b0ddeea71e2648b3}{S\+I\+ZE}
 {\em \mbox{[}int\mbox{]}} & string\+\_\+amount Число строк в тексте \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{title_8h_a1b960290167c4b5d6c6c84146fc5cdfc}\label{title_8h_a1b960290167c4b5d6c6c84146fc5cdfc}} 
+\mbox{\Hypertarget{title_8h_aefd8a0af00542e58f089745391d6b811}\label{title_8h_aefd8a0af00542e58f089745391d6b811}} 
+\index{title.h@{title.h}!strcmp1@{strcmp1}}
+\index{strcmp1@{strcmp1}!title.h@{title.h}}
+\doxysubsubsection{\texorpdfstring{strcmp1()}{strcmp1()}}
+{\footnotesize\ttfamily int strcmp1 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{string1,  }\item[{const char $\ast$}]{string2 }\end{DoxyParamCaption})}
+
+
+
+Функция сравнения строк 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}const} & char $\ast$\mbox{]} string1 Первая строка \\
+\hline
+{\em \mbox{[}const} & char $\ast$\mbox{]} string2 Вторая строка\\
+\hline
+\end{DoxyParams}
+Возвращает 1, если первая строка должна идти после второй. Возвращает -\/1, если первая строка должна идти перед второй. \mbox{\Hypertarget{title_8h_ae5f03f70dec7ac5618c94235b4eacb70}\label{title_8h_ae5f03f70dec7ac5618c94235b4eacb70}} 
 \index{title.h@{title.h}!to\_strings@{to\_strings}}
 \index{to\_strings@{to\_strings}!title.h@{title.h}}
 \doxysubsubsection{\texorpdfstring{to\_strings()}{to\_strings()}}
-{\footnotesize\ttfamily void to\+\_\+strings (\begin{DoxyParamCaption}\item[{char $\ast$}]{text\+\_\+temp,  }\item[{char $\ast$$\ast$}]{text,  }\item[{long int}]{last }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void to\+\_\+strings (\begin{DoxyParamCaption}\item[{char $\ast$}]{text\+\_\+temp,  }\item[{char $\ast$$\ast$}]{text,  }\item[{int}]{string\+\_\+amount }\end{DoxyParamCaption})}
 
 
 
@@ -99,27 +208,18 @@ const int \mbox{\hyperlink{title_8h_af08413a3ee12cf78b0ddeea71e2648b3}{S\+I\+ZE}
 \hline
 {\em \mbox{[}char$\ast$$\ast$\mbox{]}} & text Двумерный массив, хранящий текст построчно \\
 \hline
-{\em \mbox{[}long} & int\mbox{]} last Общее число символов в тексте\\
+{\em \mbox{[}int\mbox{]}} & string\+\_\+amount Общее число строк в тексте\\
 \hline
 \end{DoxyParams}
-Данная функция разбивает массив с текстом на строки для дальнейшей сортировки \mbox{\Hypertarget{title_8h_a84ecb5372f1a2b3b0327d80181bd7a4e}\label{title_8h_a84ecb5372f1a2b3b0327d80181bd7a4e}} 
-\index{title.h@{title.h}!ToUpper@{ToUpper}}
-\index{ToUpper@{ToUpper}!title.h@{title.h}}
-\doxysubsubsection{\texorpdfstring{ToUpper()}{ToUpper()}}
-{\footnotesize\ttfamily void To\+Upper (\begin{DoxyParamCaption}\item[{char $\ast$}]{string }\end{DoxyParamCaption})}
-
-
-
-Перевод в капс 
-
-
-\begin{DoxyParams}{Аргументы}
-{\em \mbox{[}char$\ast$\mbox{]}} & string Строка, которую надо написать капсом\\
-\hline
-\end{DoxyParams}
-Функция меняет все маленькие буквы в строке на буквы капсом 
+Данная функция разбивает массив с текстом на строки для дальнейшей сортировки 
 
 \doxysubsection{Переменные}
+\mbox{\Hypertarget{title_8h_a188ca891a509dc8f2074df7178c81492}\label{title_8h_a188ca891a509dc8f2074df7178c81492}} 
+\index{title.h@{title.h}!PUNKTUATION\_MARK@{PUNKTUATION\_MARK}}
+\index{PUNKTUATION\_MARK@{PUNKTUATION\_MARK}!title.h@{title.h}}
+\doxysubsubsection{\texorpdfstring{PUNKTUATION\_MARK}{PUNKTUATION\_MARK}}
+{\footnotesize\ttfamily const char P\+U\+N\+K\+T\+U\+A\+T\+I\+O\+N\+\_\+\+M\+A\+RK\mbox{[}$\,$\mbox{]} = \char`\"{}.,!?-\/\+:; \char`\"{}}
+
 \mbox{\Hypertarget{title_8h_af08413a3ee12cf78b0ddeea71e2648b3}\label{title_8h_af08413a3ee12cf78b0ddeea71e2648b3}} 
 \index{title.h@{title.h}!SIZE@{SIZE}}
 \index{SIZE@{SIZE}!title.h@{title.h}}

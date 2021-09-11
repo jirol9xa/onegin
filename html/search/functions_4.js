@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['to_5fstrings_19',['to_strings',['../functions_8cpp.html#a1b960290167c4b5d6c6c84146fc5cdfc',1,'to_strings(char *text_temp, char **text, long int last):&#160;functions.cpp'],['../title_8h.html#a1b960290167c4b5d6c6c84146fc5cdfc',1,'to_strings(char *text_temp, char **text, long int last):&#160;functions.cpp']]],
-  ['toupper_20',['ToUpper',['../functions_8cpp.html#a84ecb5372f1a2b3b0327d80181bd7a4e',1,'ToUpper(char *string):&#160;functions.cpp'],['../title_8h.html#a84ecb5372f1a2b3b0327d80181bd7a4e',1,'ToUpper(char *string):&#160;functions.cpp']]]
+  ['sorting_29',['sorting',['../functions_8cpp.html#a88f829cece0226ab590706979538d514',1,'sorting(char **text, int string_amount):&#160;functions.cpp'],['../title_8h.html#a88f829cece0226ab590706979538d514',1,'sorting(char **text, int string_amount):&#160;functions.cpp']]],
+  ['strcmp1_30',['strcmp1',['../functions_8cpp.html#aefd8a0af00542e58f089745391d6b811',1,'strcmp1(const char *string1, const char *string2):&#160;functions.cpp'],['../title_8h.html#aefd8a0af00542e58f089745391d6b811',1,'strcmp1(const char *string1, const char *string2):&#160;functions.cpp']]]
 ];

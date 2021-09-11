@@ -6,24 +6,46 @@
 \doxysubsection*{Функции}
 \begin{DoxyCompactItemize}
 \item 
-char $\ast$ \mbox{\hyperlink{functions_8cpp_a5a349de09f10b42ca55809664403150d}{input}} (F\+I\+LE $\ast$fp, int $\ast$string\+\_\+amount, long int $\ast$last)
+void \mbox{\hyperlink{functions_8cpp_a8cf8275a25658460dc0ecfabecf00ba5}{make\+Onegin\+Great\+Again}} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em Главная функция, вызывающая сортировку \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{functions_8cpp_ac41587d4673c0a1c4683d7509a7e2f68}{input}} (F\+I\+LE $\ast$fp, int $\ast$string\+\_\+amount)
 \begin{DoxyCompactList}\small\item\em Функция ввода текста из файла \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{functions_8cpp_a3c1e8d012913061f35f318aca472bf05}{output}} (char $\ast$$\ast$text, int string\+\_\+amount)
 \begin{DoxyCompactList}\small\item\em Функция вывода текста \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{functions_8cpp_a1b960290167c4b5d6c6c84146fc5cdfc}{to\+\_\+strings}} (char $\ast$text\+\_\+temp, char $\ast$$\ast$text, long int last)
+void \mbox{\hyperlink{functions_8cpp_ae5f03f70dec7ac5618c94235b4eacb70}{to\+\_\+strings}} (char $\ast$text\+\_\+temp, char $\ast$$\ast$text, int string\+\_\+amount)
 \begin{DoxyCompactList}\small\item\em Функция преобразование массива текст в двумерный \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{functions_8cpp_a88f829cece0226ab590706979538d514}{sorting}} (char $\ast$$\ast$text, int string\+\_\+amount)
 \begin{DoxyCompactList}\small\item\em Функция сортировки \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{functions_8cpp_a84ecb5372f1a2b3b0327d80181bd7a4e}{To\+Upper}} (char $\ast$string)
-\begin{DoxyCompactList}\small\item\em Перевод в капс \end{DoxyCompactList}\end{DoxyCompactItemize}
+size\+\_\+t \mbox{\hyperlink{functions_8cpp_a730477d73e21b348a2c3cb3e4e046cec}{min}} (size\+\_\+t a, size\+\_\+t b)
+\begin{DoxyCompactList}\small\item\em Находит минимум из двух чисел \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{functions_8cpp_af19ca5bc1db37f263ab814a614bbb823}{comp}} (const void $\ast$str1, const void $\ast$str2)
+\begin{DoxyCompactList}\small\item\em Аналогична функции strcmp1. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{functions_8cpp_aefd8a0af00542e58f089745391d6b811}{strcmp1}} (const char $\ast$string1, const char $\ast$string2)
+\begin{DoxyCompactList}\small\item\em Функция сравнения строк \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{functions_8cpp_aa72568d0cf300221e9fea4e11ef224a7}{Onegin\+Test}} ()
+\begin{DoxyCompactList}\small\item\em Unitest. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{functions_8cpp_af8745a81de93d376ae1aeb06678a4256}{output\+\_\+reverse}} (char $\ast$$\ast$text, int string\+\_\+amount)
+\begin{DoxyCompactList}\small\item\em Выводит обратную сортировку \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{functions_8cpp_a6881fa816533bd98441563590449f4d0}{output\+\_\+original}} (char $\ast$text\+\_\+temp, int string\+\_\+amount)
+\begin{DoxyCompactList}\small\item\em Выводит исходный текст \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Функции}
-\mbox{\Hypertarget{functions_8cpp_a5a349de09f10b42ca55809664403150d}\label{functions_8cpp_a5a349de09f10b42ca55809664403150d}} 
+\mbox{\Hypertarget{functions_8cpp_af19ca5bc1db37f263ab814a614bbb823}\label{functions_8cpp_af19ca5bc1db37f263ab814a614bbb823}} 
+\index{functions.cpp@{functions.cpp}!comp@{comp}}
+\index{comp@{comp}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{comp()}{comp()}}
+{\footnotesize\ttfamily int comp (\begin{DoxyParamCaption}\item[{const void $\ast$}]{str1,  }\item[{const void $\ast$}]{str2 }\end{DoxyParamCaption})}
+
+
+
+Аналогична функции strcmp1. 
+
+Работает со строками исходного текста, определяя их очередность по алфавиту. \mbox{\Hypertarget{functions_8cpp_ac41587d4673c0a1c4683d7509a7e2f68}\label{functions_8cpp_ac41587d4673c0a1c4683d7509a7e2f68}} 
 \index{functions.cpp@{functions.cpp}!input@{input}}
 \index{input@{input}!functions.cpp@{functions.cpp}}
 \doxysubsubsection{\texorpdfstring{input()}{input()}}
-{\footnotesize\ttfamily char$\ast$ input (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{int $\ast$}]{string\+\_\+amount,  }\item[{long int $\ast$}]{last }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily char$\ast$ input (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{int $\ast$}]{string\+\_\+amount }\end{DoxyParamCaption})}
 
 
 
@@ -33,12 +55,45 @@ void \mbox{\hyperlink{functions_8cpp_a84ecb5372f1a2b3b0327d80181bd7a4e}{To\+Uppe
 \begin{DoxyParams}{Аргументы}
 {\em \mbox{[}\+F\+I\+L\+E$\ast$\mbox{]}} & fp указатель на файл, из которого считывается текст \\
 \hline
-{\em \mbox{[}int$\ast$\mbox{]}} & string\+\_\+amount указатель на число строк в тексте \\
-\hline
-{\em \mbox{[}long} & int $\ast$\mbox{]} last указатель на общее число символов в тексте\\
+{\em \mbox{[}int$\ast$\mbox{]}} & string\+\_\+amount указатель на число строк в тексте\\
 \hline
 \end{DoxyParams}
-Функция считывает текст из файла, записывая значения числа строк и общего числа символов. Функция возвращает указатель на массив с текстом. \mbox{\Hypertarget{functions_8cpp_a3c1e8d012913061f35f318aca472bf05}\label{functions_8cpp_a3c1e8d012913061f35f318aca472bf05}} 
+Функция считывает текст из файла, записывая значения числа строк и общего числа символов. Функция возвращает указатель на массив с текстом. \mbox{\Hypertarget{functions_8cpp_a8cf8275a25658460dc0ecfabecf00ba5}\label{functions_8cpp_a8cf8275a25658460dc0ecfabecf00ba5}} 
+\index{functions.cpp@{functions.cpp}!makeOneginGreatAgain@{makeOneginGreatAgain}}
+\index{makeOneginGreatAgain@{makeOneginGreatAgain}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{makeOneginGreatAgain()}{makeOneginGreatAgain()}}
+{\footnotesize\ttfamily void make\+Onegin\+Great\+Again (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+
+
+Главная функция, вызывающая сортировку 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}\+F\+I\+LE} & $\ast$\mbox{]} fp Указатель на файл с исходным текстом \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{functions_8cpp_a730477d73e21b348a2c3cb3e4e046cec}\label{functions_8cpp_a730477d73e21b348a2c3cb3e4e046cec}} 
+\index{functions.cpp@{functions.cpp}!min@{min}}
+\index{min@{min}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{min()}{min()}}
+{\footnotesize\ttfamily size\+\_\+t min (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{a,  }\item[{size\+\_\+t}]{b }\end{DoxyParamCaption})}
+
+
+
+Находит минимум из двух чисел 
+
+\mbox{\Hypertarget{functions_8cpp_aa72568d0cf300221e9fea4e11ef224a7}\label{functions_8cpp_aa72568d0cf300221e9fea4e11ef224a7}} 
+\index{functions.cpp@{functions.cpp}!OneginTest@{OneginTest}}
+\index{OneginTest@{OneginTest}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{OneginTest()}{OneginTest()}}
+{\footnotesize\ttfamily int Onegin\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unitest. 
+
+\mbox{\Hypertarget{functions_8cpp_a3c1e8d012913061f35f318aca472bf05}\label{functions_8cpp_a3c1e8d012913061f35f318aca472bf05}} 
 \index{functions.cpp@{functions.cpp}!output@{output}}
 \index{output@{output}!functions.cpp@{functions.cpp}}
 \doxysubsubsection{\texorpdfstring{output()}{output()}}
@@ -55,7 +110,41 @@ void \mbox{\hyperlink{functions_8cpp_a84ecb5372f1a2b3b0327d80181bd7a4e}{To\+Uppe
 {\em \mbox{[}int\mbox{]}} & string\+\_\+amount Число строк в массиве\\
 \hline
 \end{DoxyParams}
-Функция выыодит отсортированный текст построчно. \mbox{\Hypertarget{functions_8cpp_a88f829cece0226ab590706979538d514}\label{functions_8cpp_a88f829cece0226ab590706979538d514}} 
+Функция выыодит отсортированный текст построчно. \mbox{\Hypertarget{functions_8cpp_a6881fa816533bd98441563590449f4d0}\label{functions_8cpp_a6881fa816533bd98441563590449f4d0}} 
+\index{functions.cpp@{functions.cpp}!output\_original@{output\_original}}
+\index{output\_original@{output\_original}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{output\_original()}{output\_original()}}
+{\footnotesize\ttfamily void output\+\_\+original (\begin{DoxyParamCaption}\item[{char $\ast$}]{text\+\_\+temp,  }\item[{int}]{string\+\_\+amount }\end{DoxyParamCaption})}
+
+
+
+Выводит исходный текст 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}char} & $\ast$\mbox{]} text\+\_\+temp Массив, хранящий строки текста одну за одной \\
+\hline
+{\em \mbox{[}int\mbox{]}} & string\+\_\+amount Число строк в тексте \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{functions_8cpp_af8745a81de93d376ae1aeb06678a4256}\label{functions_8cpp_af8745a81de93d376ae1aeb06678a4256}} 
+\index{functions.cpp@{functions.cpp}!output\_reverse@{output\_reverse}}
+\index{output\_reverse@{output\_reverse}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{output\_reverse()}{output\_reverse()}}
+{\footnotesize\ttfamily void output\+\_\+reverse (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{text,  }\item[{int}]{string\+\_\+amount }\end{DoxyParamCaption})}
+
+
+
+Выводит обратную сортировку 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}char} & $\ast$$\ast$\mbox{]} text Массив строк текста \\
+\hline
+{\em \mbox{[}int\mbox{]}} & string\+\_\+amount Число строк в тексте \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{functions_8cpp_a88f829cece0226ab590706979538d514}\label{functions_8cpp_a88f829cece0226ab590706979538d514}} 
 \index{functions.cpp@{functions.cpp}!sorting@{sorting}}
 \index{sorting@{sorting}!functions.cpp@{functions.cpp}}
 \doxysubsubsection{\texorpdfstring{sorting()}{sorting()}}
@@ -72,11 +161,28 @@ void \mbox{\hyperlink{functions_8cpp_a84ecb5372f1a2b3b0327d80181bd7a4e}{To\+Uppe
 {\em \mbox{[}int\mbox{]}} & string\+\_\+amount Число строк в тексте \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{functions_8cpp_a1b960290167c4b5d6c6c84146fc5cdfc}\label{functions_8cpp_a1b960290167c4b5d6c6c84146fc5cdfc}} 
+\mbox{\Hypertarget{functions_8cpp_aefd8a0af00542e58f089745391d6b811}\label{functions_8cpp_aefd8a0af00542e58f089745391d6b811}} 
+\index{functions.cpp@{functions.cpp}!strcmp1@{strcmp1}}
+\index{strcmp1@{strcmp1}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{strcmp1()}{strcmp1()}}
+{\footnotesize\ttfamily int strcmp1 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{string1,  }\item[{const char $\ast$}]{string2 }\end{DoxyParamCaption})}
+
+
+
+Функция сравнения строк 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}const} & char $\ast$\mbox{]} string1 Первая строка \\
+\hline
+{\em \mbox{[}const} & char $\ast$\mbox{]} string2 Вторая строка\\
+\hline
+\end{DoxyParams}
+Возвращает 1, если первая строка должна идти после второй. Возвращает -\/1, если первая строка должна идти перед второй. \mbox{\Hypertarget{functions_8cpp_ae5f03f70dec7ac5618c94235b4eacb70}\label{functions_8cpp_ae5f03f70dec7ac5618c94235b4eacb70}} 
 \index{functions.cpp@{functions.cpp}!to\_strings@{to\_strings}}
 \index{to\_strings@{to\_strings}!functions.cpp@{functions.cpp}}
 \doxysubsubsection{\texorpdfstring{to\_strings()}{to\_strings()}}
-{\footnotesize\ttfamily void to\+\_\+strings (\begin{DoxyParamCaption}\item[{char $\ast$}]{text\+\_\+temp,  }\item[{char $\ast$$\ast$}]{text,  }\item[{long int}]{last }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void to\+\_\+strings (\begin{DoxyParamCaption}\item[{char $\ast$}]{text\+\_\+temp,  }\item[{char $\ast$$\ast$}]{text,  }\item[{int}]{string\+\_\+amount }\end{DoxyParamCaption})}
 
 
 
@@ -88,22 +194,7 @@ void \mbox{\hyperlink{functions_8cpp_a84ecb5372f1a2b3b0327d80181bd7a4e}{To\+Uppe
 \hline
 {\em \mbox{[}char$\ast$$\ast$\mbox{]}} & text Двумерный массив, хранящий текст построчно \\
 \hline
-{\em \mbox{[}long} & int\mbox{]} last Общее число символов в тексте\\
+{\em \mbox{[}int\mbox{]}} & string\+\_\+amount Общее число строк в тексте\\
 \hline
 \end{DoxyParams}
-Данная функция разбивает массив с текстом на строки для дальнейшей сортировки \mbox{\Hypertarget{functions_8cpp_a84ecb5372f1a2b3b0327d80181bd7a4e}\label{functions_8cpp_a84ecb5372f1a2b3b0327d80181bd7a4e}} 
-\index{functions.cpp@{functions.cpp}!ToUpper@{ToUpper}}
-\index{ToUpper@{ToUpper}!functions.cpp@{functions.cpp}}
-\doxysubsubsection{\texorpdfstring{ToUpper()}{ToUpper()}}
-{\footnotesize\ttfamily void To\+Upper (\begin{DoxyParamCaption}\item[{char $\ast$}]{string }\end{DoxyParamCaption})}
-
-
-
-Перевод в капс 
-
-
-\begin{DoxyParams}{Аргументы}
-{\em \mbox{[}char$\ast$\mbox{]}} & string Строка, которую надо написать капсом\\
-\hline
-\end{DoxyParams}
-Функция меняет все маленькие буквы в строке на буквы капсом 
+Данная функция разбивает массив с текстом на строки для дальнейшей сортировки 

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['input_15',['input',['../functions_8cpp.html#a5a349de09f10b42ca55809664403150d',1,'input(FILE *fp, int *string_amount, long int *last):&#160;functions.cpp'],['../main_8c.html#a875038ae76cfd596b0353f99157efbc6',1,'input(char **str, FILE *fp):&#160;main.c'],['../title_8h.html#a5a349de09f10b42ca55809664403150d',1,'input(FILE *fp, int *string_amount, long int *last):&#160;functions.cpp']]]
+  ['comp_20',['comp',['../functions_8cpp.html#af19ca5bc1db37f263ab814a614bbb823',1,'comp(const void *str1, const void *str2):&#160;functions.cpp'],['../title_8h.html#af19ca5bc1db37f263ab814a614bbb823',1,'comp(const void *str1, const void *str2):&#160;functions.cpp']]]
 ];
