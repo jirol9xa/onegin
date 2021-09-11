@@ -2,6 +2,8 @@
 
 
 void makeOneginGreatAgain(FILE * fp){
+    assert(fp);
+
     char ** text = NULL;
     int string_amount = 0;
     char * text_temp = NULL;
@@ -9,10 +11,15 @@ void makeOneginGreatAgain(FILE * fp){
     text_temp = input(fp, &string_amount);
         
     text = (char **) calloc(string_amount, sizeof(char *));
+    assert(text);
 
     to_strings(text_temp, text, string_amount);
     sorting(text, string_amount);
     output(text, string_amount);
+    printf("\n \n Now reverse: \n \n \n");
+    output_reverse(text, string_amount);
+    printf("\n \n Now original text: \n \n \n");
+    output_original(text_temp, string_amount);
 
     free(text);
     free(text_temp);
@@ -30,17 +37,21 @@ void makeOneginGreatAgain(FILE * fp){
 */
 char * input(FILE * fp, int * string_amount){
     assert(fp);
+    assert(string_amount);
 
-    char * text_temp = {};
-    long int i = 0;
+    char * text_temp = nullptr;
     long int last = 0;
 
-    fseek(fp, 0L, SEEK_END);
+    int assertion = fseek(fp, 0L, SEEK_END);
+    assert(assertion == 0);
     last = ftell(fp);
-    fseek(fp, 0L, SEEK_SET);
+    assertion = fseek(fp, 0L, SEEK_SET);
+    assert(assertion == 0);
     
     text_temp = (char *) calloc(last + 1, sizeof(char));
+    assert(text_temp);
 
+    long int i = 0;
     for (; i < last; i++){
         text_temp[i] = getc(fp);
 
@@ -84,6 +95,9 @@ void output(char ** text, int string_amount){
     Данная функция разбивает массив с текстом на строки для дальнейшей сортировки
 */
 void to_strings(char * text_temp, char ** text, int string_amount){
+    assert(text_temp);
+    assert(text);
+
     int in_string = 0;
 
     for (int i = 0; i < string_amount; i++){
@@ -114,24 +128,10 @@ void to_strings(char * text_temp, char ** text, int string_amount){
     \param[int] string_amount Число строк в тексте
 */
 void sorting(char ** text, int string_amount){
+    assert(text);
+
     qsort(text, string_amount, sizeof(char *), comp);
 }
-
-
-
-/*!
-    \brief Перевод в капс
-    \param[char*] string Строка, которую надо написать капсом
-
-    Функция меняет все маленькие буквы в строке на буквы капсом
-*/
-void ToUpper(char * string){
-    for (int i = 0; i < strlen(string); i++){
-        string[i] = toupper(string[i]);
-    }
-}
-
-
 
 /*!
     \brief Находит минимум из двух чисел
@@ -166,34 +166,49 @@ int comp(const void * str1, const void * str2){
     Возвращает -1, если первая строка должна идти перед второй.
 */
 int strcmp1(const char * string1, const char * string2){
-    int min_len = min(strlen(string1), strlen(string2));
+    assert(string1);
+    assert(string2);
+
     int sum1 = 0, sum2 = 0;
+    int i = 0, j = 0;
 
-    for (int i = 0; i < min_len; i++){
-        if (isalpha(string1[i])){
-            char c = toupper(string1[i]);
-            sum1 += c;
-        }
-        else{
-            sum1 += string1[i];
+    while(sum1 == sum2 && (string1[i] != '\0' || string2[j] != '\0')){
+
+        while(strchr(PUNKTUATION_MARK, (int) string1[i]) != nullptr && string1[i] != '\0'){
+            i++;
         }
 
+        if (string1[i] != '\0'){
+            if (isalpha(string1[i])){
+                char c = toupper(string1[i]);
+                sum1 += c;
+            }
+            else{
+                sum1 += string1[i];
+            }
+
+            i++;
+        }
+
+
+
+        while(strchr(PUNKTUATION_MARK, (int) string2[j]) != nullptr && string2[j] != '\0'){
+            j++;
+        }
+
+        if (string2[j] != '\0'){
+            if (isalpha(string2[j])){
+                char c = toupper(string2[j]);
+                sum2 += c;
+            }
+            else{
+                sum2 += string2[j];
+            }
+
+            j++;
+        }
         
-
-        if (isalpha(string2[i])){
-            char c = toupper(string2[i]);
-            sum2 += c;
-        }
-        else{
-            sum2 += string2[i];
-        }
-
-
-        if (sum1 != sum2){
-            break;
-        }
     }
-
 
     if (sum1 == sum2){
         return (strlen(string1) > strlen(string2)) ? 1 : -1;
@@ -204,6 +219,10 @@ int strcmp1(const char * string1, const char * string2){
 }
 
 
+
+/*!
+    \brief Unitest
+*/
 int OneginTest(){
     int flag = 0;
 
@@ -256,4 +275,26 @@ int OneginTest(){
     free(text_temp_res);
 
     return flag;
+}
+
+
+
+void output_reverse(char ** text, int string_amount){
+    assert(text);
+    
+    for (int i = string_amount - 1; i >= 0; i--){
+        printf("%s \n", text[i]);
+    }
+}
+
+
+
+void output_original(char * text_temp, int string_amount){
+    assert(text_temp);
+
+    for (int i = 0; i < string_amount; i++){
+        printf("%s \n", text_temp);
+        text_temp += strlen((const char *) text_temp) + 1;
+    }
+    
 }
