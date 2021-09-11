@@ -1,28 +1,47 @@
 #include "title.h"
 
 
+void makeOneginGreatAgain(FILE * fp){
+    char ** text = NULL;
+    int string_amount = 0;
+    char * text_temp = NULL;
+
+    text_temp = input(fp, &string_amount);
+        
+    text = (char **) calloc(string_amount, sizeof(char *));
+
+    to_strings(text_temp, text, string_amount);
+    sorting(text, string_amount);
+    output(text, string_amount);
+
+    free(text);
+    free(text_temp);
+}
+
+
 /*!
     \brief Функция ввода текста из файла
     \param[FILE*] fp указатель на файл, из которого считывается текст
     \param[int*] string_amount указатель на число строк в тексте
-    \param[long int *] last указатель на общее число символов в тексте
+
 
     Функция считывает текст из файла, записывая значения числа строк и общего числа символов.
     Функция возвращает указатель на массив с текстом.
 */
-char * input(FILE * fp, int * string_amount, long int * last){
+char * input(FILE * fp, int * string_amount){
     assert(fp);
 
     char * text_temp = {};
     long int i = 0;
+    long int last = 0;
 
     fseek(fp, 0L, SEEK_END);
-    *last = ftell(fp);
+    last = ftell(fp);
     fseek(fp, 0L, SEEK_SET);
     
-    text_temp = (char *) calloc(*last + 1, sizeof(char));
+    text_temp = (char *) calloc(last + 1, sizeof(char));
 
-    for (; i < *last; i++){
+    for (; i < last; i++){
         text_temp[i] = getc(fp);
 
         if (text_temp[i] == '\n'){
@@ -60,7 +79,7 @@ void output(char ** text, int string_amount){
     \brief Функция преобразование массива текст в двумерный
     \param[char*] text_temp УМассив всех символов текста
     \param[char**] text Двумерный массив, хранящий текст построчно
-    \param[long int] last Общее число символов в тексте
+    \param[int] string_amount Общее число строк в тексте
 
     Данная функция разбивает массив с текстом на строки для дальнейшей сортировки
 */
@@ -182,4 +201,59 @@ int strcmp1(const char * string1, const char * string2){
 
 
     return (sum1 > sum2) ? 1 : -1;
+}
+
+
+int OneginTest(){
+    int flag = 0;
+
+    FILE * fp = NULL;
+    FILE * fp_result = NULL;
+    fp = fopen("TEST", "r");
+    fp_result = fopen("TEST_RESULT", "r");
+
+    char ** text = NULL;
+    int string_amount = 0;
+    char * text_temp = NULL;
+
+    text_temp = input(fp, &string_amount);
+        
+    text = (char **) calloc(string_amount, sizeof(char *));
+
+    to_strings(text_temp, text, string_amount);
+    sorting(text, string_amount);
+
+
+
+    char * text_temp_res = NULL;
+    char ** text_res = NULL;
+    int string_amount1 = 0;
+
+    text_temp_res = input(fp_result, &string_amount1);
+
+    text_res = (char **) calloc(string_amount1, sizeof(char *));
+
+    to_strings(text_temp_res, text_res, string_amount1);
+
+
+
+    for (int i = 0; i < string_amount; i++){
+        if (strcmp(text[i], text_res[i])){
+            flag = 1;
+
+            printf("Test failed on %d string \n", i);
+            printf("Expected: %s \n", text_res[i]);
+            printf("Received: %s \n", text[i]);
+
+        }
+    }
+
+    fclose(fp);
+    fclose(fp_result);
+    free(text);
+    free(text_temp);
+    free(text_res);
+    free(text_temp_res);
+
+    return flag;
 }

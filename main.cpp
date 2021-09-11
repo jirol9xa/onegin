@@ -7,7 +7,6 @@ int main(void){
     FILE * fp = NULL;
     char ** text = NULL;
     int string_amount = 0;
-    long int last = 0;
 
     printf("Enter the name of the file \n");
     scanf("%s", file);
@@ -16,17 +15,10 @@ int main(void){
         printf("Can't open file \n");
     }
     else {
-        char * text_temp = NULL;
-        text_temp = input(fp, &string_amount, &last);
-        
-        text = (char **) calloc(string_amount, sizeof(char *));
-
-        to_strings(text_temp, text, string_amount);
-        sorting(text, string_amount);
-        output(text, string_amount);
-
-        free(text);
-        free(text_temp);
+        if(OneginTest()){
+            return 0;
+        }
+        makeOneginGreatAgain(fp);
     }
 
 
