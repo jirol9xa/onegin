@@ -1,4 +1,8 @@
+#include <stdio.h>
 #include "title.h"
+
+
+const int SIZE = 100;
 
 
 int main(void){
@@ -9,15 +13,15 @@ int main(void){
     int string_amount = 0;
 
     printf("Enter the name of the file \n");
-    scanf("%s", file);
+    while (scanf("%s", file) != 1){
+        printf("Wrong format!!! \nEnter the name of the file \n");
+    }
 
     if(!(fp = fopen(file, "r"))) {
         printf("Can't open file \n");
     }
     else {
-        if(OneginTest()){
-            return 0;
-        }
+        if(OneginTest()) return 0;
         makeOneginGreatAgain(fp);
     }
 

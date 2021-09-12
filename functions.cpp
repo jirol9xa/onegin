@@ -1,4 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <string.h>
+#include <ctype.h>
 #include "title.h"
+
+
+const char BAD_SYMBOLS[] = ".,!?-:;  \" \\ \' «» () {} []";
+
+
+
+static char * input(FILE * fp,  int * string_amount);
+
+static void to_strings(char * text_temp, char ** text, int string_amount);
+
+static void output(char ** text, int string_amount);
+
+static void sorting (char ** text, int string_amount);
+
+static size_t min(size_t a, size_t b);
+
+static int comp(const void * str1, const void * str2);
+
+static int strcmp1(const char * string1, const char * string2);
+
+static void output_reverse(char ** text, int string_amount);
+
+static void output_original(char * text_temp, int string_amount);
+
+
 
 
 /*!
@@ -22,12 +52,10 @@ void makeOneginGreatAgain(FILE * fp){
     sorting(text, string_amount);
 
     output(text, string_amount);
-    printf("\n \n Now reverse: \n \n \n");
-    output_reverse(text, string_amount);
     printf("\n \n Now original text: \n \n \n");
     output_original(text_temp, string_amount);
 
-
+    
     free(text);
     free(text_temp);
 }
@@ -42,7 +70,7 @@ void makeOneginGreatAgain(FILE * fp){
     Функция считывает текст из файла, записывая значения числа строк и общего числа символов.
     Функция возвращает указатель на массив с текстом.
 */
-char * input(FILE * fp, int * string_amount){
+static char * input(FILE * fp, int * string_amount){
     assert(fp);
     assert(string_amount);
 
@@ -58,17 +86,14 @@ char * input(FILE * fp, int * string_amount){
     text_temp = (char *) calloc(last + 1, sizeof(char));
     assert(text_temp);
 
-    long int i = 0;
-    for (; i < last; i++){
-        text_temp[i] = getc(fp);
+    fread(text_temp, sizeof(char), last, fp);
+    text_temp[last] = '\0';
 
+    for (int i = 0; i < last; i++){
         if (text_temp[i] == '\n'){
             (*string_amount)++;
         }
     }
-
-    text_temp[i] = '\0';
-
 
     return text_temp;
 }
@@ -82,7 +107,7 @@ char * input(FILE * fp, int * string_amount){
 
     Функция выыодит отсортированный текст построчно.
 */
-void output(char ** text, int string_amount){
+static void output(char ** text, int string_amount){
     assert(text);
 
 
@@ -101,7 +126,7 @@ void output(char ** text, int string_amount){
 
     Данная функция разбивает массив с текстом на строки для дальнейшей сортировки
 */
-void to_strings(char * text_temp, char ** text, int string_amount){
+static void to_strings(char * text_temp, char ** text, int string_amount){
     assert(text_temp);
     assert(text);
 
@@ -134,7 +159,7 @@ void to_strings(char * text_temp, char ** text, int string_amount){
     \param[char**] text Массив, хранящий текст построчно
     \param[int] string_amount Число строк в тексте
 */
-void sorting(char ** text, int string_amount){
+static void sorting(char ** text, int string_amount){
     assert(text);
 
     qsort(text, string_amount, sizeof(char *), comp);
@@ -143,7 +168,7 @@ void sorting(char ** text, int string_amount){
 /*!
     \brief Находит минимум из двух чисел
 */
-size_t min(size_t a, size_t b){
+static size_t min(size_t a, size_t b){
     return (a < b) ? a : b;
 }
 
@@ -155,7 +180,7 @@ size_t min(size_t a, size_t b){
 
     Работает со строками исходного текста, определяя их очередность по алфавиту.
 */
-int comp(const void * str1, const void * str2){
+static int comp(const void * str1, const void * str2){
     const char * string1 = *(const char **) str1;
     const char * string2 = *(const char **) str2;
 
@@ -172,26 +197,28 @@ int comp(const void * str1, const void * str2){
     Возвращает 1, если первая строка должна идти после второй.
     Возвращает -1, если первая строка должна идти перед второй.
 */
-int strcmp1(const char * string1, const char * string2){
+static int strcmp1(const char * string1, const char * string2){
     assert(string1);
     assert(string2);
 
-    int sum1 = 0, sum2 = 0;
+    char simbol1 = 0, simbol2 = 0;
     int i = 0, j = 0;
 
-    while(sum1 == sum2 && (string1[i] != '\0' || string2[j] != '\0')){
+    while(simbol1 == simbol2 && (string1[i] != '\0' || string2[j] != '\0')){
+        simbol1 = 0;
+        simbol2 = 0;
 
-        while(strchr(PUNKTUATION_MARK, (int) string1[i]) != nullptr && string1[i] != '\0'){
+        while(strchr(BAD_SYMBOLS, (int) string1[i]) != nullptr && string1[i] != '\0'){
             i++;
         }
 
         if (string1[i] != '\0'){
             if (isalpha(string1[i])){
                 char c = toupper(string1[i]);
-                sum1 += c;
+                simbol1 += c;
             }
             else{
-                sum1 += string1[i];
+                simbol1 += string1[i];
             }
 
             i++;
@@ -199,17 +226,17 @@ int strcmp1(const char * string1, const char * string2){
 
 
 
-        while(strchr(PUNKTUATION_MARK, (int) string2[j]) != nullptr && string2[j] != '\0'){
+        while(strchr(BAD_SYMBOLS, (int) string2[j]) != nullptr && string2[j] != '\0'){
             j++;
         }
 
         if (string2[j] != '\0'){
             if (isalpha(string2[j])){
                 char c = toupper(string2[j]);
-                sum2 += c;
+                simbol2 += c;
             }
             else{
-                sum2 += string2[j];
+                simbol2 += string2[j];
             }
 
             j++;
@@ -217,12 +244,12 @@ int strcmp1(const char * string1, const char * string2){
         
     }
 
-    if (sum1 == sum2){
+    if (simbol1 == simbol2){
         return (strlen(string1) > strlen(string2)) ? 1 : -1;
     }
 
 
-    return (sum1 > sum2) ? 1 : -1;
+    return (simbol1 > simbol2) ? 1 : -1;
 }
 
 
@@ -291,7 +318,7 @@ int OneginTest(){
     \param [char **] text Массив строк текста
     \param [int] string_amount Число строк в тексте
 */
-void output_reverse(char ** text, int string_amount){
+static void output_reverse(char ** text, int string_amount){
     assert(text);
 
     for (int i = string_amount - 1; i >= 0; i--){
@@ -306,7 +333,7 @@ void output_reverse(char ** text, int string_amount){
     \param [char *] text_temp Массив, хранящий строки текста одну за одной
     \param [int] string_amount Число строк в тексте
 */
-void output_original(char * text_temp, int string_amount){
+static void output_original(char * text_temp, int string_amount){
     assert(text_temp);
 
     for (int i = 0; i < string_amount; i++){
