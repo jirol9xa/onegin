@@ -1,2 +1,9 @@
-void makeOneginGreatAgain(FILE * fp);
-int OneginTest();
+#ifndef DefmakeOneginGreatAgain
+    #define DefMakeOneginGreatAgain
+    void makeOneginGreatAgain(FILE * fp);
+#endif
+
+#ifndef DefOneginTest
+    #define DefOneginTest
+    int OneginTest();
+#endif

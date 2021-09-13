@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['title_2eh_15',['title.h',['../title_8h.html',1,'']]],
-  ['to_5fstrings_16',['to_strings',['../functions_8cpp.html#ae5f03f70dec7ac5618c94235b4eacb70',1,'to_strings(char *text_temp, char **text, int string_amount):&#160;functions.cpp'],['../title_8h.html#ae5f03f70dec7ac5618c94235b4eacb70',1,'to_strings(char *text_temp, char **text, int string_amount):&#160;functions.cpp']]]
+  ['size_15',['SIZE',['../main_8cpp.html#af08413a3ee12cf78b0ddeea71e2648b3',1,'main.cpp']]],
+  ['sorting_16',['sorting',['../functions_8cpp.html#a8f0c3ea1e27663b6c2116dce1a847058',1,'functions.cpp']]],
+  ['strcmp1_17',['strcmp1',['../functions_8cpp.html#abc9f263d9b7d290aa953d3d4c4734ed1',1,'functions.cpp']]]
 ];

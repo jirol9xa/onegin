@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['comp_0',['comp',['../functions_8cpp.html#af19ca5bc1db37f263ab814a614bbb823',1,'comp(const void *str1, const void *str2):&#160;functions.cpp'],['../title_8h.html#af19ca5bc1db37f263ab814a614bbb823',1,'comp(const void *str1, const void *str2):&#160;functions.cpp']]]
+  ['bad_5fsymbols_0',['BAD_SYMBOLS',['../functions_8cpp.html#ab46e392efcad427a282380ed12d4b109',1,'functions.cpp']]]
 ];

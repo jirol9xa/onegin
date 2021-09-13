@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['size_12',['SIZE',['../title_8h.html#af08413a3ee12cf78b0ddeea71e2648b3',1,'title.h']]],
-  ['sorting_13',['sorting',['../functions_8cpp.html#a88f829cece0226ab590706979538d514',1,'sorting(char **text, int string_amount):&#160;functions.cpp'],['../title_8h.html#a88f829cece0226ab590706979538d514',1,'sorting(char **text, int string_amount):&#160;functions.cpp']]],
-  ['strcmp1_14',['strcmp1',['../functions_8cpp.html#aefd8a0af00542e58f089745391d6b811',1,'strcmp1(const char *string1, const char *string2):&#160;functions.cpp'],['../title_8h.html#aefd8a0af00542e58f089745391d6b811',1,'strcmp1(const char *string1, const char *string2):&#160;functions.cpp']]]
+  ['onegintest_11',['OneginTest',['../functions_8cpp.html#aa72568d0cf300221e9fea4e11ef224a7',1,'OneginTest():&#160;functions.cpp'],['../title_8h.html#aa72568d0cf300221e9fea4e11ef224a7',1,'OneginTest():&#160;functions.cpp']]],
+  ['output_12',['output',['../functions_8cpp.html#abd1955dafd0a9ceed5b9af275f2a58bc',1,'functions.cpp']]],
+  ['output_5foriginal_13',['output_original',['../functions_8cpp.html#abf628af030c1d5365987a200cee6bd2b',1,'functions.cpp']]],
+  ['output_5freverse_14',['output_reverse',['../functions_8cpp.html#a37ba809ee804d3f09e0bf948651b56cf',1,'functions.cpp']]]
 ];

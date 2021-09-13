@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['punktuation_5fmark_32',['PUNKTUATION_MARK',['../title_8h.html#a188ca891a509dc8f2074df7178c81492',1,'title.h']]]
+  ['bad_5fsymbols_36',['BAD_SYMBOLS',['../functions_8cpp.html#ab46e392efcad427a282380ed12d4b109',1,'functions.cpp']]]
 ];

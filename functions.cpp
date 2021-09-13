@@ -11,21 +11,16 @@ const char BAD_SYMBOLS[] = ".,!?-:;  \" \\ \' «» () {} []";
 
 
 static char * input(FILE * fp,  int * string_amount);
-
 static void to_strings(char * text_temp, char ** text, int string_amount);
-
 static void output(char ** text, int string_amount);
 
-static void sorting (char ** text, int string_amount);
-
+static void sorting(char ** text, int string_amount);
 static size_t min(size_t a, size_t b);
-
+static int is_bad(char c);
 static int comp(const void * str1, const void * str2);
-
 static int strcmp1(const char * string1, const char * string2);
 
 static void output_reverse(char ** text, int string_amount);
-
 static void output_original(char * text_temp, int string_amount);
 
 
@@ -65,10 +60,8 @@ void makeOneginGreatAgain(FILE * fp){
     \brief Функция ввода текста из файла
     \param[FILE*] fp указатель на файл, из которого считывается текст
     \param[int*] string_amount указатель на число строк в тексте
-
-
-    Функция считывает текст из файла, записывая значения числа строк и общего числа символов.
-    Функция возвращает указатель на массив с текстом.
+    \details Функция считывает текст из файла, записывая значения числа строк и общего числа символов.
+    \details Функция возвращает указатель на массив с текстом.
 */
 static char * input(FILE * fp, int * string_amount){
     assert(fp);
@@ -104,8 +97,7 @@ static char * input(FILE * fp, int * string_amount){
     \brief Функция вывода текста
     \param[char**] text Массив, хранящий отсортированный текст построчно
     \param[int] string_amount Число строк в массиве
-
-    Функция выыодит отсортированный текст построчно.
+    \details Функция выыодит отсортированный текст построчно.
 */
 static void output(char ** text, int string_amount){
     assert(text);
@@ -123,8 +115,7 @@ static void output(char ** text, int string_amount){
     \param[char*] text_temp УМассив всех символов текста
     \param[char**] text Двумерный массив, хранящий текст построчно
     \param[int] string_amount Общее число строк в тексте
-
-    Данная функция разбивает массив с текстом на строки для дальнейшей сортировки
+    \details Данная функция разбивает массив с текстом на строки для дальнейшей сортировки
 */
 static void to_strings(char * text_temp, char ** text, int string_amount){
     assert(text_temp);
@@ -177,8 +168,7 @@ static size_t min(size_t a, size_t b){
 
 /*!
     \brief Аналогична функции strcmp1
-
-    Работает со строками исходного текста, определяя их очередность по алфавиту.
+    ..\details Работает со строками исходного текста, определяя их очередность по алфавиту.
 */
 static int comp(const void * str1, const void * str2){
     const char * string1 = *(const char **) str1;
@@ -193,9 +183,8 @@ static int comp(const void * str1, const void * str2){
     \brief Функция сравнения строк
     \param [const char *] string1 Первая строка
     \param [const char *] string2 Вторая строка
-
-    Возвращает 1, если первая строка должна идти после второй.
-    Возвращает -1, если первая строка должна идти перед второй.
+    \return 1, если первая строка должна идти после второй и -1, 
+    если первая строка должна идти перед второй.
 */
 static int strcmp1(const char * string1, const char * string2){
     assert(string1);
@@ -208,36 +197,23 @@ static int strcmp1(const char * string1, const char * string2){
         simbol1 = 0;
         simbol2 = 0;
 
-        while(strchr(BAD_SYMBOLS, (int) string1[i]) != nullptr && string1[i] != '\0'){
+        while(is_bad(string1[i])){
             i++;
         }
 
         if (string1[i] != '\0'){
-            if (isalpha(string1[i])){
-                char c = toupper(string1[i]);
-                simbol1 += c;
-            }
-            else{
-                simbol1 += string1[i];
-            }
+            simbol1 += toupper(string1[i]);
 
             i++;
         }
 
 
-
-        while(strchr(BAD_SYMBOLS, (int) string2[j]) != nullptr && string2[j] != '\0'){
+        while(is_bad(string2[j])){
             j++;
         }
 
         if (string2[j] != '\0'){
-            if (isalpha(string2[j])){
-                char c = toupper(string2[j]);
-                simbol2 += c;
-            }
-            else{
-                simbol2 += string2[j];
-            }
+            simbol2 += toupper(string2[j]);
 
             j++;
         }
@@ -245,7 +221,7 @@ static int strcmp1(const char * string1, const char * string2){
     }
 
     if (simbol1 == simbol2){
-        return (strlen(string1) > strlen(string2)) ? 1 : -1;
+        return (i > j) ? 1 : -1;
     }
 
 
@@ -341,4 +317,10 @@ static void output_original(char * text_temp, int string_amount){
         text_temp += strlen((const char *) text_temp) + 1;
     }
     
+}
+
+
+
+static int is_bad(char c){
+    return (strchr(BAD_SYMBOLS, (int) c) != nullptr && c != '\0');
 }
