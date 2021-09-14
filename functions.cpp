@@ -9,20 +9,16 @@
 const char BAD_SYMBOLS[] = ".,!?-:;  \" \\ \' «» () {} []";
 
 
-
 static char * input(FILE * fp,  int * string_amount);
 static void to_strings(char * text_temp, char ** text, int string_amount);
-static void output(char ** text, int string_amount);
 
 static void sorting(char ** text, int string_amount);
-static size_t min(size_t a, size_t b);
-static int is_bad(char c);
+static inline int is_bad_symbol(char c);
 static int comp(const void * str1, const void * str2);
 static int strcmp1(const char * string1, const char * string2);
 
-static void output_reverse(char ** text, int string_amount);
 static void output_original(char * text_temp, int string_amount);
-
+static void output(char ** text, int string_amount);
 
 
 
@@ -47,7 +43,7 @@ void makeOneginGreatAgain(FILE * fp){
     sorting(text, string_amount);
 
     output(text, string_amount);
-    printf("\n \n Now original text: \n \n \n");
+    puts("\n \n \n Now original text: \n \n \n");
     output_original(text_temp, string_amount);
 
     
@@ -60,7 +56,8 @@ void makeOneginGreatAgain(FILE * fp){
     \brief Функция ввода текста из файла
     \param[FILE*] fp указатель на файл, из которого считывается текст
     \param[int*] string_amount указатель на число строк в тексте
-    \details Функция считывает текст из файла, записывая значения числа строк и общего числа символов.
+    \details Функция считывает текст из файла, записывая значения 
+            числа строк и общего числа символов.
     \details Функция возвращает указатель на массив с текстом.
 */
 static char * input(FILE * fp, int * string_amount){
@@ -88,6 +85,7 @@ static char * input(FILE * fp, int * string_amount){
         }
     }
 
+
     return text_temp;
 }
 
@@ -102,7 +100,6 @@ static char * input(FILE * fp, int * string_amount){
 static void output(char ** text, int string_amount){
     assert(text);
 
-
     for (int i = 0; i < string_amount; i++){
         printf("%s \n", text[i]);
     }
@@ -115,7 +112,8 @@ static void output(char ** text, int string_amount){
     \param[char*] text_temp УМассив всех символов текста
     \param[char**] text Двумерный массив, хранящий текст построчно
     \param[int] string_amount Общее число строк в тексте
-    \details Данная функция разбивает массив с текстом на строки для дальнейшей сортировки
+    \details Данная функция разбивает массив с текстом на 
+            строки для дальнейшей сортировки
 */
 static void to_strings(char * text_temp, char ** text, int string_amount){
     assert(text_temp);
@@ -128,12 +126,6 @@ static void to_strings(char * text_temp, char ** text, int string_amount){
         text[i] = text_temp;    
 
         while (*text_temp != '\n' && *text_temp != '\0'){
-
-            if (in_string == 0){
-                text[i] = text_temp;
-                in_string = 1;
-            }
-
             text_temp++;
         }
 
@@ -156,23 +148,19 @@ static void sorting(char ** text, int string_amount){
     qsort(text, string_amount, sizeof(char *), comp);
 }
 
-/*!
-    \brief Находит минимум из двух чисел
-*/
-static size_t min(size_t a, size_t b){
-    return (a < b) ? a : b;
-}
-
 
 
 
 /*!
     \brief Аналогична функции strcmp1
-    ..\details Работает со строками исходного текста, определяя их очередность по алфавиту.
+    \details Работает со строками исходного 
+            текста, определяя их очередность 
+            по алфавиту.
 */
 static int comp(const void * str1, const void * str2){
     const char * string1 = *(const char **) str1;
     const char * string2 = *(const char **) str2;
+
 
     return strcmp1(string1, string2);
 }
@@ -183,8 +171,9 @@ static int comp(const void * str1, const void * str2){
     \brief Функция сравнения строк
     \param [const char *] string1 Первая строка
     \param [const char *] string2 Вторая строка
-    \return 1, если первая строка должна идти после второй и -1, 
-    если первая строка должна идти перед второй.
+    \return 1, если первая строка должна идти 
+            после второй и -1, если первая строка 
+            должна идти перед второй.
 */
 static int strcmp1(const char * string1, const char * string2){
     assert(string1);
@@ -197,26 +186,19 @@ static int strcmp1(const char * string1, const char * string2){
         simbol1 = 0;
         simbol2 = 0;
 
-        while(is_bad(string1[i])){
+        while(is_bad_symbol(string1[i])){
             i++;
         }
 
-        if (string1[i] != '\0'){
-            simbol1 += toupper(string1[i]);
+        simbol1 += toupper(string1[i]);
+        i += (string1[i] != '\0');
 
-            i++;
-        }
-
-
-        while(is_bad(string2[j])){
+        while(is_bad_symbol(string2[j])){
             j++;
         }
 
-        if (string2[j] != '\0'){
-            simbol2 += toupper(string2[j]);
-
-            j++;
-        }
+        simbol2 += toupper(string2[j]);
+        j += (string2[j] != '\0');
         
     }
 
@@ -277,12 +259,14 @@ int OneginTest(){
         }
     }
 
+
     fclose(fp);
     fclose(fp_result);
     free(text);
     free(text_temp);
     free(text_res);
     free(text_temp_res);
+
 
     return flag;
 }
@@ -306,7 +290,8 @@ static void output_reverse(char ** text, int string_amount){
 
 /*!
     \brief Выводит исходный текст
-    \param [char *] text_temp Массив, хранящий строки текста одну за одной
+    \param [char *] text_temp Массив, хранящий 
+            строки текста одну за одной
     \param [int] string_amount Число строк в тексте
 */
 static void output_original(char * text_temp, int string_amount){
@@ -321,6 +306,12 @@ static void output_original(char * text_temp, int string_amount){
 
 
 
-static int is_bad(char c){
+/*!
+    \brief Находит среди символов знаки препинания
+    \param [char] c Символ
+    \return [int] 1, если сивол явлеятся знаком 
+            препинания и 0 в противном случае
+*/
+static inline int is_bad_symbol(char c){
     return (strchr(BAD_SYMBOLS, (int) c) != nullptr && c != '\0');
 }

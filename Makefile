@@ -1,2 +1,4 @@
+CXX = g++
+
 all:
-	g++ main.cpp functions.cpp -o onegin
+	$(CXX) main.cpp functions.cpp -o onegin -DNDEBAG

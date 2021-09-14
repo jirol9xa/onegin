@@ -1,6 +1,9 @@
 #include <stdio.h>
-#include "title.h"
 
+#ifndef TITLE_H
+   #define TITLE_H
+   #include "title.h"
+#endif
 
 
 const int SIZE = 100;
