@@ -15,26 +15,24 @@ static char $\ast$ \mbox{\hyperlink{functions_8cpp_afd41ebce71e69be2e750d6efee96
 \begin{DoxyCompactList}\small\item\em Функция ввода текста из файла \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{functions_8cpp_ad5fb8e57102203f742e5253ead2575fc}{to\+\_\+strings}} (char $\ast$text\+\_\+temp, char $\ast$$\ast$text, int string\+\_\+amount)
 \begin{DoxyCompactList}\small\item\em Функция преобразование массива текст в двумерный \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{functions_8cpp_abd1955dafd0a9ceed5b9af275f2a58bc}{output}} (char $\ast$$\ast$text, int string\+\_\+amount)
-\begin{DoxyCompactList}\small\item\em Функция вывода текста \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{functions_8cpp_a8f0c3ea1e27663b6c2116dce1a847058}{sorting}} (char $\ast$$\ast$text, int string\+\_\+amount)
 \begin{DoxyCompactList}\small\item\em Функция сортировки \end{DoxyCompactList}\item 
-static size\+\_\+t \mbox{\hyperlink{functions_8cpp_a6b0dd7235665849df6cc7741f2513ccc}{min}} (size\+\_\+t a, size\+\_\+t b)
-\begin{DoxyCompactList}\small\item\em Находит минимум из двух чисел \end{DoxyCompactList}\item 
-static int \mbox{\hyperlink{functions_8cpp_a8f2190dc5ff91ea45b303626353f4c5d}{is\+\_\+bad}} (char c)
-\item 
+static int \mbox{\hyperlink{functions_8cpp_afd2d9871758c0f84796cf9fbe5a15e73}{is\+\_\+bad\+\_\+symbol}} (char c)
+\begin{DoxyCompactList}\small\item\em Находит среди символов знаки препинания \end{DoxyCompactList}\item 
 static int \mbox{\hyperlink{functions_8cpp_a8ae0a21c993a56f8579003791bb65dc2}{comp}} (const void $\ast$str1, const void $\ast$str2)
-\begin{DoxyCompactList}\small\item\em Аналогична функции strcmp1 .. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Аналогична функции strcmp1. \end{DoxyCompactList}\item 
 static int \mbox{\hyperlink{functions_8cpp_abc9f263d9b7d290aa953d3d4c4734ed1}{strcmp1}} (const char $\ast$string1, const char $\ast$string2)
 \begin{DoxyCompactList}\small\item\em Функция сравнения строк \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{functions_8cpp_a37ba809ee804d3f09e0bf948651b56cf}{output\+\_\+reverse}} (char $\ast$$\ast$text, int string\+\_\+amount)
-\begin{DoxyCompactList}\small\item\em Выводит обратную сортировку \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{functions_8cpp_abf628af030c1d5365987a200cee6bd2b}{output\+\_\+original}} (char $\ast$text\+\_\+temp, int string\+\_\+amount)
 \begin{DoxyCompactList}\small\item\em Выводит исходный текст \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{functions_8cpp_abd1955dafd0a9ceed5b9af275f2a58bc}{output}} (char $\ast$$\ast$text, int string\+\_\+amount)
+\begin{DoxyCompactList}\small\item\em Функция вывода текста \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{functions_8cpp_a8cf8275a25658460dc0ecfabecf00ba5}{make\+Onegin\+Great\+Again}} (F\+I\+LE $\ast$fp)
 \begin{DoxyCompactList}\small\item\em Главная функция, вызывающая сортировку \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{functions_8cpp_aa72568d0cf300221e9fea4e11ef224a7}{Onegin\+Test}} ()
-\begin{DoxyCompactList}\small\item\em Unitest. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Unitest. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{functions_8cpp_a37ba809ee804d3f09e0bf948651b56cf}{output\+\_\+reverse}} (char $\ast$$\ast$text, int string\+\_\+amount)
+\begin{DoxyCompactList}\small\item\em Выводит обратную сортировку \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Переменные}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,7 +49,7 @@ const char \mbox{\hyperlink{functions_8cpp_ab46e392efcad427a282380ed12d4b109}{B\
 
 
 
-Аналогична функции strcmp1 .. 
+Аналогична функции strcmp1. 
 
 Работает со строками исходного текста, определяя их очередность по алфавиту. \mbox{\Hypertarget{functions_8cpp_afd41ebce71e69be2e750d6efee96386e}\label{functions_8cpp_afd41ebce71e69be2e750d6efee96386e}} 
 \index{functions.cpp@{functions.cpp}!input@{input}}
@@ -72,12 +70,24 @@ const char \mbox{\hyperlink{functions_8cpp_ab46e392efcad427a282380ed12d4b109}{B\
 \end{DoxyParams}
 Функция считывает текст из файла, записывая значения числа строк и общего числа символов.
 
-Функция возвращает указатель на массив с текстом. \mbox{\Hypertarget{functions_8cpp_a8f2190dc5ff91ea45b303626353f4c5d}\label{functions_8cpp_a8f2190dc5ff91ea45b303626353f4c5d}} 
-\index{functions.cpp@{functions.cpp}!is\_bad@{is\_bad}}
-\index{is\_bad@{is\_bad}!functions.cpp@{functions.cpp}}
-\doxysubsubsection{\texorpdfstring{is\_bad()}{is\_bad()}}
-{\footnotesize\ttfamily static int is\+\_\+bad (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+Функция возвращает указатель на массив с текстом. \mbox{\Hypertarget{functions_8cpp_afd2d9871758c0f84796cf9fbe5a15e73}\label{functions_8cpp_afd2d9871758c0f84796cf9fbe5a15e73}} 
+\index{functions.cpp@{functions.cpp}!is\_bad\_symbol@{is\_bad\_symbol}}
+\index{is\_bad\_symbol@{is\_bad\_symbol}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{is\_bad\_symbol()}{is\_bad\_symbol()}}
+{\footnotesize\ttfamily static int is\+\_\+bad\+\_\+symbol (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
+
+
+Находит среди символов знаки препинания 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}char\mbox{]}} & c Символ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+\mbox{[}int\mbox{]} 1, если сивол явлеятся знаком препинания и 0 в противном случае 
+\end{DoxyReturn}
 \mbox{\Hypertarget{functions_8cpp_a8cf8275a25658460dc0ecfabecf00ba5}\label{functions_8cpp_a8cf8275a25658460dc0ecfabecf00ba5}} 
 \index{functions.cpp@{functions.cpp}!makeOneginGreatAgain@{makeOneginGreatAgain}}
 \index{makeOneginGreatAgain@{makeOneginGreatAgain}!functions.cpp@{functions.cpp}}
@@ -93,16 +103,6 @@ const char \mbox{\hyperlink{functions_8cpp_ab46e392efcad427a282380ed12d4b109}{B\
 {\em \mbox{[}\+F\+I\+LE} & $\ast$\mbox{]} fp Указатель на файл с исходным текстом \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{functions_8cpp_a6b0dd7235665849df6cc7741f2513ccc}\label{functions_8cpp_a6b0dd7235665849df6cc7741f2513ccc}} 
-\index{functions.cpp@{functions.cpp}!min@{min}}
-\index{min@{min}!functions.cpp@{functions.cpp}}
-\doxysubsubsection{\texorpdfstring{min()}{min()}}
-{\footnotesize\ttfamily static size\+\_\+t min (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{a,  }\item[{size\+\_\+t}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Находит минимум из двух чисел 
-
 \mbox{\Hypertarget{functions_8cpp_aa72568d0cf300221e9fea4e11ef224a7}\label{functions_8cpp_aa72568d0cf300221e9fea4e11ef224a7}} 
 \index{functions.cpp@{functions.cpp}!OneginTest@{OneginTest}}
 \index{OneginTest@{OneginTest}!functions.cpp@{functions.cpp}}
