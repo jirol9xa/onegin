@@ -12,9 +12,11 @@ const int SIZE = 100;
 int main(void){
     
     char file[SIZE] = {};
-    FILE * fp = NULL;
-    char ** text = NULL;
+    FILE * fp = nullptr;
+    char ** text = nullptr;
     int string_amount = 0;
+ 
+    // do argv & argc
 
     printf("Enter the name of the file \n");
     while (scanf("%s", file) != 1){

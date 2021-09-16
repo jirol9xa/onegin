@@ -3,7 +3,10 @@
 #include <assert.h>
 #include <string.h>
 #include <ctype.h>
-#include "title.h"
+#ifndef TITLE_H
+    #define TITLE_H
+    #include "title.h"
+#endif
 
 
 const char BAD_SYMBOLS[] = ".,!?-:;  \" \\ \' «» () {} []";
@@ -27,16 +30,16 @@ static void output(char ** text, int string_amount);
     \param [FILE *] fp Указатель на файл с исходным текстом
 */ 
 void makeOneginGreatAgain(FILE * fp){
-    assert(fp);
+    assert(fp); 
 
-    char ** text = NULL;
+    char ** text = NULL; // null to nullptr
     int string_amount = 0;
-    char * text_temp = NULL;
+    char * text_temp = NULL; // gandon // rename
 
     text_temp = input(fp, &string_amount);
         
-    text = (char **) calloc(string_amount, sizeof(char *));
-    assert(text);
+    text = (char **) calloc(string_amount, sizeof(char *)); 
+    assert(text); // gandon
 
 
     to_strings(text_temp, text, string_amount);
@@ -61,15 +64,17 @@ void makeOneginGreatAgain(FILE * fp){
     \details Функция возвращает указатель на массив с текстом.
 */
 static char * input(FILE * fp, int * string_amount){
-    assert(fp);
-    assert(string_amount);
+    assert(fp); 
+    assert(string_amount); 
 
-    char * text_temp = nullptr;
+    char * text_temp = nullptr; 
     long int last = 0;
 
     int assertion = fseek(fp, 0L, SEEK_END);
     assert(assertion == 0);
+
     last = ftell(fp);
+
     assertion = fseek(fp, 0L, SEEK_SET);
     assert(assertion == 0);
     
@@ -98,7 +103,7 @@ static char * input(FILE * fp, int * string_amount){
     \details Функция выыодит отсортированный текст построчно.
 */
 static void output(char ** text, int string_amount){
-    assert(text);
+    assert(text); 
 
     for (int i = 0; i < string_amount; i++){
         printf("%s \n", text[i]);
@@ -116,8 +121,8 @@ static void output(char ** text, int string_amount){
             строки для дальнейшей сортировки
 */
 static void to_strings(char * text_temp, char ** text, int string_amount){
-    assert(text_temp);
-    assert(text);
+    assert(text_temp); 
+    assert(text); 
 
     int in_string = 0;
 
@@ -143,7 +148,7 @@ static void to_strings(char * text_temp, char ** text, int string_amount){
     \param[int] string_amount Число строк в тексте
 */
 static void sorting(char ** text, int string_amount){
-    assert(text);
+    assert(text); 
 
     qsort(text, string_amount, sizeof(char *), comp);
 }
@@ -176,10 +181,10 @@ static int comp(const void * str1, const void * str2){
             должна идти перед второй.
 */
 static int strcmp1(const char * string1, const char * string2){
-    assert(string1);
-    assert(string2);
+    assert(string1); 
+    assert(string2); 
 
-    char simbol1 = 0, simbol2 = 0;
+    char simbol1 = 0, simbol2 = 0; // rename to symbol
     int i = 0, j = 0;
 
     while(simbol1 == simbol2 && (string1[i] != '\0' || string2[j] != '\0')){
@@ -228,8 +233,10 @@ int OneginTest(){
     char * text_temp = NULL;
 
     text_temp = input(fp, &string_amount);
-        
+    assert(text_temp);
+
     text = (char **) calloc(string_amount, sizeof(char *));
+    assert(text);
 
     to_strings(text_temp, text, string_amount);
     sorting(text, string_amount);
@@ -243,6 +250,7 @@ int OneginTest(){
     text_temp_res = input(fp_result, &string_amount1);
 
     text_res = (char **) calloc(string_amount1, sizeof(char *));
+    assert(text_res);
 
     to_strings(text_temp_res, text_res, string_amount1);
 
@@ -295,7 +303,7 @@ static void output_reverse(char ** text, int string_amount){
     \param [int] string_amount Число строк в тексте
 */
 static void output_original(char * text_temp, int string_amount){
-    assert(text_temp);
+    assert(text_temp); 
 
     for (int i = 0; i < string_amount; i++){
         printf("%s \n", text_temp);
