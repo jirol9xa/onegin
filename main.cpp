@@ -1,39 +1,45 @@
 #include <stdio.h>
-
-#ifndef TITLE_H
-   #define TITLE_H
-   #include "title.h"
-#endif
-
+#include "title.h"
 
 const int SIZE = 100;
 
 
 int main(void){
     
-    char file[SIZE] = {};
-    FILE * fp = nullptr;
-    char ** text = nullptr;
-    int string_amount = 0;
- 
-    // do argv & argc
+    FILE* fp = nullptr;
+    FILE* sorted_alphabetically = nullptr;
+    FILE* sorted_reverse = nullptr;
+    FILE* original_text = nullptr;
 
-    printf("Enter the name of the file \n");
-    while (scanf("%s", file) != 1){
-        printf("Wrong format!!! \nEnter the name of the file \n");
+    if (!(fp = fopen("FILE", "r"))){
+        printf("Can't open input file \n");
+    }
+    if (!(sorted_alphabetically = fopen("Alphabetically sort", "w"))){
+        printf("Can't open alphabetically sort output file \n");
+    }
+    if (!(sorted_reverse = fopen("Reverse sort", "w"))){
+        printf("Can't open reverse sort output file \n");
+    }
+    if (!(original_text = fopen("Original text", "w"))){
+        printf("Can't open original output file \n");
     }
 
-    if(!(fp = fopen(file, "r"))) {
-        printf("Can't open file \n");
-    }
     else {
-        if(OneginTest()) return 0;
-        makeOneginGreatAgain(fp);
+        if(!OneginTest()){
+        printf("[%s:%d] --- func OneginTest failed \n", __func__, __LINE__);
+        return 0;
+        }
+        if (!makeOneginGreatAgain(fp, sorted_alphabetically, sorted_reverse, original_text)){
+            printf("[%s:%d] --- func makeOneginGreatAgain failed \n", __func__, __LINE__);
+            return 0;
+        }
     }
 
 
     fclose(fp);
-    
+    fclose(sorted_alphabetically);
+    fclose(sorted_reverse);
+    fclose(original_text);
     return 0;
 }
 

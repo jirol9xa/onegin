@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bad_5fsymbols_33',['BAD_SYMBOLS',['../functions_8cpp.html#ab46e392efcad427a282380ed12d4b109',1,'functions.cpp']]]
+  ['length_36',['length',['../struct_text.html#a757739b913a5c9cb008ba175d7624d6c',1,'Text']]]
 ];

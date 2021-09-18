@@ -67,37 +67,66 @@ $(function() {
 <div class="title">Файл title.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><div class="dynheader">
+<div class="textblock"><code>#include &lt;locale.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для title.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="title_8h__incl.png" border="0" usemap="#title_8h" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><div class="textblock"><div class="dynheader">
 Граф файлов, в которые включается этот файл:</div>
 <div class="dyncontent">
 <div class="center"><img src="title_8h__dep__incl.png" border="0" usemap="#title_8hdep" alt=""/></div>
-<!-- MAP 0 -->
+<!-- MAP 1 -->
 </div>
 </div>
 <p><a href="title_8h_source.html">См. исходные тексты.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Функции</h2></td></tr>
-<tr class="memitem:a8cf8275a25658460dc0ecfabecf00ba5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="title_8h.html#a8cf8275a25658460dc0ecfabecf00ba5">makeOneginGreatAgain</a> (FILE *fp)</td></tr>
-<tr class="memdesc:a8cf8275a25658460dc0ecfabecf00ba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Главная функция, вызывающая сортировку  <a href="title_8h.html#a8cf8275a25658460dc0ecfabecf00ba5">Подробнее...</a><br /></td></tr>
-<tr class="separator:a8cf8275a25658460dc0ecfabecf00ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f39d1f8ff53b095e4176d03eb150ebe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="title_8h.html#a6f39d1f8ff53b095e4176d03eb150ebe">makeOneginGreatAgain</a> (FILE *fp, FILE *sorted_alphabetically, FILE *sorted_reverse, FILE *original_text)</td></tr>
+<tr class="memdesc:a6f39d1f8ff53b095e4176d03eb150ebe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Главная функция, вызывающая сортировку  <a href="title_8h.html#a6f39d1f8ff53b095e4176d03eb150ebe">Подробнее...</a><br /></td></tr>
+<tr class="separator:a6f39d1f8ff53b095e4176d03eb150ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa72568d0cf300221e9fea4e11ef224a7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="title_8h.html#aa72568d0cf300221e9fea4e11ef224a7">OneginTest</a> ()</td></tr>
 <tr class="memdesc:aa72568d0cf300221e9fea4e11ef224a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unitest.  <a href="title_8h.html#aa72568d0cf300221e9fea4e11ef224a7">Подробнее...</a><br /></td></tr>
 <tr class="separator:aa72568d0cf300221e9fea4e11ef224a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Функции</h2>
-<a id="a8cf8275a25658460dc0ecfabecf00ba5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8cf8275a25658460dc0ecfabecf00ba5">&#9670;&nbsp;</a></span>makeOneginGreatAgain()</h2>
+<a id="a6f39d1f8ff53b095e4176d03eb150ebe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f39d1f8ff53b095e4176d03eb150ebe">&#9670;&nbsp;</a></span>makeOneginGreatAgain()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void makeOneginGreatAgain </td>
+          <td class="memname">int makeOneginGreatAgain </td>
           <td>(</td>
           <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>fp</em></td><td>)</td>
+          <td class="paramname"><em>fp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>sorted_alphabetically</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>sorted_reverse</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>original_text</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -105,10 +134,14 @@ $(function() {
 <p>Главная функция, вызывающая сортировку </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[FILE</td><td>*] fp Указатель на файл с исходным текстом </td></tr>
+    <tr><td class="paramname">[FILE*]</td><td>fp Указатель на файл с исходным текстом </td></tr>
+    <tr><td class="paramname">[FILE*]</td><td>sorted_alphabetically Указатель на файл, куда будет записана прямая сортировка </td></tr>
+    <tr><td class="paramname">[FILE*]</td><td>sorted_alphabetically Указатель на файл, куда будет записана обратная сортировка </td></tr>
+    <tr><td class="paramname">[FILE*]</td><td>sorted_alphabetically Указатель на файл, куда будет записан оригинальный текст </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Возвращает</dt><dd>1 если функция завершилась успешно, 0 в случае ошибки </dd></dl>
 
 </div>
 </div>
@@ -128,6 +161,7 @@ $(function() {
 </div><div class="memdoc">
 
 <p>Unitest. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>1 если функция завершилась успешно, 0 в случае ошибки </dd></dl>
 
 </div>
 </div>

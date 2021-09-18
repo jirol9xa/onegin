@@ -1,22 +1,25 @@
 \hypertarget{title_8h}{}\doxysection{Файл title.\+h}
 \label{title_8h}\index{title.h@{title.h}}
-Граф файлов, в которые включается этот файл\+:
+{\ttfamily \#include $<$locale.\+h$>$}\newline
+Граф включаемых заголовочных файлов для title.\+h\+:
 % FIG 0
+Граф файлов, в которые включается этот файл\+:
+% FIG 1
 \doxysubsection*{Функции}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{title_8h_a8cf8275a25658460dc0ecfabecf00ba5}{make\+Onegin\+Great\+Again}} (F\+I\+LE $\ast$fp)
+int \mbox{\hyperlink{title_8h_a6f39d1f8ff53b095e4176d03eb150ebe}{make\+Onegin\+Great\+Again}} (F\+I\+LE $\ast$fp, F\+I\+LE $\ast$sorted\+\_\+alphabetically, F\+I\+LE $\ast$sorted\+\_\+reverse, F\+I\+LE $\ast$original\+\_\+text)
 \begin{DoxyCompactList}\small\item\em Главная функция, вызывающая сортировку \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{title_8h_aa72568d0cf300221e9fea4e11ef224a7}{Onegin\+Test}} ()
 \begin{DoxyCompactList}\small\item\em Unitest. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Функции}
-\mbox{\Hypertarget{title_8h_a8cf8275a25658460dc0ecfabecf00ba5}\label{title_8h_a8cf8275a25658460dc0ecfabecf00ba5}} 
+\mbox{\Hypertarget{title_8h_a6f39d1f8ff53b095e4176d03eb150ebe}\label{title_8h_a6f39d1f8ff53b095e4176d03eb150ebe}} 
 \index{title.h@{title.h}!makeOneginGreatAgain@{makeOneginGreatAgain}}
 \index{makeOneginGreatAgain@{makeOneginGreatAgain}!title.h@{title.h}}
 \doxysubsubsection{\texorpdfstring{makeOneginGreatAgain()}{makeOneginGreatAgain()}}
-{\footnotesize\ttfamily void make\+Onegin\+Great\+Again (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int make\+Onegin\+Great\+Again (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{F\+I\+LE $\ast$}]{sorted\+\_\+alphabetically,  }\item[{F\+I\+LE $\ast$}]{sorted\+\_\+reverse,  }\item[{F\+I\+LE $\ast$}]{original\+\_\+text }\end{DoxyParamCaption})}
 
 
 
@@ -24,9 +27,18 @@ int \mbox{\hyperlink{title_8h_aa72568d0cf300221e9fea4e11ef224a7}{Onegin\+Test}} 
 
 
 \begin{DoxyParams}{Аргументы}
-{\em \mbox{[}\+F\+I\+LE} & $\ast$\mbox{]} fp Указатель на файл с исходным текстом \\
+{\em \mbox{[}\+F\+I\+L\+E$\ast$\mbox{]}} & fp Указатель на файл с исходным текстом \\
+\hline
+{\em \mbox{[}\+F\+I\+L\+E$\ast$\mbox{]}} & sorted\+\_\+alphabetically Указатель на файл, куда будет записана прямая сортировка \\
+\hline
+{\em \mbox{[}\+F\+I\+L\+E$\ast$\mbox{]}} & sorted\+\_\+alphabetically Указатель на файл, куда будет записана обратная сортировка \\
+\hline
+{\em \mbox{[}\+F\+I\+L\+E$\ast$\mbox{]}} & sorted\+\_\+alphabetically Указатель на файл, куда будет записан оригинальный текст \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+1 если функция завершилась успешно, 0 в случае ошибки 
+\end{DoxyReturn}
 \mbox{\Hypertarget{title_8h_aa72568d0cf300221e9fea4e11ef224a7}\label{title_8h_aa72568d0cf300221e9fea4e11ef224a7}} 
 \index{title.h@{title.h}!OneginTest@{OneginTest}}
 \index{OneginTest@{OneginTest}!title.h@{title.h}}
@@ -37,3 +49,6 @@ int \mbox{\hyperlink{title_8h_aa72568d0cf300221e9fea4e11ef224a7}{Onegin\+Test}} 
 
 Unitest. 
 
+\begin{DoxyReturn}{Возвращает}
+1 если функция завершилась успешно, 0 в случае ошибки 
+\end{DoxyReturn}

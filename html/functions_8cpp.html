@@ -62,8 +62,9 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Функции</a> &#124;
-<a href="#var-members">Переменные</a>  </div>
+<a href="#nested-classes">Классы</a> &#124;
+<a href="#define-members">Макросы</a> &#124;
+<a href="#func-members">Функции</a>  </div>
   <div class="headertitle">
 <div class="title">Файл functions.cpp</div>  </div>
 </div><!--header-->
@@ -80,50 +81,69 @@ $(function() {
 <div class="center"><img src="functions_8cpp__incl.png" border="0" usemap="#functions_8cpp" alt=""/></div>
 </div>
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_text.html">Text</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Макросы</h2></td></tr>
+<tr class="memitem:a475433d0b5291ae1ae6b4ad04e0f5b2c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#a475433d0b5291ae1ae6b4ad04e0f5b2c">TITLE_H</a></td></tr>
+<tr class="separator:a475433d0b5291ae1ae6b4ad04e0f5b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Функции</h2></td></tr>
 <tr class="memitem:afd41ebce71e69be2e750d6efee96386e"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#afd41ebce71e69be2e750d6efee96386e">input</a> (FILE *fp, int *string_amount)</td></tr>
 <tr class="memdesc:afd41ebce71e69be2e750d6efee96386e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция ввода текста из файла  <a href="functions_8cpp.html#afd41ebce71e69be2e750d6efee96386e">Подробнее...</a><br /></td></tr>
 <tr class="separator:afd41ebce71e69be2e750d6efee96386e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5fb8e57102203f742e5253ead2575fc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#ad5fb8e57102203f742e5253ead2575fc">to_strings</a> (char *text_temp, char **text, int string_amount)</td></tr>
-<tr class="memdesc:ad5fb8e57102203f742e5253ead2575fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция преобразование массива текст в двумерный  <a href="functions_8cpp.html#ad5fb8e57102203f742e5253ead2575fc">Подробнее...</a><br /></td></tr>
-<tr class="separator:ad5fb8e57102203f742e5253ead2575fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f0c3ea1e27663b6c2116dce1a847058"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#a8f0c3ea1e27663b6c2116dce1a847058">sorting</a> (char **text, int string_amount)</td></tr>
-<tr class="memdesc:a8f0c3ea1e27663b6c2116dce1a847058"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция сортировки  <a href="functions_8cpp.html#a8f0c3ea1e27663b6c2116dce1a847058">Подробнее...</a><br /></td></tr>
-<tr class="separator:a8f0c3ea1e27663b6c2116dce1a847058"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2fe464d0027ba54965323477bea5a3b"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#ac2fe464d0027ba54965323477bea5a3b">to_strings</a> (char *text_buffer, <a class="el" href="struct_text.html">Text</a> *text, int string_amount)</td></tr>
+<tr class="memdesc:ac2fe464d0027ba54965323477bea5a3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция преобразование массива текст в двумерный  <a href="functions_8cpp.html#ac2fe464d0027ba54965323477bea5a3b">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac2fe464d0027ba54965323477bea5a3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4fe4627e12433c2ff747fccdb45fbbe"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#ae4fe4627e12433c2ff747fccdb45fbbe">sorting</a> (<a class="el" href="struct_text.html">Text</a> *text, int string_amount)</td></tr>
+<tr class="memdesc:ae4fe4627e12433c2ff747fccdb45fbbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция сортировки  <a href="functions_8cpp.html#ae4fe4627e12433c2ff747fccdb45fbbe">Подробнее...</a><br /></td></tr>
+<tr class="separator:ae4fe4627e12433c2ff747fccdb45fbbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4af485076d68a718ee4f0b19c413da3"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#ae4af485076d68a718ee4f0b19c413da3">create_new_poem</a> (<a class="el" href="struct_text.html">Text</a> *text, int string_amount)</td></tr>
+<tr class="memdesc:ae4af485076d68a718ee4f0b19c413da3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция сортировки по последнему символу  <a href="functions_8cpp.html#ae4af485076d68a718ee4f0b19c413da3">Подробнее...</a><br /></td></tr>
+<tr class="separator:ae4af485076d68a718ee4f0b19c413da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd2d9871758c0f84796cf9fbe5a15e73"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#afd2d9871758c0f84796cf9fbe5a15e73">is_bad_symbol</a> (char c)</td></tr>
-<tr class="memdesc:afd2d9871758c0f84796cf9fbe5a15e73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Находит среди символов знаки препинания  <a href="functions_8cpp.html#afd2d9871758c0f84796cf9fbe5a15e73">Подробнее...</a><br /></td></tr>
 <tr class="separator:afd2d9871758c0f84796cf9fbe5a15e73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ae0a21c993a56f8579003791bb65dc2"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#a8ae0a21c993a56f8579003791bb65dc2">comp</a> (const void *str1, const void *str2)</td></tr>
-<tr class="memdesc:a8ae0a21c993a56f8579003791bb65dc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Аналогична функции strcmp1.  <a href="functions_8cpp.html#a8ae0a21c993a56f8579003791bb65dc2">Подробнее...</a><br /></td></tr>
-<tr class="separator:a8ae0a21c993a56f8579003791bb65dc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc9f263d9b7d290aa953d3d4c4734ed1"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#abc9f263d9b7d290aa953d3d4c4734ed1">strcmp1</a> (const char *string1, const char *string2)</td></tr>
-<tr class="memdesc:abc9f263d9b7d290aa953d3d4c4734ed1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция сравнения строк  <a href="functions_8cpp.html#abc9f263d9b7d290aa953d3d4c4734ed1">Подробнее...</a><br /></td></tr>
-<tr class="separator:abc9f263d9b7d290aa953d3d4c4734ed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf628af030c1d5365987a200cee6bd2b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#abf628af030c1d5365987a200cee6bd2b">output_original</a> (char *text_temp, int string_amount)</td></tr>
-<tr class="memdesc:abf628af030c1d5365987a200cee6bd2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выводит исходный текст  <a href="functions_8cpp.html#abf628af030c1d5365987a200cee6bd2b">Подробнее...</a><br /></td></tr>
-<tr class="separator:abf628af030c1d5365987a200cee6bd2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd1955dafd0a9ceed5b9af275f2a58bc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#abd1955dafd0a9ceed5b9af275f2a58bc">output</a> (char **text, int string_amount)</td></tr>
-<tr class="memdesc:abd1955dafd0a9ceed5b9af275f2a58bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция вывода текста  <a href="functions_8cpp.html#abd1955dafd0a9ceed5b9af275f2a58bc">Подробнее...</a><br /></td></tr>
-<tr class="separator:abd1955dafd0a9ceed5b9af275f2a58bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8cf8275a25658460dc0ecfabecf00ba5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#a8cf8275a25658460dc0ecfabecf00ba5">makeOneginGreatAgain</a> (FILE *fp)</td></tr>
-<tr class="memdesc:a8cf8275a25658460dc0ecfabecf00ba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Главная функция, вызывающая сортировку  <a href="functions_8cpp.html#a8cf8275a25658460dc0ecfabecf00ba5">Подробнее...</a><br /></td></tr>
-<tr class="separator:a8cf8275a25658460dc0ecfabecf00ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9846ba88d6fea3522a2acb5302c3cd7"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#ad9846ba88d6fea3522a2acb5302c3cd7">strcmp_reverse</a> (const void *str1, const void *str2)</td></tr>
+<tr class="memdesc:ad9846ba88d6fea3522a2acb5302c3cd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сортирует строки по последнему символу  <a href="functions_8cpp.html#ad9846ba88d6fea3522a2acb5302c3cd7">Подробнее...</a><br /></td></tr>
+<tr class="separator:ad9846ba88d6fea3522a2acb5302c3cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8156a94ac984c913f305fc03c48d5262"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#a8156a94ac984c913f305fc03c48d5262">strcmp1</a> (const void *str1, const void *str2)</td></tr>
+<tr class="memdesc:a8156a94ac984c913f305fc03c48d5262"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция сравнения строк  <a href="functions_8cpp.html#a8156a94ac984c913f305fc03c48d5262">Подробнее...</a><br /></td></tr>
+<tr class="separator:a8156a94ac984c913f305fc03c48d5262"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6957c41860ee2da2dcd485d539684bda"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#a6957c41860ee2da2dcd485d539684bda">output_original</a> (char *text_buffer, int string_amount, FILE *out)</td></tr>
+<tr class="memdesc:a6957c41860ee2da2dcd485d539684bda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выводит исходный текст  <a href="functions_8cpp.html#a6957c41860ee2da2dcd485d539684bda">Подробнее...</a><br /></td></tr>
+<tr class="separator:a6957c41860ee2da2dcd485d539684bda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a373f09f8f11110392f44ec1a8bc2463d"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#a373f09f8f11110392f44ec1a8bc2463d">output</a> (<a class="el" href="struct_text.html">Text</a> *text, int string_amount, FILE *out)</td></tr>
+<tr class="memdesc:a373f09f8f11110392f44ec1a8bc2463d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция вывода текста  <a href="functions_8cpp.html#a373f09f8f11110392f44ec1a8bc2463d">Подробнее...</a><br /></td></tr>
+<tr class="separator:a373f09f8f11110392f44ec1a8bc2463d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f39d1f8ff53b095e4176d03eb150ebe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#a6f39d1f8ff53b095e4176d03eb150ebe">makeOneginGreatAgain</a> (FILE *fp, FILE *sorted_alphabetically, FILE *sorted_reverse, FILE *original_text)</td></tr>
+<tr class="memdesc:a6f39d1f8ff53b095e4176d03eb150ebe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Главная функция, вызывающая сортировку  <a href="functions_8cpp.html#a6f39d1f8ff53b095e4176d03eb150ebe">Подробнее...</a><br /></td></tr>
+<tr class="separator:a6f39d1f8ff53b095e4176d03eb150ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa72568d0cf300221e9fea4e11ef224a7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#aa72568d0cf300221e9fea4e11ef224a7">OneginTest</a> ()</td></tr>
 <tr class="memdesc:aa72568d0cf300221e9fea4e11ef224a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unitest.  <a href="functions_8cpp.html#aa72568d0cf300221e9fea4e11ef224a7">Подробнее...</a><br /></td></tr>
 <tr class="separator:aa72568d0cf300221e9fea4e11ef224a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37ba809ee804d3f09e0bf948651b56cf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#a37ba809ee804d3f09e0bf948651b56cf">output_reverse</a> (char **text, int string_amount)</td></tr>
-<tr class="memdesc:a37ba809ee804d3f09e0bf948651b56cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выводит обратную сортировку  <a href="functions_8cpp.html#a37ba809ee804d3f09e0bf948651b56cf">Подробнее...</a><br /></td></tr>
-<tr class="separator:a37ba809ee804d3f09e0bf948651b56cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Переменные</h2></td></tr>
-<tr class="memitem:ab46e392efcad427a282380ed12d4b109"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8cpp.html#ab46e392efcad427a282380ed12d4b109">BAD_SYMBOLS</a> [] = &quot;.,!?-:; \&quot; \\ \' «» () {} []&quot;</td></tr>
-<tr class="separator:ab46e392efcad427a282380ed12d4b109"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Макросы</h2>
+<a id="a475433d0b5291ae1ae6b4ad04e0f5b2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a475433d0b5291ae1ae6b4ad04e0f5b2c">&#9670;&nbsp;</a></span>TITLE_H</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TITLE_H</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Функции</h2>
-<a id="a8ae0a21c993a56f8579003791bb65dc2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ae0a21c993a56f8579003791bb65dc2">&#9670;&nbsp;</a></span>comp()</h2>
+<a id="ae4af485076d68a718ee4f0b19c413da3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4af485076d68a718ee4f0b19c413da3">&#9670;&nbsp;</a></span>create_new_poem()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -132,16 +152,16 @@ $(function() {
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static int comp </td>
+          <td class="memname">static int create_new_poem </td>
           <td>(</td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>str1</em>, </td>
+          <td class="paramtype"><a class="el" href="struct_text.html">Text</a> *&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>str2</em>&#160;</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>string_amount</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -156,8 +176,15 @@ $(function() {
 </table>
 </div><div class="memdoc">
 
-<p>Аналогична функции strcmp1. </p>
-<p>Работает со строками исходного текста, определяя их очередность по алфавиту. </p>
+<p>Функция сортировки по последнему символу </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[Text*]</td><td>text Массив структур, хранящий текст построчно </td></tr>
+    <tr><td class="paramname">[int]</td><td>string_amount Число строк в тексте </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>1 если функция завершилась успешно, 0 в случае ошибки </dd></dl>
 
 </div>
 </div>
@@ -199,10 +226,11 @@ $(function() {
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
     <tr><td class="paramname">[FILE*]</td><td>fp указатель на файл, из которого считывается текст </td></tr>
-    <tr><td class="paramname">[int*]</td><td>string_amount указатель на число строк в тексте</td></tr>
+    <tr><td class="paramname">[int*]</td><td>string_amount указатель на число строк в тексте </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Возвращает</dt><dd>1 если функция завершилась успешно, 0 в случае ошибки</dd></dl>
 <p>Функция считывает текст из файла, записывая значения числа строк и общего числа символов.</p>
 <p>Функция возвращает указатель на массив с текстом. </p>
 
@@ -232,29 +260,42 @@ $(function() {
 </table>
 </div><div class="memdoc">
 
-<p>Находит среди символов знаки препинания </p>
-<dl class="params"><dt>Аргументы</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">[char]</td><td>c Символ </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Возвращает</dt><dd>[int] 1, если сивол явлеятся знаком препинания и 0 в противном случае </dd></dl>
-
 </div>
 </div>
-<a id="a8cf8275a25658460dc0ecfabecf00ba5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8cf8275a25658460dc0ecfabecf00ba5">&#9670;&nbsp;</a></span>makeOneginGreatAgain()</h2>
+<a id="a6f39d1f8ff53b095e4176d03eb150ebe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f39d1f8ff53b095e4176d03eb150ebe">&#9670;&nbsp;</a></span>makeOneginGreatAgain()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void makeOneginGreatAgain </td>
+          <td class="memname">int makeOneginGreatAgain </td>
           <td>(</td>
           <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>fp</em></td><td>)</td>
+          <td class="paramname"><em>fp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>sorted_alphabetically</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>sorted_reverse</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>original_text</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -262,10 +303,14 @@ $(function() {
 <p>Главная функция, вызывающая сортировку </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[FILE</td><td>*] fp Указатель на файл с исходным текстом </td></tr>
+    <tr><td class="paramname">[FILE*]</td><td>fp Указатель на файл с исходным текстом </td></tr>
+    <tr><td class="paramname">[FILE*]</td><td>sorted_alphabetically Указатель на файл, куда будет записана прямая сортировка </td></tr>
+    <tr><td class="paramname">[FILE*]</td><td>sorted_alphabetically Указатель на файл, куда будет записана обратная сортировка </td></tr>
+    <tr><td class="paramname">[FILE*]</td><td>sorted_alphabetically Указатель на файл, куда будет записан оригинальный текст </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Возвращает</dt><dd>1 если функция завершилась успешно, 0 в случае ошибки </dd></dl>
 
 </div>
 </div>
@@ -285,11 +330,12 @@ $(function() {
 </div><div class="memdoc">
 
 <p>Unitest. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>1 если функция завершилась успешно, 0 в случае ошибки </dd></dl>
 
 </div>
 </div>
-<a id="abd1955dafd0a9ceed5b9af275f2a58bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd1955dafd0a9ceed5b9af275f2a58bc">&#9670;&nbsp;</a></span>output()</h2>
+<a id="a373f09f8f11110392f44ec1a8bc2463d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a373f09f8f11110392f44ec1a8bc2463d">&#9670;&nbsp;</a></span>output()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -298,16 +344,22 @@ $(function() {
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void output </td>
+          <td class="memname">static int output </td>
           <td>(</td>
-          <td class="paramtype">char **&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_text.html">Text</a> *&#160;</td>
           <td class="paramname"><em>text</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>string_amount</em>&#160;</td>
+          <td class="paramname"><em>string_amount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -325,17 +377,19 @@ $(function() {
 <p>Функция вывода текста </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[char**]</td><td>text Массив, хранящий отсортированный текст построчно </td></tr>
-    <tr><td class="paramname">[int]</td><td>string_amount Число строк в массиве</td></tr>
+    <tr><td class="paramname">[Text*]</td><td>text Массив, хранящий отсортированный текст построчно </td></tr>
+    <tr><td class="paramname">[int]</td><td>string_amount Число строк в массиве </td></tr>
+    <tr><td class="paramname">[FILE*]</td><td>out Указатель на файл, куда будет происходить печать текста </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Возвращает</dt><dd>1 если функция завершилась успешно, 0 в случае ошибки</dd></dl>
 <p>Функция выыодит отсортированный текст построчно. </p>
 
 </div>
 </div>
-<a id="abf628af030c1d5365987a200cee6bd2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf628af030c1d5365987a200cee6bd2b">&#9670;&nbsp;</a></span>output_original()</h2>
+<a id="a6957c41860ee2da2dcd485d539684bda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6957c41860ee2da2dcd485d539684bda">&#9670;&nbsp;</a></span>output_original()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -344,16 +398,22 @@ $(function() {
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void output_original </td>
+          <td class="memname">static int output_original </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>text_temp</em>, </td>
+          <td class="paramname"><em>text_buffer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>string_amount</em>&#160;</td>
+          <td class="paramname"><em>string_amount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -371,16 +431,18 @@ $(function() {
 <p>Выводит исходный текст </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[char</td><td>*] text_temp Массив, хранящий строки текста одну за одной </td></tr>
+    <tr><td class="paramname">[char</td><td>*] text_buffer Массив, хранящий строки текста одну за одной </td></tr>
     <tr><td class="paramname">[int]</td><td>string_amount Число строк в тексте </td></tr>
+    <tr><td class="paramname">[FILE*]</td><td>out Указатель на файл, куда будет происходить запись </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Возвращает</dt><dd>1 если функция завершилась успешно, 0 в случае ошибки </dd></dl>
 
 </div>
 </div>
-<a id="a37ba809ee804d3f09e0bf948651b56cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37ba809ee804d3f09e0bf948651b56cf">&#9670;&nbsp;</a></span>output_reverse()</h2>
+<a id="ae4fe4627e12433c2ff747fccdb45fbbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4fe4627e12433c2ff747fccdb45fbbe">&#9670;&nbsp;</a></span>sorting()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -389,54 +451,9 @@ $(function() {
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void output_reverse </td>
+          <td class="memname">static int sorting </td>
           <td>(</td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>text</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>string_amount</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Выводит обратную сортировку </p>
-<dl class="params"><dt>Аргументы</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">[char</td><td>**] text Массив строк текста </td></tr>
-    <tr><td class="paramname">[int]</td><td>string_amount Число строк в тексте </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a8f0c3ea1e27663b6c2116dce1a847058"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f0c3ea1e27663b6c2116dce1a847058">&#9670;&nbsp;</a></span>sorting()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void sorting </td>
-          <td>(</td>
-          <td class="paramtype">char **&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_text.html">Text</a> *&#160;</td>
           <td class="paramname"><em>text</em>, </td>
         </tr>
         <tr>
@@ -461,16 +478,17 @@ $(function() {
 <p>Функция сортировки </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[char**]</td><td>text Массив, хранящий текст построчно </td></tr>
+    <tr><td class="paramname">[Text*]</td><td>text Массив, хранящий текст построчно </td></tr>
     <tr><td class="paramname">[int]</td><td>string_amount Число строк в тексте </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Возвращает</dt><dd>1 если функция завершилась успешно, 0 в случае ошибки </dd></dl>
 
 </div>
 </div>
-<a id="abc9f263d9b7d290aa953d3d4c4734ed1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc9f263d9b7d290aa953d3d4c4734ed1">&#9670;&nbsp;</a></span>strcmp1()</h2>
+<a id="a8156a94ac984c913f305fc03c48d5262"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8156a94ac984c913f305fc03c48d5262">&#9670;&nbsp;</a></span>strcmp1()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -481,14 +499,14 @@ $(function() {
         <tr>
           <td class="memname">static int strcmp1 </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>string1</em>, </td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>str1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>string2</em>&#160;</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>str2</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -506,17 +524,17 @@ $(function() {
 <p>Функция сравнения строк </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[const</td><td>char *] string1 Первая строка </td></tr>
-    <tr><td class="paramname">[const</td><td>char *] string2 Вторая строка </td></tr>
+    <tr><td class="paramname">[const</td><td>void*] str1 Первая строка </td></tr>
+    <tr><td class="paramname">[const</td><td>void*] str2 Вторая строка </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Возвращает</dt><dd>1, если первая строка должна идти после второй и -1, если первая строка должна идти перед второй. </dd></dl>
+<dl class="section return"><dt>Возвращает</dt><dd>1, если первая строка должна идти после второй и -1, если первая строка должна идти перед второй, 0 в случае ошибки </dd></dl>
 
 </div>
 </div>
-<a id="ad5fb8e57102203f742e5253ead2575fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad5fb8e57102203f742e5253ead2575fc">&#9670;&nbsp;</a></span>to_strings()</h2>
+<a id="ad9846ba88d6fea3522a2acb5302c3cd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9846ba88d6fea3522a2acb5302c3cd7">&#9670;&nbsp;</a></span>strcmp_reverse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -525,15 +543,61 @@ $(function() {
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void to_strings </td>
+          <td class="memname">static int strcmp_reverse </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>text_temp</em>, </td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>str1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char **&#160;</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>str2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Сортирует строки по последнему символу </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[const</td><td>void*] str1 Первая строка </td></tr>
+    <tr><td class="paramname">[const</td><td>void*] str2 Вторая строка </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>1, если первая строка должна идти после второй и -1, если первая строка должна идти перед второй, 0 в случае ошибки </dd></dl>
+
+</div>
+</div>
+<a id="ac2fe464d0027ba54965323477bea5a3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2fe464d0027ba54965323477bea5a3b">&#9670;&nbsp;</a></span>to_strings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int to_strings </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>text_buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_text.html">Text</a> *&#160;</td>
           <td class="paramname"><em>text</em>, </td>
         </tr>
         <tr>
@@ -558,28 +622,14 @@ $(function() {
 <p>Функция преобразование массива текст в двумерный </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[char*]</td><td>text_temp УМассив всех символов текста </td></tr>
-    <tr><td class="paramname">[char**]</td><td>text Двумерный массив, хранящий текст построчно </td></tr>
-    <tr><td class="paramname">[int]</td><td>string_amount Общее число строк в тексте</td></tr>
+    <tr><td class="paramname">[char*]</td><td>text_buffer УМассив всех символов текста </td></tr>
+    <tr><td class="paramname">[Text*]</td><td>text Двумерный массив, хранящий текст построчно </td></tr>
+    <tr><td class="paramname">[int]</td><td>string_amount Общее число строк в тексте </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Возвращает</dt><dd>1 если функция завершилась успешно, 0 в случае ошибки</dd></dl>
 <p>Данная функция разбивает массив с текстом на строки для дальнейшей сортировки </p>
-
-</div>
-</div>
-<h2 class="groupheader">Переменные</h2>
-<a id="ab46e392efcad427a282380ed12d4b109"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab46e392efcad427a282380ed12d4b109">&#9670;&nbsp;</a></span>BAD_SYMBOLS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char BAD_SYMBOLS[] = &quot;.,!?-:; \&quot; \\ \' «» () {} []&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>

@@ -1,27 +1,30 @@
 var indexSectionsWithContent =
 {
-  0: "bcfimost",
-  1: "fmt",
-  2: "cimost",
-  3: "bs",
-  4: "t"
+  0: "cfilmost",
+  1: "t",
+  2: "fmt",
+  3: "cimost",
+  4: "ls",
+  5: "t"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "files",
-  2: "functions",
-  3: "variables",
-  4: "defines"
+  1: "classes",
+  2: "files",
+  3: "functions",
+  4: "variables",
+  5: "defines"
 };
 
 var indexSectionLabels =
 {
   0: "Указатель",
-  1: "Файлы",
-  2: "Функции",
-  3: "Переменные",
-  4: "Макросы"
+  1: "Классы",
+  2: "Файлы",
+  3: "Функции",
+  4: "Переменные",
+  5: "Макросы"
 };
 

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bad_5fsymbols_0',['BAD_SYMBOLS',['../functions_8cpp.html#ab46e392efcad427a282380ed12d4b109',1,'functions.cpp']]]
+  ['create_5fnew_5fpoem_0',['create_new_poem',['../functions_8cpp.html#ae4af485076d68a718ee4f0b19c413da3',1,'functions.cpp']]]
 ];
