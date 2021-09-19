@@ -26,12 +26,10 @@ int main(void){
 
     else {
         if(!OneginTest()){
-        printf("[%s:%d] --- func OneginTest failed \n", __func__, __LINE__);
-        return 0;
+            PRINT_ERROR(OneginTest);
         }
         if (!makeOneginGreatAgain(fp, sorted_alphabetically, sorted_reverse, original_text)){
-            printf("[%s:%d] --- func makeOneginGreatAgain failed \n", __func__, __LINE__);
-            return 0;
+            PRINT_ERROR(makeOneginGreatAgain);
         }
     }
 

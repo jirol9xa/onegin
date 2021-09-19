@@ -3,11 +3,8 @@
 #include <assert.h>
 #include <string.h>
 #include <ctype.h>
-#ifndef TITLE_H
-    #define TITLE_H
-    #include "title.h"
-#endif
-
+#include "title.h"
+                                                            
 
 typedef struct{
     char* string;
@@ -50,43 +47,36 @@ int makeOneginGreatAgain(FILE* fp, FILE* sorted_alphabetically, FILE* sorted_rev
     char * text_buffer = nullptr;
 
     if (!(text_buffer = input(fp, &string_amount))){
-        printf("[%s:%d] --- func input failed \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(text_buffer);
     }
         
     text = (Text*) calloc(string_amount, sizeof(Text)); 
     if (!text){
-        printf("[%s:%d] --- text creation failed \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(text);
     }
+    
 
 
     if (!to_strings(text_buffer, text, string_amount)){
-        printf("[%s:%d] --- func to_strings failed \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(to_strings);
     }
 
     if (!sorting(text, string_amount)){
-        printf("[%s:%d] --- func sorting failed \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(sorting);
     }
     if (!output(text, string_amount, sorted_alphabetically)){
-        printf("[%s:%d] --- func output failed \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(output);
     }
 
     if (!create_new_poem(text, string_amount)){
-        printf("[%s:%d] --- func create_new_poem failed \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(create_new_poem);
     }
     if (!output(text, string_amount, sorted_reverse)){
-        printf("[%s:%d] --- func output failed \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(output);
     }
 
     if (!output_original(text_buffer, string_amount, original_text)){
-        printf("[%s:%d] --- func output_original failed \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(output_original);
     }
 
     
@@ -108,12 +98,10 @@ int makeOneginGreatAgain(FILE* fp, FILE* sorted_alphabetically, FILE* sorted_rev
 */
 static char* input(FILE* fp, int* string_amount){
     if (!fp) {
-        printf("[%s:%d] --- null ptr in FILE* fp\n", __func__, __LINE__);
-        return NULL;
+        PRINT_ERROR(fp);
     }
     if (!string_amount){
-        printf("[%s:%d] --- null ptr in int* string_amount \n", __func__, __LINE__);
-        return NULL;
+        PRINT_ERROR(string_amount);
     }
 
     char* text_buffer = nullptr; 
@@ -128,8 +116,7 @@ static char* input(FILE* fp, int* string_amount){
     assert(assertion == 0);
     
     if (!(text_buffer = (char *) calloc(last + 1, sizeof(char)))){
-        printf("[%s:%d] --- text_buffer creation failed \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(text_buffer);
     }
 
     fread(text_buffer, sizeof(char), last, fp);
@@ -156,12 +143,10 @@ static char* input(FILE* fp, int* string_amount){
 */
 static int output(Text* text, int string_amount, FILE* out){
     if (!text){
-        printf("[%s:%d] --- nullptr in Text* text \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(text);
     }
     if (!out){
-        printf("[%s:%d] -- nullptr in FILE* out \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(out);
     }
 
     for (int i = 0; i < string_amount; i++){
@@ -185,12 +170,10 @@ static int output(Text* text, int string_amount, FILE* out){
 */
 static int to_strings(char* text_buffer, Text* text, int string_amount){
     if (!text_buffer){
-        printf("[%s:%d] -- nullptr in char* text_buffer \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(text_buffer);
     }
     if (!text){
-        printf("[%s:%d] -- nullptr in Text* text \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(text);
     }
 
     for (int i = 0; i < string_amount; i++){
@@ -220,8 +203,7 @@ static int to_strings(char* text_buffer, Text* text, int string_amount){
 */
 static int sorting(Text* text, int string_amount){
     if (!text){
-        printf("[%s:%d] -- nullptr in Text* text \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(text);
     }
 
     qsort(text, string_amount, sizeof(Text), strcmp1);
@@ -240,8 +222,7 @@ static int sorting(Text* text, int string_amount){
 */
 static int create_new_poem(Text* text, int string_amount){
     if (!text){
-        printf("[%s:%d] -- nullptr in Text* text \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(text);
     }
 
     qsort(text, string_amount, sizeof(Text), strcmp_reverse);
@@ -262,12 +243,10 @@ static int create_new_poem(Text* text, int string_amount){
 */
 static int strcmp1(const void* str1, const void* str2){
     if (!str1){
-        printf("[%s:%d] -- nullptr in const void* str1 \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(str1);
     }
-    if (!str2){
-        printf("[%s:%d] -- nullptr in const void* str2 \n", __func__, __LINE__);
-        return 0;
+    if (!str2){ 
+        PRINT_ERROR(str2);
     }
 
     const Text string1 = *(const Text*) str1;
@@ -317,12 +296,10 @@ static int strcmp1(const void* str1, const void* str2){
 */
 static int strcmp_reverse(const void* str1, const void* str2){
     if (!str1){
-        printf("[%s:%d] -- nullptr in const void* str1 \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(str1);
     }
     if (!str2){
-        printf("[%s:%d] -- nullptr in const void* str2 \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(str2);
     }
 
     const Text string1 = *(const Text*) str1;
@@ -378,22 +355,18 @@ int OneginTest(){
     char* text_buffer = nullptr;
 
     if (!(text_buffer = input(fp, &string_amount))){
-        printf("[%s:%d] --- func input failed \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(text_buffer);
     }
 
     if (!(text = (Text*) calloc(string_amount, sizeof(Text)))){
-        printf("[%s:%d] --- text creation failed \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(text);
     }
 
     if (!to_strings(text_buffer, text, string_amount)){
-        printf("[%s:%d] --- func to_strings failed \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(to_strings);
     }
     if (!sorting(text, string_amount)){
-        printf("[%s:%d] --- func sorting failed \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(sorting);
     }
 
 
@@ -403,18 +376,15 @@ int OneginTest(){
     int string_amount1 = 0;
 
     if (!(text_buffer_res = input(fp_result, &string_amount1))){
-        printf("[%s:%d] --- func input failed \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(text_buffer_res);
     }
 
     if (!(text_res = (Text*) calloc(string_amount1, sizeof(Text)))){
-        printf("[%s:%d] --- text creation failed \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(text_res);
     }
 
     if (!to_strings(text_buffer_res, text_res, string_amount1)){
-        printf("[%s:%d] --- func to_strings failed \n", __func__, __LINE__);
-        return 0;
+       PRINT_ERROR(to_strings);
     }
 
 
@@ -455,8 +425,7 @@ int OneginTest(){
 */
 static int output_original(char* text_buffer, int string_amount, FILE* out){
     if (!text_buffer){
-        printf("[%s:%d] -- nullptr in char* text_buffer \n", __func__, __LINE__);
-        return 0;
+        PRINT_ERROR(text_buffer);
     }
 
     for (int i = 0; i < string_amount; i++){
