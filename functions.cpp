@@ -14,6 +14,7 @@ typedef struct{
 
 static char * input(FILE* fp,  int* string_amount);
 static int to_strings(char* text_buffer, Text* text, int string_amount);
+static int fileLength(long * file_length, FILE* fp);
 
 static int sorting(Text* text, int string_amount);
 static int create_new_poem(Text* text, int string_amount);
@@ -40,7 +41,7 @@ static int output(Text* text, int string_amount, FILE* sorted);
             0 в случае ошибки
 */ 
 int makeOneginGreatAgain(FILE* fp, FILE* sorted_alphabetically, FILE* sorted_reverse, FILE* original_text){
-    assert(fp); 
+    assert(fp); // gandon
 
     Text* text = nullptr; 
     int string_amount = 0;
@@ -107,13 +108,10 @@ static char* input(FILE* fp, int* string_amount){
     char* text_buffer = nullptr; 
     long int last = 0;
 
-    int assertion = fseek(fp, 0L, SEEK_END);
-    assert(assertion == 0);
-
-    last = ftell(fp);
-
-    assertion = fseek(fp, 0L, SEEK_SET);
-    assert(assertion == 0);
+    long file_length = 0;
+    if (!fileLength(&file_length, fp)){
+        PRINT_ERROR(fileLength);
+    }
     
     if (!(text_buffer = (char *) calloc(last + 1, sizeof(char)))){
         PRINT_ERROR(text_buffer);
@@ -160,7 +158,7 @@ static int output(Text* text, int string_amount, FILE* out){
 
 /*!
     \brief   Функция преобразование массива текст в двумерный
-    \param   [char*] text_buffer УМассив всех символов текста
+    \param   [char*] text_buffer Массив всех символов текста
     \param   [Text*] text Двумерный массив, хранящий текст построчно
     \param   [int] string_amount Общее число строк в тексте
     \return  1 если функция завершилась успешно,
@@ -185,7 +183,7 @@ static int to_strings(char* text_buffer, Text* text, int string_amount){
         }
 
         (*text_buffer) = '\0';
-        text[i].length = strlen(text[i].string);
+        text[i].length = strlen(text[i].string); // programmer doesnt use any linear algorhitmsm, he is vegan
         text_buffer++;   
     }
 
@@ -433,5 +431,20 @@ static int output_original(char* text_buffer, int string_amount, FILE* out){
         text_buffer += strlen((const char*) text_buffer) + 1;
     }
     
+    return 1;
+}
+
+
+static int fileLength(long * file_length, FILE* fp){
+    if (!fseek(fp, 0L, SEEK_END)){
+        PRINT_ERROR(fseek);
+    }
+
+    *file_length = ftell(fp);
+
+    if (!fseek(fp, 0L, SEEK_SET)){
+        PRINT_ERROR(fseek);
+    }
+
     return 1;
 }
