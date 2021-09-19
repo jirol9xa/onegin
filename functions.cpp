@@ -41,7 +41,9 @@ static int output(Text* text, int string_amount, FILE* sorted);
             0 в случае ошибки
 */ 
 int makeOneginGreatAgain(FILE* fp, FILE* sorted_alphabetically, FILE* sorted_reverse, FILE* original_text){
-    assert(fp); // gandon
+    if (!fp){
+        PRINT_ERROR(fp);
+    }
 
     Text* text = nullptr; 
     int string_amount = 0;
@@ -183,7 +185,7 @@ static int to_strings(char* text_buffer, Text* text, int string_amount){
         }
 
         (*text_buffer) = '\0';
-        text[i].length = strlen(text[i].string); // programmer doesnt use any linear algorhitmsm, he is vegan
+        text[i].length = strlen(text[i].string);
         text_buffer++;   
     }
 
