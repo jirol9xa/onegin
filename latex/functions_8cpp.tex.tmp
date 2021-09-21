@@ -11,23 +11,20 @@
 \doxysubsection*{Классы}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{struct_text}{Text}}
-\end{DoxyCompactItemize}
-\doxysubsection*{Макросы}
-\begin{DoxyCompactItemize}
-\item 
-\#define \mbox{\hyperlink{functions_8cpp_a475433d0b5291ae1ae6b4ad04e0f5b2c}{T\+I\+T\+L\+E\+\_\+H}}
+struct \mbox{\hyperlink{struct_line}{Line}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Функции}
 \begin{DoxyCompactItemize}
 \item 
-static char $\ast$ \mbox{\hyperlink{functions_8cpp_afd41ebce71e69be2e750d6efee96386e}{input}} (F\+I\+LE $\ast$fp, int $\ast$string\+\_\+amount)
+static int \mbox{\hyperlink{functions_8cpp_af9fc5c1c4f197c7f7bc06b08c76a862a}{input}} (F\+I\+LE $\ast$fp, int $\ast$string\+\_\+amount, char $\ast$text\+\_\+buffer, long file\+\_\+length)
 \begin{DoxyCompactList}\small\item\em Функция ввода текста из файла \end{DoxyCompactList}\item 
-static int \mbox{\hyperlink{functions_8cpp_ac2fe464d0027ba54965323477bea5a3b}{to\+\_\+strings}} (char $\ast$text\+\_\+buffer, \mbox{\hyperlink{struct_text}{Text}} $\ast$text, int string\+\_\+amount)
+static int \mbox{\hyperlink{functions_8cpp_a6e168e8f1b21596322d247e742f38bc7}{to\+\_\+strings}} (char $\ast$text\+\_\+buffer, \mbox{\hyperlink{struct_line}{Line}} $\ast$text, int string\+\_\+amount)
 \begin{DoxyCompactList}\small\item\em Функция преобразование массива текст в двумерный \end{DoxyCompactList}\item 
-static int \mbox{\hyperlink{functions_8cpp_ae4fe4627e12433c2ff747fccdb45fbbe}{sorting}} (\mbox{\hyperlink{struct_text}{Text}} $\ast$text, int string\+\_\+amount)
+static int \mbox{\hyperlink{functions_8cpp_aef7cc057ac05e1ebeec9e217ebb56bfa}{file\+Length}} (long $\ast$file\+\_\+length, F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em Функция измерения длины файла \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{functions_8cpp_a082440f5db76c9d31efd1e338634b784}{sorting}} (\mbox{\hyperlink{struct_line}{Line}} $\ast$text, int string\+\_\+amount)
 \begin{DoxyCompactList}\small\item\em Функция сортировки \end{DoxyCompactList}\item 
-static int \mbox{\hyperlink{functions_8cpp_ae4af485076d68a718ee4f0b19c413da3}{create\+\_\+new\+\_\+poem}} (\mbox{\hyperlink{struct_text}{Text}} $\ast$text, int string\+\_\+amount)
+static int \mbox{\hyperlink{functions_8cpp_adbd5f1c23bb9555a70094661e9773826}{create\+\_\+new\+\_\+poem}} (\mbox{\hyperlink{struct_line}{Line}} $\ast$text, int string\+\_\+amount)
 \begin{DoxyCompactList}\small\item\em Функция сортировки по последнему символу \end{DoxyCompactList}\item 
 static int \mbox{\hyperlink{functions_8cpp_afd2d9871758c0f84796cf9fbe5a15e73}{is\+\_\+bad\+\_\+symbol}} (char c)
 \item 
@@ -37,7 +34,7 @@ static int \mbox{\hyperlink{functions_8cpp_a8156a94ac984c913f305fc03c48d5262}{st
 \begin{DoxyCompactList}\small\item\em Функция сравнения строк \end{DoxyCompactList}\item 
 static int \mbox{\hyperlink{functions_8cpp_a6957c41860ee2da2dcd485d539684bda}{output\+\_\+original}} (char $\ast$text\+\_\+buffer, int string\+\_\+amount, F\+I\+LE $\ast$out)
 \begin{DoxyCompactList}\small\item\em Выводит исходный текст \end{DoxyCompactList}\item 
-static int \mbox{\hyperlink{functions_8cpp_a373f09f8f11110392f44ec1a8bc2463d}{output}} (\mbox{\hyperlink{struct_text}{Text}} $\ast$text, int string\+\_\+amount, F\+I\+LE $\ast$out)
+static int \mbox{\hyperlink{functions_8cpp_a6de46e5ae2227917b64b6166a0dba84a}{output}} (\mbox{\hyperlink{struct_line}{Line}} $\ast$text, int string\+\_\+amount, F\+I\+LE $\ast$out)
 \begin{DoxyCompactList}\small\item\em Функция вывода текста \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{functions_8cpp_a6f39d1f8ff53b095e4176d03eb150ebe}{make\+Onegin\+Great\+Again}} (F\+I\+LE $\ast$fp, F\+I\+LE $\ast$sorted\+\_\+alphabetically, F\+I\+LE $\ast$sorted\+\_\+reverse, F\+I\+LE $\ast$original\+\_\+text)
 \begin{DoxyCompactList}\small\item\em Главная функция, вызывающая сортировку \end{DoxyCompactList}\item 
@@ -45,21 +42,12 @@ int \mbox{\hyperlink{functions_8cpp_aa72568d0cf300221e9fea4e11ef224a7}{Onegin\+T
 \begin{DoxyCompactList}\small\item\em Unitest. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Макросы}
-\mbox{\Hypertarget{functions_8cpp_a475433d0b5291ae1ae6b4ad04e0f5b2c}\label{functions_8cpp_a475433d0b5291ae1ae6b4ad04e0f5b2c}} 
-\index{functions.cpp@{functions.cpp}!TITLE\_H@{TITLE\_H}}
-\index{TITLE\_H@{TITLE\_H}!functions.cpp@{functions.cpp}}
-\doxysubsubsection{\texorpdfstring{TITLE\_H}{TITLE\_H}}
-{\footnotesize\ttfamily \#define T\+I\+T\+L\+E\+\_\+H}
-
-
-
 \doxysubsection{Функции}
-\mbox{\Hypertarget{functions_8cpp_ae4af485076d68a718ee4f0b19c413da3}\label{functions_8cpp_ae4af485076d68a718ee4f0b19c413da3}} 
+\mbox{\Hypertarget{functions_8cpp_adbd5f1c23bb9555a70094661e9773826}\label{functions_8cpp_adbd5f1c23bb9555a70094661e9773826}} 
 \index{functions.cpp@{functions.cpp}!create\_new\_poem@{create\_new\_poem}}
 \index{create\_new\_poem@{create\_new\_poem}!functions.cpp@{functions.cpp}}
 \doxysubsubsection{\texorpdfstring{create\_new\_poem()}{create\_new\_poem()}}
-{\footnotesize\ttfamily static int create\+\_\+new\+\_\+poem (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_text}{Text}} $\ast$}]{text,  }\item[{int}]{string\+\_\+amount }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static int create\+\_\+new\+\_\+poem (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_line}{Line}} $\ast$}]{text,  }\item[{int}]{string\+\_\+amount }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -73,13 +61,33 @@ int \mbox{\hyperlink{functions_8cpp_aa72568d0cf300221e9fea4e11ef224a7}{Onegin\+T
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Возвращает}
-1 если функция завершилась успешно, 0 в случае ошибки 
+0 если функция завершилась успешно, 1 в случае ошибки 
 \end{DoxyReturn}
-\mbox{\Hypertarget{functions_8cpp_afd41ebce71e69be2e750d6efee96386e}\label{functions_8cpp_afd41ebce71e69be2e750d6efee96386e}} 
+\mbox{\Hypertarget{functions_8cpp_aef7cc057ac05e1ebeec9e217ebb56bfa}\label{functions_8cpp_aef7cc057ac05e1ebeec9e217ebb56bfa}} 
+\index{functions.cpp@{functions.cpp}!fileLength@{fileLength}}
+\index{fileLength@{fileLength}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{fileLength()}{fileLength()}}
+{\footnotesize\ttfamily static int file\+Length (\begin{DoxyParamCaption}\item[{long $\ast$}]{file\+\_\+length,  }\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Функция измерения длины файла 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}long} & int$\ast$\mbox{]} file\+\_\+length Переменная, куда будет записана длина файла \\
+\hline
+{\em \mbox{[}\+F\+I\+L\+E$\ast$\mbox{]}} & fp Указатель на файл, длину которого надо узнать \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+0 если функция завершилась успешно, 1 в случае ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{functions_8cpp_af9fc5c1c4f197c7f7bc06b08c76a862a}\label{functions_8cpp_af9fc5c1c4f197c7f7bc06b08c76a862a}} 
 \index{functions.cpp@{functions.cpp}!input@{input}}
 \index{input@{input}!functions.cpp@{functions.cpp}}
 \doxysubsubsection{\texorpdfstring{input()}{input()}}
-{\footnotesize\ttfamily static char $\ast$ input (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{int $\ast$}]{string\+\_\+amount }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static int input (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{int $\ast$}]{string\+\_\+amount,  }\item[{char $\ast$}]{text\+\_\+buffer,  }\item[{long}]{file\+\_\+length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -91,9 +99,13 @@ int \mbox{\hyperlink{functions_8cpp_aa72568d0cf300221e9fea4e11ef224a7}{Onegin\+T
 \hline
 {\em \mbox{[}int$\ast$\mbox{]}} & string\+\_\+amount указатель на число строк в тексте \\
 \hline
+{\em \mbox{[}char$\ast$\mbox{]}} & text\+\_\+buffer Буфер. хранящий весь текст целиком \\
+\hline
+{\em \mbox{[}long} & ing\mbox{]} file\+\_\+length Общее количество символов в файле \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Возвращает}
-1 если функция завершилась успешно, 0 в случае ошибки
+0 если функция завершилась успешно, 1 в случае ошибки
 \end{DoxyReturn}
 Функция считывает текст из файла, записывая значения числа строк и общего числа символов.
 
@@ -125,7 +137,7 @@ int \mbox{\hyperlink{functions_8cpp_aa72568d0cf300221e9fea4e11ef224a7}{Onegin\+T
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Возвращает}
-1 если функция завершилась успешно, 0 в случае ошибки 
+0 если функция завершилась успешно, 1 в случае ошибки 
 \end{DoxyReturn}
 \mbox{\Hypertarget{functions_8cpp_aa72568d0cf300221e9fea4e11ef224a7}\label{functions_8cpp_aa72568d0cf300221e9fea4e11ef224a7}} 
 \index{functions.cpp@{functions.cpp}!OneginTest@{OneginTest}}
@@ -138,13 +150,13 @@ int \mbox{\hyperlink{functions_8cpp_aa72568d0cf300221e9fea4e11ef224a7}{Onegin\+T
 Unitest. 
 
 \begin{DoxyReturn}{Возвращает}
-1 если функция завершилась успешно, 0 в случае ошибки 
+0 если функция завершилась успешно, 1 в случае ошибки 
 \end{DoxyReturn}
-\mbox{\Hypertarget{functions_8cpp_a373f09f8f11110392f44ec1a8bc2463d}\label{functions_8cpp_a373f09f8f11110392f44ec1a8bc2463d}} 
+\mbox{\Hypertarget{functions_8cpp_a6de46e5ae2227917b64b6166a0dba84a}\label{functions_8cpp_a6de46e5ae2227917b64b6166a0dba84a}} 
 \index{functions.cpp@{functions.cpp}!output@{output}}
 \index{output@{output}!functions.cpp@{functions.cpp}}
 \doxysubsubsection{\texorpdfstring{output()}{output()}}
-{\footnotesize\ttfamily static int output (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_text}{Text}} $\ast$}]{text,  }\item[{int}]{string\+\_\+amount,  }\item[{F\+I\+LE $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static int output (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_line}{Line}} $\ast$}]{text,  }\item[{int}]{string\+\_\+amount,  }\item[{F\+I\+LE $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -160,7 +172,7 @@ Unitest.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Возвращает}
-1 если функция завершилась успешно, 0 в случае ошибки
+0 если функция завершилась успешно, 1 в случае ошибки
 \end{DoxyReturn}
 Функция выыодит отсортированный текст построчно. \mbox{\Hypertarget{functions_8cpp_a6957c41860ee2da2dcd485d539684bda}\label{functions_8cpp_a6957c41860ee2da2dcd485d539684bda}} 
 \index{functions.cpp@{functions.cpp}!output\_original@{output\_original}}
@@ -182,13 +194,13 @@ Unitest.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Возвращает}
-1 если функция завершилась успешно, 0 в случае ошибки 
+0 если функция завершилась успешно, 1 в случае ошибки 
 \end{DoxyReturn}
-\mbox{\Hypertarget{functions_8cpp_ae4fe4627e12433c2ff747fccdb45fbbe}\label{functions_8cpp_ae4fe4627e12433c2ff747fccdb45fbbe}} 
+\mbox{\Hypertarget{functions_8cpp_a082440f5db76c9d31efd1e338634b784}\label{functions_8cpp_a082440f5db76c9d31efd1e338634b784}} 
 \index{functions.cpp@{functions.cpp}!sorting@{sorting}}
 \index{sorting@{sorting}!functions.cpp@{functions.cpp}}
 \doxysubsubsection{\texorpdfstring{sorting()}{sorting()}}
-{\footnotesize\ttfamily static int sorting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_text}{Text}} $\ast$}]{text,  }\item[{int}]{string\+\_\+amount }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static int sorting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_line}{Line}} $\ast$}]{text,  }\item[{int}]{string\+\_\+amount }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -202,7 +214,7 @@ Unitest.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Возвращает}
-1 если функция завершилась успешно, 0 в случае ошибки 
+0 если функция завершилась успешно, 1 в случае ошибки 
 \end{DoxyReturn}
 \mbox{\Hypertarget{functions_8cpp_a8156a94ac984c913f305fc03c48d5262}\label{functions_8cpp_a8156a94ac984c913f305fc03c48d5262}} 
 \index{functions.cpp@{functions.cpp}!strcmp1@{strcmp1}}
@@ -244,11 +256,11 @@ Unitest.
 \begin{DoxyReturn}{Возвращает}
 1, если первая строка должна идти после второй и -\/1, если первая строка должна идти перед второй, 0 в случае ошибки 
 \end{DoxyReturn}
-\mbox{\Hypertarget{functions_8cpp_ac2fe464d0027ba54965323477bea5a3b}\label{functions_8cpp_ac2fe464d0027ba54965323477bea5a3b}} 
+\mbox{\Hypertarget{functions_8cpp_a6e168e8f1b21596322d247e742f38bc7}\label{functions_8cpp_a6e168e8f1b21596322d247e742f38bc7}} 
 \index{functions.cpp@{functions.cpp}!to\_strings@{to\_strings}}
 \index{to\_strings@{to\_strings}!functions.cpp@{functions.cpp}}
 \doxysubsubsection{\texorpdfstring{to\_strings()}{to\_strings()}}
-{\footnotesize\ttfamily static int to\+\_\+strings (\begin{DoxyParamCaption}\item[{char $\ast$}]{text\+\_\+buffer,  }\item[{\mbox{\hyperlink{struct_text}{Text}} $\ast$}]{text,  }\item[{int}]{string\+\_\+amount }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static int to\+\_\+strings (\begin{DoxyParamCaption}\item[{char $\ast$}]{text\+\_\+buffer,  }\item[{\mbox{\hyperlink{struct_line}{Line}} $\ast$}]{text,  }\item[{int}]{string\+\_\+amount }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -256,7 +268,7 @@ Unitest.
 
 
 \begin{DoxyParams}{Аргументы}
-{\em \mbox{[}char$\ast$\mbox{]}} & text\+\_\+buffer УМассив всех символов текста \\
+{\em \mbox{[}char$\ast$\mbox{]}} & text\+\_\+buffer Массив всех символов текста \\
 \hline
 {\em \mbox{[}\+Text$\ast$\mbox{]}} & text Двумерный массив, хранящий текст построчно \\
 \hline
@@ -264,6 +276,6 @@ Unitest.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Возвращает}
-1 если функция завершилась успешно, 0 в случае ошибки
+0 если функция завершилась успешно, 1 в случае ошибки
 \end{DoxyReturn}
 Данная функция разбивает массив с текстом на строки для дальнейшей сортировки 

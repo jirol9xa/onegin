@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['main_27',['main',['../main_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main.cpp']]],
-  ['makeonegingreatagain_28',['makeOneginGreatAgain',['../functions_8cpp.html#a6f39d1f8ff53b095e4176d03eb150ebe',1,'makeOneginGreatAgain(FILE *fp, FILE *sorted_alphabetically, FILE *sorted_reverse, FILE *original_text):&#160;functions.cpp'],['../title_8h.html#a6f39d1f8ff53b095e4176d03eb150ebe',1,'makeOneginGreatAgain(FILE *fp, FILE *sorted_alphabetically, FILE *sorted_reverse, FILE *original_text):&#160;functions.cpp']]]
+  ['input_26',['input',['../functions_8cpp.html#af9fc5c1c4f197c7f7bc06b08c76a862a',1,'functions.cpp']]],
+  ['is_5fbad_5fsymbol_27',['is_bad_symbol',['../functions_8cpp.html#afd2d9871758c0f84796cf9fbe5a15e73',1,'functions.cpp']]]
 ];

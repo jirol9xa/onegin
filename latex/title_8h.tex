@@ -1,10 +1,12 @@
 \hypertarget{title_8h}{}\doxysection{Файл title.\+h}
 \label{title_8h}\index{title.h@{title.h}}
-{\ttfamily \#include $<$locale.\+h$>$}\newline
-Граф включаемых заголовочных файлов для title.\+h\+:
-% FIG 0
 Граф файлов, в которые включается этот файл\+:
-% FIG 1
+% FIG 0
+\doxysubsection*{Макросы}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{title_8h_a7d98f060441609ae4bd820d522f06690}{P\+R\+I\+N\+T\+\_\+\+E\+R\+R\+OR}}(arg)
+\end{DoxyCompactItemize}
 \doxysubsection*{Функции}
 \begin{DoxyCompactItemize}
 \item 
@@ -12,6 +14,23 @@ int \mbox{\hyperlink{title_8h_a6f39d1f8ff53b095e4176d03eb150ebe}{make\+Onegin\+G
 \begin{DoxyCompactList}\small\item\em Главная функция, вызывающая сортировку \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{title_8h_aa72568d0cf300221e9fea4e11ef224a7}{Onegin\+Test}} ()
 \begin{DoxyCompactList}\small\item\em Unitest. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Макросы}
+\mbox{\Hypertarget{title_8h_a7d98f060441609ae4bd820d522f06690}\label{title_8h_a7d98f060441609ae4bd820d522f06690}} 
+\index{title.h@{title.h}!PRINT\_ERROR@{PRINT\_ERROR}}
+\index{PRINT\_ERROR@{PRINT\_ERROR}!title.h@{title.h}}
+\doxysubsubsection{\texorpdfstring{PRINT\_ERROR}{PRINT\_ERROR}}
+{\footnotesize\ttfamily \#define P\+R\+I\+N\+T\+\_\+\+E\+R\+R\+OR(\begin{DoxyParamCaption}\item[{}]{arg }\end{DoxyParamCaption})}
+
+{\bfseries Макроопределение\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{      \{                                               \(\backslash\)}
+\DoxyCodeLine{      printf(\textcolor{stringliteral}{"[\%s:\%d] -\/-\/-\/ \%s failed\(\backslash\)n"}, \_\_func\_\_, \_\_LINE\_\_, \#arg);          \(\backslash\)}
+\DoxyCodeLine{      return 1;                                                              \(\backslash\)}
+\DoxyCodeLine{   \}}
+
+\end{DoxyCode}
 
 
 \doxysubsection{Функции}
@@ -37,7 +56,7 @@ int \mbox{\hyperlink{title_8h_aa72568d0cf300221e9fea4e11ef224a7}{Onegin\+Test}} 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Возвращает}
-1 если функция завершилась успешно, 0 в случае ошибки 
+0 если функция завершилась успешно, 1 в случае ошибки 
 \end{DoxyReturn}
 \mbox{\Hypertarget{title_8h_aa72568d0cf300221e9fea4e11ef224a7}\label{title_8h_aa72568d0cf300221e9fea4e11ef224a7}} 
 \index{title.h@{title.h}!OneginTest@{OneginTest}}
@@ -50,5 +69,5 @@ int \mbox{\hyperlink{title_8h_aa72568d0cf300221e9fea4e11ef224a7}{Onegin\+Test}} 
 Unitest. 
 
 \begin{DoxyReturn}{Возвращает}
-1 если функция завершилась успешно, 0 в случае ошибки 
+0 если функция завершилась успешно, 1 в случае ошибки 
 \end{DoxyReturn}

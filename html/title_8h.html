@@ -62,27 +62,26 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Макросы</a> &#124;
 <a href="#func-members">Функции</a>  </div>
   <div class="headertitle">
 <div class="title">Файл title.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;locale.h&gt;</code><br />
-</div><div class="textblock"><div class="dynheader">
-Граф включаемых заголовочных файлов для title.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="title_8h__incl.png" border="0" usemap="#title_8h" alt=""/></div>
-<!-- MAP 0 -->
-</div>
-</div><div class="textblock"><div class="dynheader">
+<div class="textblock"><div class="dynheader">
 Граф файлов, в которые включается этот файл:</div>
 <div class="dyncontent">
 <div class="center"><img src="title_8h__dep__incl.png" border="0" usemap="#title_8hdep" alt=""/></div>
-<!-- MAP 1 -->
+<!-- MAP 0 -->
 </div>
 </div>
 <p><a href="title_8h_source.html">См. исходные тексты.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Макросы</h2></td></tr>
+<tr class="memitem:a7d98f060441609ae4bd820d522f06690"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="title_8h.html#a7d98f060441609ae4bd820d522f06690">PRINT_ERROR</a>(arg)</td></tr>
+<tr class="separator:a7d98f060441609ae4bd820d522f06690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Функции</h2></td></tr>
 <tr class="memitem:a6f39d1f8ff53b095e4176d03eb150ebe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="title_8h.html#a6f39d1f8ff53b095e4176d03eb150ebe">makeOneginGreatAgain</a> (FILE *fp, FILE *sorted_alphabetically, FILE *sorted_reverse, FILE *original_text)</td></tr>
@@ -92,6 +91,29 @@ $(function() {
 <tr class="memdesc:aa72568d0cf300221e9fea4e11ef224a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unitest.  <a href="title_8h.html#aa72568d0cf300221e9fea4e11ef224a7">Подробнее...</a><br /></td></tr>
 <tr class="separator:aa72568d0cf300221e9fea4e11ef224a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Макросы</h2>
+<a id="a7d98f060441609ae4bd820d522f06690"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d98f060441609ae4bd820d522f06690">&#9670;&nbsp;</a></span>PRINT_ERROR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PRINT_ERROR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">arg</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Макроопределение:</b><div class="fragment"><div class="line">      {                                               \</div>
+<div class="line">      printf(<span class="stringliteral">&quot;[%s:%d] --- %s failed\n&quot;</span>, __func__, __LINE__, #arg);          \</div>
+<div class="line">      return 1;                                                              \</div>
+<div class="line">   }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <h2 class="groupheader">Функции</h2>
 <a id="a6f39d1f8ff53b095e4176d03eb150ebe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6f39d1f8ff53b095e4176d03eb150ebe">&#9670;&nbsp;</a></span>makeOneginGreatAgain()</h2>
@@ -141,7 +163,7 @@ $(function() {
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Возвращает</dt><dd>1 если функция завершилась успешно, 0 в случае ошибки </dd></dl>
+<dl class="section return"><dt>Возвращает</dt><dd>0 если функция завершилась успешно, 1 в случае ошибки </dd></dl>
 
 </div>
 </div>
@@ -161,7 +183,7 @@ $(function() {
 </div><div class="memdoc">
 
 <p>Unitest. </p>
-<dl class="section return"><dt>Возвращает</dt><dd>1 если функция завершилась успешно, 0 в случае ошибки </dd></dl>
+<dl class="section return"><dt>Возвращает</dt><dd>0 если функция завершилась успешно, 1 в случае ошибки </dd></dl>
 
 </div>
 </div>

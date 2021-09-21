@@ -9,22 +9,21 @@
 typedef struct{
     char* string;
     int length;
-} Text;
+} Line;
 
 
-static char * input(FILE* fp,  int* string_amount);
-static int to_strings(char* text_buffer, Text* text, int string_amount);
+static int input(FILE* fp,  int* string_amount, char* text_buffer, long file_length);
+static int to_strings(char* text_buffer, Line* text, int string_amount);
 static int fileLength(long * file_length, FILE* fp);
 
-static int sorting(Text* text, int string_amount);
-static int create_new_poem(Text* text, int string_amount);
+static int sorting(Line* text, int string_amount);
+static int create_new_poem(Line* text, int string_amount);
 static inline int is_bad_symbol(char c);
 static int strcmp_reverse(const void* str1, const void* str2);
 static int strcmp1(const void* string1, const void* string2);
 
 static int output_original(char* text_buffer, int string_amount, FILE* original_text);
-static int output(Text* text, int string_amount, FILE* sorted);
-
+static int output(Line* text, int string_amount, FILE* out);
 
 
 
@@ -37,99 +36,102 @@ static int output(Text* text, int string_amount, FILE* sorted);
             куда будет записана обратная сортировка
     \param  [FILE*] sorted_alphabetically Указатель на файл,
             куда будет записан оригинальный текст
-    \return 1 если функция завершилась успешно,
-            0 в случае ошибки
+    \return 0 если функция завершилась успешно,
+            1 в случае ошибки
 */ 
 int makeOneginGreatAgain(FILE* fp, FILE* sorted_alphabetically, FILE* sorted_reverse, FILE* original_text){
     if (!fp){
-        PRINT_ERROR(fp);
+        PRINT_ERROR(fp)
     }
 
-    Text* text = nullptr; 
+    Line* text = nullptr; 
     int string_amount = 0;
-    char * text_buffer = nullptr;
+    char* text_buffer = nullptr; 
 
-    if (!(text_buffer = input(fp, &string_amount))){
-        PRINT_ERROR(text_buffer);
-    }
-        
-    text = (Text*) calloc(string_amount, sizeof(Text)); 
-    if (!text){
-        PRINT_ERROR(text);
+    long file_length = 0;
+    if (fileLength(&file_length, fp)){
+        PRINT_ERROR(fileLength);
     }
     
-
-
-    if (!to_strings(text_buffer, text, string_amount)){
-        PRINT_ERROR(to_strings);
+    if ((text_buffer = (char *) calloc(file_length + 1, sizeof(char))) == nullptr){
+        PRINT_ERROR(text_buffer);
     }
 
-    if (!sorting(text, string_amount)){
-        PRINT_ERROR(sorting);
+    if (input(fp, &string_amount, text_buffer, file_length)){
+        PRINT_ERROR(input)
     }
-    if (!output(text, string_amount, sorted_alphabetically)){
-        PRINT_ERROR(output);
-    }
-
-    if (!create_new_poem(text, string_amount)){
-        PRINT_ERROR(create_new_poem);
-    }
-    if (!output(text, string_amount, sorted_reverse)){
-        PRINT_ERROR(output);
+        
+    text = (Line*) calloc(string_amount, sizeof(Line)); 
+    if (text == nullptr){
+        PRINT_ERROR(text)
     }
 
-    if (!output_original(text_buffer, string_amount, original_text)){
-        PRINT_ERROR(output_original);
+    if (to_strings(text_buffer, text, string_amount)){
+        PRINT_ERROR(to_strings)
+    }
+
+    if (sorting(text, string_amount)){
+        PRINT_ERROR(sorting)
+    }
+    if (output(text, string_amount, sorted_alphabetically)){
+        PRINT_ERROR(output)
+    }
+
+    if (create_new_poem(text, string_amount)){
+        PRINT_ERROR(create_new_poem)
+    }
+    if (output(text, string_amount, sorted_reverse)){
+        PRINT_ERROR(output)
+    }
+
+    if (output_original(text_buffer, string_amount, original_text)){
+        PRINT_ERROR(output_original)
     }
 
     
     free(text);
     free(text_buffer);
-    return 1;
+    return 0;
 }
+
 
 
 /*!
     \brief   Функция ввода текста из файла
     \param   [FILE*] fp указатель на файл, из которого считывается текст
     \param   [int*] string_amount указатель на число строк в тексте
-    \return  1 если функция завершилась успешно,
-             0 в случае ошибки
+    \param   [char*] text_buffer Буфер. хранящий весь текст целиком
+    \param   [long ing] file_length Общее количество символов в файле
+    \return  0 если функция завершилась успешно,
+             1 в случае ошибки
     \details Функция считывает текст из файла, записывая значения 
              числа строк и общего числа символов.
     \details Функция возвращает указатель на массив с текстом.
 */
-static char* input(FILE* fp, int* string_amount){
+static int input(FILE* fp, int* string_amount, char* text_buffer, long file_length){
     if (!fp) {
-        PRINT_ERROR(fp);
+        PRINT_ERROR(fp)
     }
     if (!string_amount){
-        PRINT_ERROR(string_amount);
+        PRINT_ERROR(string_amount)
+    }
+    if (!text_buffer){
+        PRINT_ERROR(text_buffer)
     }
 
-    char* text_buffer = nullptr; 
-    long int last = 0;
+    fread(text_buffer, sizeof(char), file_length, fp);
+    text_buffer[file_length] = '\0';
 
-    long file_length = 0;
-    if (!fileLength(&file_length, fp)){
-        PRINT_ERROR(fileLength);
-    }
-    
-    if (!(text_buffer = (char *) calloc(last + 1, sizeof(char)))){
-        PRINT_ERROR(text_buffer);
-    }
-
-    fread(text_buffer, sizeof(char), last, fp);
-    text_buffer[last] = '\0';
-
-    for (int i = 0; i < last; i++){
+    for (int i = 0; i < file_length; i++){
         if (text_buffer[i] == '\n'){
             (*string_amount)++;
         }
     }
 
-    return text_buffer;
+    return 0;
 }
+
+
 
 /*!
     \brief   Функция вывода текста
@@ -137,23 +139,23 @@ static char* input(FILE* fp, int* string_amount){
     \param   [int] string_amount Число строк в массиве
     \param   [FILE*] out Указатель на файл, куда будет
              происходить печать текста
-    \return  1 если функция завершилась успешно,
-             0 в случае ошибки
+    \return  0 если функция завершилась успешно,
+             1 в случае ошибки
     \details Функция выыодит отсортированный текст построчно.
 */
-static int output(Text* text, int string_amount, FILE* out){
+static int output(Line* text, int string_amount, FILE* out){
     if (!text){
-        PRINT_ERROR(text);
+        PRINT_ERROR(text)
     }
     if (!out){
-        PRINT_ERROR(out);
+        PRINT_ERROR(out)
     }
 
     for (int i = 0; i < string_amount; i++){
         fprintf(out, "%s \n", text[i].string);
     }
 
-    return 1;
+    return 0;
 }
 
 
@@ -163,17 +165,17 @@ static int output(Text* text, int string_amount, FILE* out){
     \param   [char*] text_buffer Массив всех символов текста
     \param   [Text*] text Двумерный массив, хранящий текст построчно
     \param   [int] string_amount Общее число строк в тексте
-    \return  1 если функция завершилась успешно,
-             0 в случае ошибки
+    \return  0 если функция завершилась успешно,
+             1 в случае ошибки
     \details Данная функция разбивает массив с текстом на 
              строки для дальнейшей сортировки
 */
-static int to_strings(char* text_buffer, Text* text, int string_amount){
+static int to_strings(char* text_buffer, Line* text, int string_amount){
     if (!text_buffer){
-        PRINT_ERROR(text_buffer);
+        PRINT_ERROR(text_buffer)
     }
     if (!text){
-        PRINT_ERROR(text);
+        PRINT_ERROR(text)
     }
 
     for (int i = 0; i < string_amount; i++){
@@ -189,7 +191,7 @@ static int to_strings(char* text_buffer, Text* text, int string_amount){
         text_buffer++;   
     }
 
-    return 1;
+    return 0;
 }
 
 
@@ -198,17 +200,17 @@ static int to_strings(char* text_buffer, Text* text, int string_amount){
     \brief  Функция сортировки
     \param  [Text*] text Массив, хранящий текст построчно
     \param  [int] string_amount Число строк в тексте
-    \return 1 если функция завершилась успешно,
-            0 в случае ошибки
+    \return 0 если функция завершилась успешно,
+            1 в случае ошибки
 */
-static int sorting(Text* text, int string_amount){
+static int sorting(Line* text, int string_amount){
     if (!text){
-        PRINT_ERROR(text);
+        PRINT_ERROR(text)
     }
 
-    qsort(text, string_amount, sizeof(Text), strcmp1);
+    qsort(text, string_amount, sizeof(Line), strcmp1);
 
-    return 1;
+    return 0;
 }
 
 
@@ -217,17 +219,17 @@ static int sorting(Text* text, int string_amount){
     \brief  Функция сортировки по последнему символу
     \param  [Text*] text Массив структур, хранящий текст построчно
     \param  [int] string_amount Число строк в тексте
-    \return 1 если функция завершилась успешно,
-            0 в случае ошибки
+    \return 0 если функция завершилась успешно,
+            1 в случае ошибки
 */
-static int create_new_poem(Text* text, int string_amount){
+static int create_new_poem(Line* text, int string_amount){
     if (!text){
-        PRINT_ERROR(text);
+        PRINT_ERROR(text)
     }
 
-    qsort(text, string_amount, sizeof(Text), strcmp_reverse);
+    qsort(text, string_amount, sizeof(Line), strcmp_reverse);
 
-    return 1;
+    return 0;
 }
 
 
@@ -243,34 +245,34 @@ static int create_new_poem(Text* text, int string_amount){
 */
 static int strcmp1(const void* str1, const void* str2){
     if (!str1){
-        PRINT_ERROR(str1);
+        PRINT_ERROR(str1)
     }
     if (!str2){ 
-        PRINT_ERROR(str2);
+        PRINT_ERROR(str2)
     }
 
-    const Text string1 = *(const Text*) str1;
-    const Text string2 = *(const Text*) str2;
+    const Line string1 = *(const Line*) str1;
+    const Line string2 = *(const Line*) str2;
 
     char symbol1 = 0, symbol2 = 0;
     int i = 0, j = 0;
 
-    while(symbol1 == symbol2 && i < string1.length && j < string2.length){
+    while (symbol1 == symbol2 && i < string1.length && j < string2.length){
         symbol1 = 0;
         symbol2 = 0;
 
-        while(!isalpha(string1.string[i]) && i < string1.length){
+        while (!isalpha(string1.string[i]) && i < string1.length){
             i++;
         }
 
-        symbol1 += toupper(string1.string[i]);
+        symbol1 = toupper(string1.string[i]);
         i += (i < string1.length);
 
-        while(!isalpha(string2.string[j]) && j < string2.length){
+        while (!isalpha(string2.string[j]) && j < string2.length){
             j++;
         }
 
-        symbol2 += toupper(string2.string[j]);
+        symbol2 = toupper(string2.string[j]);
         j += (j < string2.length);
         
     }
@@ -296,35 +298,35 @@ static int strcmp1(const void* str1, const void* str2){
 */
 static int strcmp_reverse(const void* str1, const void* str2){
     if (!str1){
-        PRINT_ERROR(str1);
+        PRINT_ERROR(str1)
     }
     if (!str2){
-        PRINT_ERROR(str2);
+        PRINT_ERROR(str2)
     }
 
-    const Text string1 = *(const Text*) str1;
-    const Text string2 = *(const Text*) str2;
+    const Line string1 = *(const Line*) str1;
+    const Line string2 = *(const Line*) str2;
 
     int symbol1 = 0, symbol2 = 0;
     int i = string1.length - 1;
     int j = string2.length - 1;
 
-    while(i >= 0 && j >= 0 && symbol1 == symbol2){
+    while (i >= 0 && j >= 0 && symbol1 == symbol2){
         symbol1 = 0;
         symbol2 = 0;
 
-        while(!isalpha(string1.string[i]) && i >= 0){
+        while (!isalpha(string1.string[i]) && i >= 0){
             i--;
         }
 
-        symbol1 += toupper(string1.string[i]);
+        symbol1 = toupper(string1.string[i]);
         i -= (i >= 0);
 
-        while(!isalpha(string2.string[j]) && j >= 0){
+        while (!isalpha(string2.string[j]) && j >= 0){
             j--;
         }
 
-        symbol2 += toupper(string2.string[j]);
+        symbol2 = toupper(string2.string[j]);
         j -= (j >= 0);
     }
 
@@ -339,59 +341,75 @@ static int strcmp_reverse(const void* str1, const void* str2){
 
 /*!
     \brief  Unitest
-    \return 1 если функция завершилась успешно,
-            0 в случае ошибки
+    \return 0 если функция завершилась успешно,
+            1 в случае ошибки
 */
 int OneginTest(){
-    int flag = 1;
+    int flag = 0;
 
     FILE* fp = NULL;
     FILE* fp_result = NULL;
     fp = fopen("TEST", "r");
     fp_result = fopen("TEST_RESULT", "r");
 
-    Text* text = nullptr;
+    Line* text = nullptr;
     int string_amount = 0;
     char* text_buffer = nullptr;
+    long file_length = 0;
 
-    if (!(text_buffer = input(fp, &string_amount))){
-        PRINT_ERROR(text_buffer);
+    if (fileLength(&file_length, fp)){
+        PRINT_ERROR(fileLength)
     }
 
-    if (!(text = (Text*) calloc(string_amount, sizeof(Text)))){
-        PRINT_ERROR(text);
+    if (!(text_buffer = (char*) calloc(file_length, sizeof(char)))){
+        PRINT_ERROR(text_buffer)
     }
 
-    if (!to_strings(text_buffer, text, string_amount)){
-        PRINT_ERROR(to_strings);
-    }
-    if (!sorting(text, string_amount)){
-        PRINT_ERROR(sorting);
+    if (input(fp, &string_amount, text_buffer, file_length)){
+        PRINT_ERROR(text_buffer)
     }
 
+    if (!(text = (Line*) calloc(string_amount, sizeof(Line)))){
+        PRINT_ERROR(text)
+    }
+
+    if (to_strings(text_buffer, text, string_amount)){
+        PRINT_ERROR(to_strings)
+    }
+    if (sorting(text, string_amount)){
+        PRINT_ERROR(sorting)
+    }
 
 
     char* text_buffer_res = nullptr;
-    Text* text_res = nullptr;
+    Line* text_res = nullptr;
     int string_amount1 = 0;
+    long file_length_res = 0;
 
-    if (!(text_buffer_res = input(fp_result, &string_amount1))){
-        PRINT_ERROR(text_buffer_res);
+    if (fileLength(&file_length_res, fp_result)){
+        PRINT_ERROR(fileLength);
     }
 
-    if (!(text_res = (Text*) calloc(string_amount1, sizeof(Text)))){
-        PRINT_ERROR(text_res);
+    if (!(text_buffer_res = (char*) calloc(file_length_res, sizeof(char)))){
+        PRINT_ERROR(text_buffer_res)
     }
 
-    if (!to_strings(text_buffer_res, text_res, string_amount1)){
-       PRINT_ERROR(to_strings);
+    if (input(fp_result, &string_amount1, text_buffer_res, file_length_res)){
+        PRINT_ERROR(input)
     }
 
+    if (!(text_res = (Line*) calloc(string_amount1, sizeof(Line)))){
+        PRINT_ERROR(text_res)
+    }
+
+    if (to_strings(text_buffer_res, text_res, string_amount1)){
+       PRINT_ERROR(to_strings)
+    }
 
 
     for (int i = 0; i < string_amount; i++){
         if (strcmp(text[i].string, text_res[i].string)){
-            flag = 0;
+            flag = 1;
 
             printf("Test failed on %d string \n", i);
             printf("Expected: %s \n", text_res[i].string);
@@ -420,12 +438,12 @@ int OneginTest(){
     \param  [int] string_amount Число строк в тексте
     \param  [FILE*] out Указатель на файл, куда
             будет происходить запись
-    \return 1 если функция завершилась успешно,
-            0 в случае ошибки
+    \return 0 если функция завершилась успешно,
+            1 в случае ошибки
 */
 static int output_original(char* text_buffer, int string_amount, FILE* out){
     if (!text_buffer){
-        PRINT_ERROR(text_buffer);
+        PRINT_ERROR(text_buffer)
     }
 
     for (int i = 0; i < string_amount; i++){
@@ -433,20 +451,38 @@ static int output_original(char* text_buffer, int string_amount, FILE* out){
         text_buffer += strlen((const char*) text_buffer) + 1;
     }
     
-    return 1;
+    return 0;
 }
 
-
+/*!
+    \brief  Функция измерения длины файла
+    \param  [long int*] file_length Переменная, 
+            куда будет записана длина файла
+    \param  [FILE*] fp Указатель на файл, длину 
+            которого надо узнать
+    \return 0 если функция завершилась успешно,
+            1 в случае ошибки
+*/
 static int fileLength(long * file_length, FILE* fp){
-    if (!fseek(fp, 0L, SEEK_END)){
-        PRINT_ERROR(fseek);
+    if (!file_length){
+        PRINT_ERROR(file_length)
+    }
+    if (!fp){
+        PRINT_ERROR(fp)
+    }
+
+    if (fseek(fp, 0L, SEEK_END)){
+        PRINT_ERROR(fseek)
     }
 
     *file_length = ftell(fp);
-
-    if (!fseek(fp, 0L, SEEK_SET)){
-        PRINT_ERROR(fseek);
+    if (!file_length){
+        PRINT_ERROR(file_length)
     }
 
-    return 1;
+    if (fseek(fp, 0L, SEEK_SET)){
+        PRINT_ERROR(fseek)
+    }
+
+    return 0;
 }
