@@ -14,6 +14,58 @@ const char* BAD_SYMBOLS = "0987654321 ,. ?! :;#@ « \" \\ \' ";
 
 
 /*!
+    \brief  Главная функция, вызывающая сортировку
+    \param  [FILE*] fp Указатель на файл с исходным текстом
+    \param  [FILE*] sorted_alphabetically Указатель на файл,
+            куда будет записана прямая сортировка
+    \param  [FILE*] sorted_alphabetically Указатель на файл,
+            куда будет записана обратная сортировка
+    \param  [FILE*] sorted_alphabetically Указатель на файл,
+            куда будет записан оригинальный текст
+    \return 0 если функция завершилась успешно,
+            1 в случае ошибки
+   */ 
+int makeOneginGreatAgain(FILE* fp, FILE* out) {
+    CHECK_PTR(fp)
+    CHECK_PTR(out)
+
+    Poem Onegin = {};
+    Onegin.input_file = fp;
+    Onegin.output_file = out;
+  
+    CHECK_FUNC(fileLength(&(Onegin.file_length), fp))
+    
+    Onegin.text_buffer = (char *) calloc(Onegin.file_length + 1, sizeof(char));
+    CHECK_PTR(Onegin.text_buffer)
+
+    input(fp, &(Onegin.string_amount), Onegin.text_buffer, Onegin.file_length);
+        
+    Onegin.text = (Line*) calloc(Onegin.string_amount, sizeof(Line)); 
+    CHECK_PTR(Onegin.text)
+
+    CHECK_FUNC(to_strings(Onegin.text_buffer, Onegin.text, Onegin.string_amount))
+
+    CHECK_FUNC(sorting(Onegin.text, Onegin.string_amount))
+
+    CHECK_FUNC(output(Onegin.text, Onegin.string_amount, Onegin.output_file))
+
+    fputs("\n \n \n Now new poem: \n \n", Onegin.output_file);
+
+    CHECK_FUNC(create_new_poem(Onegin.text, Onegin.string_amount))
+
+    CHECK_FUNC(output(Onegin.text, Onegin.string_amount, Onegin.output_file))
+
+    fputs("\n \n Now original text: \n \n", Onegin.output_file);
+
+    CHECK_FUNC(output_original(Onegin.text_buffer, Onegin.string_amount, Onegin.output_file))
+
+    finish_poem(&Onegin);
+    return 0;
+}
+
+
+
+/*!
     \brief   Функция ввода текста из файла
     \param   [FILE*] fp указатель на файл, из которого считывается текст
     \param   [int*] string_amount указатель на число строк в тексте
@@ -408,10 +460,10 @@ int Qsorting(void* Array, int element_amount, size_t element_size, int (*comp)(v
 
     do {
 
-        while (comp(Arr + left * element_size, buffer) < 0) {
+        while (comp(Arr + left * element_size, buffer) < 0 && left < element_size) {
             left++;
         }
-        while (comp(buffer, Arr + right * element_size) < 0) {
+        while (comp(buffer, Arr + right * element_size) < 0 && right > 0) {
             right--;
         }
 

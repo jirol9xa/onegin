@@ -1,2 +1,2 @@
 all:
-	g++ main.cpp functions.cpp -o onegin -g
+	g++ main.cpp functions.cpp -o onegin

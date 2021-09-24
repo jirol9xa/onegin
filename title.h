@@ -1,18 +1,7 @@
 #ifndef TITLE_H
    #define TITLE_H
 
-   /*!
-    \brief  Главная функция, вызывающая сортировку
-    \param  [FILE*] fp Указатель на файл с исходным текстом
-    \param  [FILE*] sorted_alphabetically Указатель на файл,
-            куда будет записана прямая сортировка
-    \param  [FILE*] sorted_alphabetically Указатель на файл,
-            куда будет записана обратная сортировка
-    \param  [FILE*] sorted_alphabetically Указатель на файл,
-            куда будет записан оригинальный текст
-    \return 0 если функция завершилась успешно,
-            1 в случае ошибки
-   */ 
+   
    int makeOneginGreatAgain(FILE* fp, FILE* out);
    int OneginTest();
 
@@ -55,7 +44,8 @@
    int create_new_poem(Line* text, int string_amount);
    int strcmp_reverse(void* str1, void* str2);
    int strcmp_direct(void* string1, void* string2);
-   int Qsorting(void* Array, int element_amount, size_t element_size, int (*comp)(void* elem1, void* elem2), char* buffer);
+   int Qsorting(void* Array, int element_amount, size_t element_size, 
+                int (*comp)(void* elem1, void* elem2), char* buffer);
    int finish_poem(Poem* Onegin);
 
    int output_original(char* text_buffer, int string_amount, FILE* output);
