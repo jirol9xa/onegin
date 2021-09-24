@@ -5,94 +5,11 @@
 #include <ctype.h>
 #include "title.h"
                                                             
-
-typedef struct{
-    char* string;
-    int length;
-} Line;
+static int swap(void* from, void* to);
+static char* is_bad_symbol(char symbol);
 
 
-static int input(FILE* fp,  int* string_amount, char* text_buffer, long file_length);
-static int to_strings(char* text_buffer, Line* text, int string_amount);
-static int fileLength(long * file_length, FILE* fp);
-
-static int sorting(Line* text, int string_amount);
-static int create_new_poem(Line* text, int string_amount);
-static inline int is_bad_symbol(char c);
-static int strcmp_reverse(const void* str1, const void* str2);
-static int strcmp1(const void* string1, const void* string2);
-
-static int output_original(char* text_buffer, int string_amount, FILE* original_text);
-static int output(Line* text, int string_amount, FILE* out);
-
-
-
-/*!
-    \brief  Главная функция, вызывающая сортировку
-    \param  [FILE*] fp Указатель на файл с исходным текстом
-    \param  [FILE*] sorted_alphabetically Указатель на файл,
-            куда будет записана прямая сортировка
-    \param  [FILE*] sorted_alphabetically Указатель на файл,
-            куда будет записана обратная сортировка
-    \param  [FILE*] sorted_alphabetically Указатель на файл,
-            куда будет записан оригинальный текст
-    \return 0 если функция завершилась успешно,
-            1 в случае ошибки
-*/ 
-int makeOneginGreatAgain(FILE* fp, FILE* sorted_alphabetically, FILE* sorted_reverse, FILE* original_text){
-    if (!fp){
-        PRINT_ERROR(fp)
-    }
-
-    Line* text = nullptr; 
-    int string_amount = 0;
-    char* text_buffer = nullptr; 
-
-    long file_length = 0;
-    if (fileLength(&file_length, fp)){
-        PRINT_ERROR(fileLength);
-    }
-    
-    if ((text_buffer = (char *) calloc(file_length + 1, sizeof(char))) == nullptr){
-        PRINT_ERROR(text_buffer);
-    }
-
-    if (input(fp, &string_amount, text_buffer, file_length)){
-        PRINT_ERROR(input)
-    }
-        
-    text = (Line*) calloc(string_amount, sizeof(Line)); 
-    if (text == nullptr){
-        PRINT_ERROR(text)
-    }
-
-    if (to_strings(text_buffer, text, string_amount)){
-        PRINT_ERROR(to_strings)
-    }
-
-    if (sorting(text, string_amount)){
-        PRINT_ERROR(sorting)
-    }
-    if (output(text, string_amount, sorted_alphabetically)){
-        PRINT_ERROR(output)
-    }
-
-    if (create_new_poem(text, string_amount)){
-        PRINT_ERROR(create_new_poem)
-    }
-    if (output(text, string_amount, sorted_reverse)){
-        PRINT_ERROR(output)
-    }
-
-    if (output_original(text_buffer, string_amount, original_text)){
-        PRINT_ERROR(output_original)
-    }
-
-    
-    free(text);
-    free(text_buffer);
-    return 0;
-}
+const char* BAD_SYMBOLS = "0987654321 ,. ?! :;#@ \" \\ \' ";
 
 
 
@@ -108,22 +25,16 @@ int makeOneginGreatAgain(FILE* fp, FILE* sorted_alphabetically, FILE* sorted_rev
              числа строк и общего числа символов.
     \details Функция возвращает указатель на массив с текстом.
 */
-static int input(FILE* fp, int* string_amount, char* text_buffer, long file_length){
-    if (!fp) {
-        PRINT_ERROR(fp)
-    }
-    if (!string_amount){
-        PRINT_ERROR(string_amount)
-    }
-    if (!text_buffer){
-        PRINT_ERROR(text_buffer)
-    }
+int input(FILE* fp, int* string_amount, char* text_buffer, long file_length) {
+    CHECK_PTR(fp)
+    CHECK_PTR(string_amount)
+    CHECK_PTR(text_buffer)
 
     fread(text_buffer, sizeof(char), file_length, fp);
     text_buffer[file_length] = '\0';
 
-    for (int i = 0; i < file_length; i++){
-        if (text_buffer[i] == '\n'){
+    for (int i = 0; i < file_length; i++) {
+        if (text_buffer[i] == '\n') {
             (*string_amount)++;
         }
     }
@@ -143,16 +54,12 @@ static int input(FILE* fp, int* string_amount, char* text_buffer, long file_leng
              1 в случае ошибки
     \details Функция выыодит отсортированный текст построчно.
 */
-static int output(Line* text, int string_amount, FILE* out){
-    if (!text){
-        PRINT_ERROR(text)
-    }
-    if (!out){
-        PRINT_ERROR(out)
-    }
+int output(Line* text, int string_amount, FILE* out){
+    CHECK_PTR(text)
+    CHECK_PTR(out)
 
-    for (int i = 0; i < string_amount; i++){
-        fprintf(out, "%s \n", text[i].string);
+    for (int i = 0; i < string_amount; i++) {
+        fprintf(out, "%s" "\n", text[i].string);
     }
 
     return 0;
@@ -170,19 +77,15 @@ static int output(Line* text, int string_amount, FILE* out){
     \details Данная функция разбивает массив с текстом на 
              строки для дальнейшей сортировки
 */
-static int to_strings(char* text_buffer, Line* text, int string_amount){
-    if (!text_buffer){
-        PRINT_ERROR(text_buffer)
-    }
-    if (!text){
-        PRINT_ERROR(text)
-    }
+int to_strings(char* text_buffer, Line* text, int string_amount) {
+    CHECK_PTR(text_buffer)
+    CHECK_PTR(text)
 
-    for (int i = 0; i < string_amount; i++){
+    for (int i = 0; i < string_amount; i++) {
 
         text[i].string = text_buffer;  
 
-        while (*text_buffer != '\n' && *text_buffer != '\0'){
+        while (*text_buffer != '\n' && *text_buffer != '\0') {
             text_buffer++;
         }
 
@@ -203,12 +106,10 @@ static int to_strings(char* text_buffer, Line* text, int string_amount){
     \return 0 если функция завершилась успешно,
             1 в случае ошибки
 */
-static int sorting(Line* text, int string_amount){
-    if (!text){
-        PRINT_ERROR(text)
-    }
+int sorting(Line* text, int string_amount) {
+    CHECK_PTR(text)
 
-    qsort(text, string_amount, sizeof(Line), strcmp1);
+    qsorting(text, string_amount, sizeof(Line), strcmp_direct);
 
     return 0;
 }
@@ -222,10 +123,8 @@ static int sorting(Line* text, int string_amount){
     \return 0 если функция завершилась успешно,
             1 в случае ошибки
 */
-static int create_new_poem(Line* text, int string_amount){
-    if (!text){
-        PRINT_ERROR(text)
-    }
+int create_new_poem(Line* text, int string_amount){
+    CHECK_PTR(text)
 
     qsort(text, string_amount, sizeof(Line), strcmp_reverse);
 
@@ -243,45 +142,45 @@ static int create_new_poem(Line* text, int string_amount){
             должна идти перед второй, 0 в случае
             ошибки
 */
-static int strcmp1(const void* str1, const void* str2){
-    if (!str1){
-        PRINT_ERROR(str1)
-    }
-    if (!str2){ 
-        PRINT_ERROR(str2)
-    }
+int strcmp_direct(void* str1, void* str2){
+    CHECK_PTR(str1)
+    CHECK_PTR(str2)
 
     const Line string1 = *(const Line*) str1;
     const Line string2 = *(const Line*) str2;
 
     char symbol1 = 0, symbol2 = 0;
-    int i = 0, j = 0;
+    int i1 = 0, i2 = 0;
 
-    while (symbol1 == symbol2 && i < string1.length && j < string2.length){
+    while (symbol1 == symbol2 && i1 < string1.length && i2 < string2.length){
         symbol1 = 0;
         symbol2 = 0;
 
-        while (!isalpha(string1.string[i]) && i < string1.length){
-            i++;
+        while (is_bad_symbol(string1.string[i1]) && i1 < string1.length){
+            i1++;
         }
 
-        symbol1 = toupper(string1.string[i]);
-        i += (i < string1.length);
+        symbol1 = toupper(string1.string[i1]);
+        i1 += (i1 < string1.length);
 
-        while (!isalpha(string2.string[j]) && j < string2.length){
-            j++;
+        while (is_bad_symbol(string2.string[i2]) && i2 < string2.length){
+            i2++;
         }
 
-        symbol2 = toupper(string2.string[j]);
-        j += (j < string2.length);
+        symbol2 = toupper(string2.string[i2]);
+        i2 += (i2 < string2.length);
         
     }
-
-    if (symbol1 == symbol2){
-        return (string1.length > string2.length) ? 1 : -1;
+    
+    if (symbol1 > symbol2){
+        return 1;
     }
-
-    return (symbol1 > symbol2) ? 1 : -1;
+    else if (symbol1 < symbol2){
+        return -1;
+    }
+    else{
+        return 0;
+    }
 }
 
 
@@ -296,13 +195,9 @@ static int strcmp1(const void* str1, const void* str2){
             ошибки
 
 */
-static int strcmp_reverse(const void* str1, const void* str2){
-    if (!str1){
-        PRINT_ERROR(str1)
-    }
-    if (!str2){
-        PRINT_ERROR(str2)
-    }
+int strcmp_reverse(const void* str1, const void* str2){
+    CHECK_PTR(str1)
+    CHECK_PTR(str2)
 
     const Line string1 = *(const Line*) str1;
     const Line string2 = *(const Line*) str2;
@@ -315,14 +210,14 @@ static int strcmp_reverse(const void* str1, const void* str2){
         symbol1 = 0;
         symbol2 = 0;
 
-        while (!isalpha(string1.string[i]) && i >= 0){
+        while (is_bad_symbol(string1.string[i]) && i >= 0){
             i--;
         }
 
         symbol1 = toupper(string1.string[i]);
         i -= (i >= 0);
 
-        while (!isalpha(string2.string[j]) && j >= 0){
+        while (is_bad_symbol(string2.string[j]) && j >= 0){
             j--;
         }
 
@@ -345,88 +240,60 @@ static int strcmp_reverse(const void* str1, const void* str2){
             1 в случае ошибки
 */
 int OneginTest(){
-    int flag = 0;
+    int is_sort_ok = 0; 
 
-    FILE* fp = NULL;
-    FILE* fp_result = NULL;
-    fp = fopen("TEST", "r");
-    fp_result = fopen("TEST_RESULT", "r");
+    Poem Onegin = {};
+    Poem Onegin_result = {};
+    
+    Onegin.input_file = fopen("TEST", "r");
+    Onegin_result.input_file = fopen("TEST_RESULT", "r");
 
-    Line* text = nullptr;
-    int string_amount = 0;
-    char* text_buffer = nullptr;
-    long file_length = 0;
+    CHECK_FUNC(fileLength(&Onegin.file_length, Onegin.input_file))
 
-    if (fileLength(&file_length, fp)){
-        PRINT_ERROR(fileLength)
-    }
+    Onegin.text_buffer = (char*) calloc(Onegin.file_length, sizeof(char));
+    CHECK_PTR(Onegin.text_buffer)
 
-    if (!(text_buffer = (char*) calloc(file_length, sizeof(char)))){
-        PRINT_ERROR(text_buffer)
-    }
+    CHECK_FUNC(input(Onegin.input_file, &Onegin.string_amount, Onegin.text_buffer, Onegin.file_length))
 
-    if (input(fp, &string_amount, text_buffer, file_length)){
-        PRINT_ERROR(text_buffer)
-    }
+    Onegin.text = (Line*) calloc(Onegin.string_amount, sizeof(Line));
+    CHECK_PTR(Onegin.text)
 
-    if (!(text = (Line*) calloc(string_amount, sizeof(Line)))){
-        PRINT_ERROR(text)
-    }
+    CHECK_FUNC(to_strings(Onegin.text_buffer, Onegin.text, Onegin.string_amount))
 
-    if (to_strings(text_buffer, text, string_amount)){
-        PRINT_ERROR(to_strings)
-    }
-    if (sorting(text, string_amount)){
-        PRINT_ERROR(sorting)
-    }
+    CHECK_FUNC(sorting(Onegin.text, Onegin.string_amount))
 
 
-    char* text_buffer_res = nullptr;
-    Line* text_res = nullptr;
-    int string_amount1 = 0;
-    long file_length_res = 0;
+    CHECK_FUNC(fileLength(&Onegin_result.file_length, Onegin_result.input_file))
 
-    if (fileLength(&file_length_res, fp_result)){
-        PRINT_ERROR(fileLength);
-    }
+    Onegin_result.text_buffer = (char*) calloc(Onegin_result.file_length, sizeof(char));
+    CHECK_PTR(Onegin_result.text_buffer)
 
-    if (!(text_buffer_res = (char*) calloc(file_length_res, sizeof(char)))){
-        PRINT_ERROR(text_buffer_res)
-    }
-
-    if (input(fp_result, &string_amount1, text_buffer_res, file_length_res)){
-        PRINT_ERROR(input)
-    }
-
-    if (!(text_res = (Line*) calloc(string_amount1, sizeof(Line)))){
-        PRINT_ERROR(text_res)
-    }
-
-    if (to_strings(text_buffer_res, text_res, string_amount1)){
-       PRINT_ERROR(to_strings)
-    }
+    CHECK_FUNC(input(Onegin_result.input_file, &Onegin_result.string_amount, Onegin_result.text_buffer, Onegin_result.file_length))
 
 
-    for (int i = 0; i < string_amount; i++){
-        if (strcmp(text[i].string, text_res[i].string)){
-            flag = 1;
+    Onegin_result.text = (Line*) calloc(Onegin_result.string_amount, sizeof(Line));
+    CHECK_PTR(Onegin_result.text)
+
+    CHECK_FUNC(to_strings(Onegin_result.text_buffer, Onegin_result.text, Onegin_result.string_amount))
+
+
+    for (int i = 0; i < Onegin.string_amount; i++){
+        if (strcmp(Onegin.text[i].string, Onegin_result.text[i].string)){
+            is_sort_ok = 1;
 
             printf("Test failed on %d string \n", i);
-            printf("Expected: %s \n", text_res[i].string);
-            printf("Received: %s \n", text[i].string);
+            printf("Expected: %s \n", Onegin_result.text[i].string);
+            printf("Received: %s \n", Onegin.text[i].string);
 
         }
     }
 
 
-    fclose(fp);
-    fclose(fp_result);
-    free(text);
-    free(text_buffer);
-    free(text_res);
-    free(text_buffer_res);
-
-    return flag;
+    fclose(Onegin.input_file);
+    fclose(Onegin_result.input_file);
+    finish_poem(&Onegin);
+    finish_poem(&Onegin_result);
+    return is_sort_ok;
 }
 
 
@@ -441,10 +308,8 @@ int OneginTest(){
     \return 0 если функция завершилась успешно,
             1 в случае ошибки
 */
-static int output_original(char* text_buffer, int string_amount, FILE* out){
-    if (!text_buffer){
-        PRINT_ERROR(text_buffer)
-    }
+int output_original(char* text_buffer, int string_amount, FILE* out){
+    CHECK_PTR(text_buffer)
 
     for (int i = 0; i < string_amount; i++){
         fprintf(out, "%s \n", text_buffer);
@@ -453,6 +318,8 @@ static int output_original(char* text_buffer, int string_amount, FILE* out){
     
     return 0;
 }
+
+
 
 /*!
     \brief  Функция измерения длины файла
@@ -463,25 +330,106 @@ static int output_original(char* text_buffer, int string_amount, FILE* out){
     \return 0 если функция завершилась успешно,
             1 в случае ошибки
 */
-static int fileLength(long * file_length, FILE* fp){
-    if (!file_length){
-        PRINT_ERROR(file_length)
-    }
-    if (!fp){
-        PRINT_ERROR(fp)
-    }
+int fileLength(long * file_length, FILE* fp){
+    CHECK_PTR(file_length)
+    CHECK_PTR(fp)
 
-    if (fseek(fp, 0L, SEEK_END)){
-        PRINT_ERROR(fseek)
-    }
+    CHECK_FUNC(fseek(fp, 0L, SEEK_END))
 
     *file_length = ftell(fp);
-    if (!file_length){
-        PRINT_ERROR(file_length)
+    CHECK_PTR(*file_length)
+
+    CHECK_FUNC(fseek(fp, 0L, SEEK_SET))
+
+    return 0;
+}
+
+
+
+static int swap(void* element1, void* element2, int element_size){
+    CHECK_PTR(element1)
+    CHECK_PTR(element2)
+
+    char* elem1 = (char*) element1;
+    char* elem2 = (char*) element2;
+
+    char buffer = 0;
+
+    for (int i = 0; i < element_size; i++){
+        buffer = elem1[i];
+        elem1[i] = elem2[i];
+        elem2[i] = buffer;
     }
 
-    if (fseek(fp, 0L, SEEK_SET)){
-        PRINT_ERROR(fseek)
+    return 0;
+}
+
+
+
+int qsorting(void* Array, int element_amount, size_t element_size, int (*comp)(void* elem1, void* elem2)) {
+    CHECK_PTR(Array)
+
+
+    char* buffer = (char*) calloc(1, element_size);
+    Qsorting(Array, element_amount, element_size, comp, buffer);
+    free(buffer);
+    return 0;
+}
+
+
+
+int finish_poem(Poem* Onegin) {
+    CHECK_PTR(Onegin)
+
+    free(Onegin->text_buffer);
+    free(Onegin->text);
+
+    return 0;
+}
+
+
+static inline char* is_bad_symbol(char symbol){
+    return ((char*) strchr(BAD_SYMBOLS, symbol));
+}
+
+
+int Qsorting(void* Array, int element_amount, size_t element_size, int (*comp)(void* elem1, void* elem2), char* buffer){
+    CHECK_PTR(Array)
+
+    char* Arr = (char*) Array;
+
+    int left = 0;
+    int right = element_amount - 1;
+    for (int i = 0; i < element_size; i++){
+        buffer[i] = *(Arr + (right/2) * element_size + i);
+    }
+
+
+    do {
+
+        while (comp(Arr + left * element_size, buffer) < 0) {
+            left++;
+        }
+        while (comp(buffer, Arr + right * element_size) < 0) {
+            right--;
+        }
+
+        if (left < right) {
+            swap(Arr + left * element_size, Arr + right * element_size, element_size);
+
+            left++;
+            right--;
+        }
+        else if (left == right) {
+            left++;
+            right--;
+        }
+    } while (left <= right);
+    if (right > 0) {
+        qsorting(Arr, right + 1, element_size, comp);
+    }
+    if (left < element_amount) {
+        qsorting(Arr + left * element_size, element_amount - left, element_size, comp);
     }
 
     return 0;

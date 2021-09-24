@@ -1,47 +1,68 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "title.h"
 
 
 int main(void){
-    
-    FILE* fp = nullptr;
-    FILE* sorted_alphabetically = nullptr;
-    FILE* sorted_reverse = nullptr;
-    FILE* original_text = nullptr;
 
-    if (!(fp = fopen("FILE", "r"))){
+    FILE* fp = nullptr;
+    FILE* out = nullptr;
+
+    if (!(fp = fopen("onegintext", "r"))) {
         printf("Can't open input file \n");
         return 0;
     }
-    if (!(sorted_alphabetically = fopen("Alphabetically sort", "w"))){
+    if (!(out = fopen("Output", "w"))) {
         printf("Can't open alphabetically sort output file \n");
         return 0;
     }
-    if (!(sorted_reverse = fopen("Reverse sort", "w"))){
-        printf("Can't open reverse sort output file \n");
-        return 0;
-    }
-    if (!(original_text = fopen("Original text", "w"))){
-        printf("Can't open original output file \n");
-        return 0;
-    }
-
     else {
-        if(OneginTest()){
-            PRINT_ERROR(OneginTest);
-        }
-        if (makeOneginGreatAgain(fp, sorted_alphabetically, sorted_reverse, original_text)){
-            PRINT_ERROR(makeOneginGreatAgain);
-        }
+        //CHECK_FUNC(OneginTest())
+        CHECK_FUNC(makeOneginGreatAgain(fp, out))
     }
-
 
     fclose(fp);
-    fclose(sorted_alphabetically);
-    fclose(sorted_reverse);
-    fclose(original_text);
-    
+    fclose(out);
+
     return 0;
 }
 
 
+
+
+int makeOneginGreatAgain(FILE* fp, FILE* out){
+    CHECK_PTR(fp)
+
+    Poem Onegin = {};
+    Onegin.input_file = fp;
+    Onegin.output_file = out;
+  
+    CHECK_FUNC(fileLength(&(Onegin.file_length), fp))
+    
+    Onegin.text_buffer = (char *) calloc(Onegin.file_length + 1, sizeof(char));
+    CHECK_PTR(Onegin.text_buffer)
+
+    input(fp, &(Onegin.string_amount), Onegin.text_buffer, Onegin.file_length);
+        
+    Onegin.text = (Line*) calloc(Onegin.string_amount, sizeof(Line)); 
+    CHECK_PTR(Onegin.text)
+
+    CHECK_FUNC(to_strings(Onegin.text_buffer, Onegin.text, Onegin.string_amount))
+
+    CHECK_FUNC(sorting(Onegin.text, Onegin.string_amount))
+
+    CHECK_FUNC(output(Onegin.text, Onegin.string_amount, Onegin.output_file))
+
+    fputs("\n \n \n Now new poem: \n \n", Onegin.output_file);
+
+    CHECK_FUNC(create_new_poem(Onegin.text, Onegin.string_amount))
+
+    CHECK_FUNC(output(Onegin.text, Onegin.string_amount, Onegin.output_file))
+
+    fputs("\n \n Now original text: \n \n", Onegin.output_file);
+
+    CHECK_FUNC(output_original(Onegin.text_buffer, Onegin.string_amount, Onegin.output_file))
+
+    finish_poem(&Onegin);
+    return 0;
+}
