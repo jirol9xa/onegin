@@ -5,19 +5,19 @@
 
 int main(void){
 
-    FILE* fp = nullptr;
-    FILE* out = nullptr;
+    FILE* fp = fopen("FILE", "r");
+    FILE* out = fopen("Output", "w");
 
-    if (!(fp = fopen("onegintext", "r"))) {
+    if (!fp) {
         printf("Can't open input file \n");
         return 0;
     }
-    if (!(out = fopen("Output", "w"))) {
+    if (!out) {
         printf("Can't open alphabetically sort output file \n");
         return 0;
     }
     else {
-        //CHECK_FUNC(OneginTest())
+        CHECK_FUNC(OneginTest())
         CHECK_FUNC(makeOneginGreatAgain(fp, out))
     }
 
@@ -30,8 +30,9 @@ int main(void){
 
 
 
-int makeOneginGreatAgain(FILE* fp, FILE* out){
+int makeOneginGreatAgain(FILE* fp, FILE* out) {
     CHECK_PTR(fp)
+    CHECK_PTR(out)
 
     Poem Onegin = {};
     Onegin.input_file = fp;

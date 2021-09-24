@@ -16,6 +16,7 @@
    int makeOneginGreatAgain(FILE* fp, FILE* out);
    int OneginTest();
 
+
    #define CHECK_FUNC(arg){                                               \
       if (arg){                                                            \
       printf("[%s:%d] --- %s failed\n", __func__, __LINE__, #arg);          \
@@ -30,13 +31,14 @@
       }                                                                       \
    }
 
+
    typedef struct {
       char* string;
       int length;
    } Line;
 
    typedef struct {
-       FILE* input_file;
+      FILE* input_file;
       FILE* output_file;
       long file_length;
       int string_amount;
@@ -51,9 +53,8 @@
 
    int sorting(Line* text, int string_amount);
    int create_new_poem(Line* text, int string_amount);
-   int strcmp_reverse(const void* str1, const void* str2);
+   int strcmp_reverse(void* str1, void* str2);
    int strcmp_direct(void* string1, void* string2);
-   int qsorting (void* arr, int element_amount, size_t element_size, int (* comp)(void* A, void* B));
    int Qsorting(void* Array, int element_amount, size_t element_size, int (*comp)(void* elem1, void* elem2), char* buffer);
    int finish_poem(Poem* Onegin);
 

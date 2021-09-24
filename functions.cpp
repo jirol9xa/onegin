@@ -9,7 +9,7 @@ static int swap(void* from, void* to);
 static char* is_bad_symbol(char symbol);
 
 
-const char* BAD_SYMBOLS = "0987654321 ,. ?! :;#@ \" \\ \' ";
+const char* BAD_SYMBOLS = "0987654321 ,. ?! :;#@ « \" \\ \' ";
 
 
 
@@ -54,7 +54,7 @@ int input(FILE* fp, int* string_amount, char* text_buffer, long file_length) {
              1 в случае ошибки
     \details Функция выыодит отсортированный текст построчно.
 */
-int output(Line* text, int string_amount, FILE* out){
+int output(Line* text, int string_amount, FILE* out) {
     CHECK_PTR(text)
     CHECK_PTR(out)
 
@@ -109,8 +109,10 @@ int to_strings(char* text_buffer, Line* text, int string_amount) {
 int sorting(Line* text, int string_amount) {
     CHECK_PTR(text)
 
-    qsorting(text, string_amount, sizeof(Line), strcmp_direct);
+    char* buffer = (char*) calloc(1, string_amount);
+    CHECK_FUNC(Qsorting(text, string_amount, sizeof(Line), strcmp_direct, buffer))
 
+    free(buffer);
     return 0;
 }
 
@@ -123,11 +125,13 @@ int sorting(Line* text, int string_amount) {
     \return 0 если функция завершилась успешно,
             1 в случае ошибки
 */
-int create_new_poem(Line* text, int string_amount){
+int create_new_poem(Line* text, int string_amount) {
     CHECK_PTR(text)
 
-    qsort(text, string_amount, sizeof(Line), strcmp_reverse);
+    char* buffer = (char*) calloc(1, string_amount);
+    CHECK_FUNC(Qsorting(text, string_amount, sizeof(Line), strcmp_reverse, buffer))
 
+    free(buffer);
     return 0;
 }
 
@@ -142,7 +146,7 @@ int create_new_poem(Line* text, int string_amount){
             должна идти перед второй, 0 в случае
             ошибки
 */
-int strcmp_direct(void* str1, void* str2){
+int strcmp_direct(void* str1, void* str2) {
     CHECK_PTR(str1)
     CHECK_PTR(str2)
 
@@ -152,18 +156,18 @@ int strcmp_direct(void* str1, void* str2){
     char symbol1 = 0, symbol2 = 0;
     int i1 = 0, i2 = 0;
 
-    while (symbol1 == symbol2 && i1 < string1.length && i2 < string2.length){
+    while (symbol1 == symbol2 && i1 < string1.length && i2 < string2.length) {
         symbol1 = 0;
         symbol2 = 0;
 
-        while (is_bad_symbol(string1.string[i1]) && i1 < string1.length){
+        while (is_bad_symbol(string1.string[i1]) && i1 < string1.length) {
             i1++;
         }
 
         symbol1 = toupper(string1.string[i1]);
         i1 += (i1 < string1.length);
 
-        while (is_bad_symbol(string2.string[i2]) && i2 < string2.length){
+        while (is_bad_symbol(string2.string[i2]) && i2 < string2.length) {
             i2++;
         }
 
@@ -172,10 +176,10 @@ int strcmp_direct(void* str1, void* str2){
         
     }
     
-    if (symbol1 > symbol2){
+    if (symbol1 > symbol2) {
         return 1;
     }
-    else if (symbol1 < symbol2){
+    else if (symbol1 < symbol2) {
         return -1;
     }
     else{
@@ -195,7 +199,7 @@ int strcmp_direct(void* str1, void* str2){
             ошибки
 
 */
-int strcmp_reverse(const void* str1, const void* str2){
+int strcmp_reverse(void* str1, void* str2) {
     CHECK_PTR(str1)
     CHECK_PTR(str2)
 
@@ -206,18 +210,18 @@ int strcmp_reverse(const void* str1, const void* str2){
     int i = string1.length - 1;
     int j = string2.length - 1;
 
-    while (i >= 0 && j >= 0 && symbol1 == symbol2){
+    while (i >= 0 && j >= 0 && symbol1 == symbol2) {
         symbol1 = 0;
         symbol2 = 0;
 
-        while (is_bad_symbol(string1.string[i]) && i >= 0){
+        while (is_bad_symbol(string1.string[i]) && i >= 0) {
             i--;
         }
 
         symbol1 = toupper(string1.string[i]);
         i -= (i >= 0);
 
-        while (is_bad_symbol(string2.string[j]) && j >= 0){
+        while (is_bad_symbol(string2.string[j]) && j >= 0) {
             j--;
         }
 
@@ -225,11 +229,15 @@ int strcmp_reverse(const void* str1, const void* str2){
         j -= (j >= 0);
     }
 
-    if (symbol1 == symbol2){
-        return (string1.length > string2.length) ? 1 : -1;
+    if (symbol1 > symbol2) {
+        return 1;
     }
-
-    return (symbol1 > symbol2) ? 1 : -1;
+    else if (symbol1 < symbol2) {
+        return -1;
+    }
+    else{
+        return 0;
+    }
 }
 
 
@@ -277,8 +285,8 @@ int OneginTest(){
     CHECK_FUNC(to_strings(Onegin_result.text_buffer, Onegin_result.text, Onegin_result.string_amount))
 
 
-    for (int i = 0; i < Onegin.string_amount; i++){
-        if (strcmp(Onegin.text[i].string, Onegin_result.text[i].string)){
+    for (int i = 0; i < Onegin.string_amount; i++) {
+        if (strcmp(Onegin.text[i].string, Onegin_result.text[i].string)) {
             is_sort_ok = 1;
 
             printf("Test failed on %d string \n", i);
@@ -308,7 +316,7 @@ int OneginTest(){
     \return 0 если функция завершилась успешно,
             1 в случае ошибки
 */
-int output_original(char* text_buffer, int string_amount, FILE* out){
+int output_original(char* text_buffer, int string_amount, FILE* out) {
     CHECK_PTR(text_buffer)
 
     for (int i = 0; i < string_amount; i++){
@@ -330,7 +338,7 @@ int output_original(char* text_buffer, int string_amount, FILE* out){
     \return 0 если функция завершилась успешно,
             1 в случае ошибки
 */
-int fileLength(long * file_length, FILE* fp){
+int fileLength(long * file_length, FILE* fp) {
     CHECK_PTR(file_length)
     CHECK_PTR(fp)
 
@@ -346,7 +354,7 @@ int fileLength(long * file_length, FILE* fp){
 
 
 
-static int swap(void* element1, void* element2, int element_size){
+static int swap(void* element1, void* element2, int element_size) {
     CHECK_PTR(element1)
     CHECK_PTR(element2)
 
@@ -366,18 +374,9 @@ static int swap(void* element1, void* element2, int element_size){
 
 
 
-int qsorting(void* Array, int element_amount, size_t element_size, int (*comp)(void* elem1, void* elem2)) {
-    CHECK_PTR(Array)
-
-
-    char* buffer = (char*) calloc(1, element_size);
-    Qsorting(Array, element_amount, element_size, comp, buffer);
-    free(buffer);
-    return 0;
-}
-
-
-
+/*!
+    \brief Функция очистки памяти
+*/
 int finish_poem(Poem* Onegin) {
     CHECK_PTR(Onegin)
 
@@ -388,13 +387,16 @@ int finish_poem(Poem* Onegin) {
 }
 
 
-static inline char* is_bad_symbol(char symbol){
+static inline char* is_bad_symbol(char symbol) {
     return ((char*) strchr(BAD_SYMBOLS, symbol));
 }
 
 
-int Qsorting(void* Array, int element_amount, size_t element_size, int (*comp)(void* elem1, void* elem2), char* buffer){
+int Qsorting(void* Array, int element_amount, size_t element_size, int (*comp)(void* elem1, void* elem2), char* buffer) {
     CHECK_PTR(Array)
+    CHECK_PTR(buffer)
+    CHECK_PTR(comp)
+
 
     char* Arr = (char*) Array;
 
@@ -403,7 +405,6 @@ int Qsorting(void* Array, int element_amount, size_t element_size, int (*comp)(v
     for (int i = 0; i < element_size; i++){
         buffer[i] = *(Arr + (right/2) * element_size + i);
     }
-
 
     do {
 
@@ -425,11 +426,12 @@ int Qsorting(void* Array, int element_amount, size_t element_size, int (*comp)(v
             right--;
         }
     } while (left <= right);
+
     if (right > 0) {
-        qsorting(Arr, right + 1, element_size, comp);
+        CHECK_FUNC(Qsorting(Arr, right + 1, element_size, comp, buffer))
     }
     if (left < element_amount) {
-        qsorting(Arr + left * element_size, element_amount - left, element_size, comp);
+        CHECK_FUNC(Qsorting(Arr + left * element_size, element_amount - left, element_size, comp, buffer))
     }
 
     return 0;
