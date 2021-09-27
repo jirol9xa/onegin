@@ -11,8 +11,6 @@ static char* is_bad_symbol(char symbol);
 
 const char* BAD_SYMBOLS = "0987654321 ,. ?! :;#@ « \" \\ \' ";
 
-
-
 /*!
     \brief  Главная функция, вызывающая сортировку
     \param  [FILE*] fp Указатель на файл с исходным текстом
@@ -180,10 +178,8 @@ int sorting(Line* text, int string_amount) {
 int create_new_poem(Line* text, int string_amount) {
     CHECK_PTR(text)
 
-    char* buffer = (char*) calloc(1, string_amount);
-    CHECK_FUNC(Qsorting(text, string_amount, sizeof(Line), strcmp_reverse, buffer))
+    qsort(text, string_amount, sizeof(Line), strcmp_reverse);
 
-    free(buffer);
     return 0;
 }
 
@@ -251,7 +247,7 @@ int strcmp_direct(void* str1, void* str2) {
             ошибки
 
 */
-int strcmp_reverse(void* str1, void* str2) {
+int strcmp_reverse(const void* str1, const void* str2) {
     CHECK_PTR(str1)
     CHECK_PTR(str2)
 
@@ -449,7 +445,6 @@ int Qsorting(void* Array, int element_amount, size_t element_size, int (*comp)(v
     CHECK_PTR(buffer)
     CHECK_PTR(comp)
 
-
     char* Arr = (char*) Array;
 
     int left = 0;
@@ -460,12 +455,8 @@ int Qsorting(void* Array, int element_amount, size_t element_size, int (*comp)(v
 
     do {
 
-        while (comp(Arr + left * element_size, buffer) < 0 && left < element_size) {
-            left++;
-        }
-        while (comp(buffer, Arr + right * element_size) < 0 && right > 0) {
-            right--;
-        }
+        while (comp(Arr + left  * element_size, buffer) < 0 && left  < element_amount) left++;       
+        while (comp(Arr + right * element_size, buffer) > 0 && right > 0)            right--;
 
         if (left < right) {
             swap(Arr + left * element_size, Arr + right * element_size, element_size);
