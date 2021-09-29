@@ -27,8 +27,6 @@
    };
 
    struct Poem {
-      FILE* input_file;
-      FILE* output_file;
       long file_length;
       int string_amount;
       char* text_buffer;
@@ -45,8 +43,10 @@
    int strcmp_reverse(const void* str1, const void* str2);
    int strcmp_direct(void* string1, void* string2);
    int Qsorting(void* Array, int element_amount, size_t element_size, 
-                int (*comp)(void* elem1, void* elem2), char* buffer);
+                int (*comp)(void* elem1, void* elem2));
    int finish_poem(Poem* Onegin);
+   int QsortinGG(void* Array, int element_amount, size_t element_size, 
+                int (*comp)(void* elem1, void* elem2), char* buffer);
 
    int output_original(char* text_buffer, int string_amount, FILE* output);
    int output(Line* text, int string_amount, FILE* out);

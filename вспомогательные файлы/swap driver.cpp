@@ -8,10 +8,37 @@ static int swap(void* element1, void* element2, int element_size){
 
     char buffer = 0;
 
-    for (int i = 0; i < element_size; i++){
-        buffer = elem1[i];
-        elem1[i] = elem2[i];
-        elem2[i] = buffer;
+    while (element_size >= 8){
+        __int64_t buffer = *elem1;
+        *elem1 = *elem2;
+        *elem2 = buffer;
+
+        elem1 += 8;
+        elem2 += 8;
+        element_size -= 8;
+    }
+    while (element_size >= 4){
+        __int32_t buffer = *elem1;
+        *elem1 = *elem2;
+        *elem2 = buffer;
+
+        elem1 += 4;
+        elem2 += 4;
+        element_size -= 4;
+    }
+    while (element_size >= 2){
+        __int16_t buffer = *elem1;
+        *elem1 = *elem2;
+        *elem2 = buffer;
+
+        elem1 += 2;
+        elem2 += 2;
+        element_size -=2;
+    }
+    if (element_size == 1){
+        __int8_t buffer = *elem1;
+        *elem1 = *elem2;
+        *elem2 = buffer;
     }
 
     return 0;

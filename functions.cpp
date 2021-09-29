@@ -28,8 +28,6 @@ int makeOneginGreatAgain(FILE* fp, FILE* out) {
     CHECK_PTR(out)
 
     Poem Onegin = {};
-    Onegin.input_file = fp;
-    Onegin.output_file = out;
   
     CHECK_FUNC(fileLength(&(Onegin.file_length), fp))
     
@@ -45,17 +43,17 @@ int makeOneginGreatAgain(FILE* fp, FILE* out) {
 
     CHECK_FUNC(sorting(Onegin.text, Onegin.string_amount))
 
-    CHECK_FUNC(output(Onegin.text, Onegin.string_amount, Onegin.output_file))
+    CHECK_FUNC(output(Onegin.text, Onegin.string_amount, out))
 
-    fputs("\n \n \n Now new poem: \n \n", Onegin.output_file);
+    fputs("\n \n \n Now new poem: \n \n", out);
 
     CHECK_FUNC(create_new_poem(Onegin.text, Onegin.string_amount))
 
-    CHECK_FUNC(output(Onegin.text, Onegin.string_amount, Onegin.output_file))
+    CHECK_FUNC(output(Onegin.text, Onegin.string_amount, out))
 
-    fputs("\n \n Now original text: \n \n", Onegin.output_file);
+    fputs("\n \n Now original text: \n \n", out);
 
-    CHECK_FUNC(output_original(Onegin.text_buffer, Onegin.string_amount, Onegin.output_file))
+    CHECK_FUNC(output_original(Onegin.text_buffer, Onegin.string_amount, out))
 
     finish_poem(&Onegin);
     return 0;
@@ -159,10 +157,8 @@ int to_strings(char* text_buffer, Line* text, int string_amount) {
 int sorting(Line* text, int string_amount) {
     CHECK_PTR(text)
 
-    char* buffer = (char*) calloc(1, string_amount);
-    CHECK_FUNC(Qsorting(text, string_amount, sizeof(Line), strcmp_direct, buffer))
+    CHECK_FUNC(Qsorting(text, string_amount, sizeof(Line), strcmp_direct))
 
-    free(buffer);
     return 0;
 }
 
@@ -301,15 +297,15 @@ int OneginTest(){
     Poem Onegin = {};
     Poem Onegin_result = {};
     
-    Onegin.input_file = fopen("TEST", "r");
-    Onegin_result.input_file = fopen("TEST_RESULT", "r");
+    FILE* fp = fopen("TEST", "r");
+    FILE* fp_res = fopen("TEST_RESULT", "r");
 
-    CHECK_FUNC(fileLength(&Onegin.file_length, Onegin.input_file))
+    CHECK_FUNC(fileLength(&Onegin.file_length, fp))
 
     Onegin.text_buffer = (char*) calloc(Onegin.file_length, sizeof(char));
     CHECK_PTR(Onegin.text_buffer)
 
-    CHECK_FUNC(input(Onegin.input_file, &Onegin.string_amount, Onegin.text_buffer, Onegin.file_length))
+    CHECK_FUNC(input(fp, &Onegin.string_amount, Onegin.text_buffer, Onegin.file_length))
 
     Onegin.text = (Line*) calloc(Onegin.string_amount, sizeof(Line));
     CHECK_PTR(Onegin.text)
@@ -319,12 +315,12 @@ int OneginTest(){
     CHECK_FUNC(sorting(Onegin.text, Onegin.string_amount))
 
 
-    CHECK_FUNC(fileLength(&Onegin_result.file_length, Onegin_result.input_file))
+    CHECK_FUNC(fileLength(&Onegin_result.file_length, fp_res))
 
     Onegin_result.text_buffer = (char*) calloc(Onegin_result.file_length, sizeof(char));
     CHECK_PTR(Onegin_result.text_buffer)
 
-    CHECK_FUNC(input(Onegin_result.input_file, &Onegin_result.string_amount, Onegin_result.text_buffer, Onegin_result.file_length))
+    CHECK_FUNC(input(fp_res, &Onegin_result.string_amount, Onegin_result.text_buffer, Onegin_result.file_length))
 
 
     Onegin_result.text = (Line*) calloc(Onegin_result.string_amount, sizeof(Line));
@@ -345,8 +341,8 @@ int OneginTest(){
     }
 
 
-    fclose(Onegin.input_file);
-    fclose(Onegin_result.input_file);
+    fclose(fp);
+    fclose(fp_res);
     finish_poem(&Onegin);
     finish_poem(&Onegin_result);
     return is_sort_ok;
@@ -402,23 +398,56 @@ int fileLength(long * file_length, FILE* fp) {
 
 
 
-static int swap(void* element1, void* element2, int element_size) {
-    CHECK_PTR(element1)
-    CHECK_PTR(element2)
+static int swap(void* element1, void* element2, unsigned int element_size){
 
     char* elem1 = (char*) element1;
     char* elem2 = (char*) element2;
 
-    char buffer = 0;
+    while (element_size >= 16) {
+        __int128_t buffer = *((__int128_t*) elem1);
+        *((__int128_t*) elem1) = *((__int128_t*) elem2);
+        *((__int128_t*) elem2) = buffer;
 
-    for (int i = 0; i < element_size; i++){
-        buffer = elem1[i];
-        elem1[i] = elem2[i];
-        elem2[i] = buffer;
+        elem1 += 16;
+        elem2 += 16;
+        element_size -= 16;
+    }
+    while (element_size >= 8) {
+        __int64_t buffer = *((__int64_t*) elem1);
+        *((__int64_t*) elem1) = *((__int64_t*) elem2);
+        *((__int64_t*) elem2) = buffer;
+
+        elem1 += 8;
+        elem2 += 8;
+        element_size -= 8;
+    }
+    while (element_size >= 4) {
+        __int32_t buffer = *((__int32_t*) elem1);
+        *((__int32_t*) elem1) = *((__int32_t*) elem2);
+        *((__int32_t*) elem2) = buffer;
+
+        elem1 += 4;
+        elem2 += 4;
+        element_size -= 4;
+    }
+    while (element_size >= 2) {
+        __int16_t buffer = *((__int16_t*) elem1);
+        *((__int16_t*) elem1) = *((__int16_t*) elem2);
+        *((__int16_t*) elem2) = buffer;
+
+        elem1 += 2;
+        elem2 += 2;
+        element_size -=2;
+    }
+    if (element_size == 1) {
+        __int8_t buffer = *elem1;
+        *elem1 = *elem2;
+        *elem2 = buffer;
     }
 
     return 0;
 }
+
 
 
 
@@ -439,8 +468,18 @@ static inline char* is_bad_symbol(char symbol) {
     return ((char*) strchr(BAD_SYMBOLS, symbol));
 }
 
+int Qsorting(void* Array, int element_amount, size_t element_size, int (*comp)(void* elem1, void* elem2)){
+    CHECK_PTR(Array)
+    CHECK_PTR(comp)
 
-int Qsorting(void* Array, int element_amount, size_t element_size, int (*comp)(void* elem1, void* elem2), char* buffer) {
+    char* buffer = (char*) calloc(1, element_size);
+    CHECK_FUNC(QsortinGG(Array, element_amount, element_size, comp, buffer));
+
+    free(buffer);
+    return 0;
+}
+
+int QsortinGG(void* Array, int element_amount, size_t element_size, int (*comp)(void* elem1, void* elem2), char* buffer) {
     CHECK_PTR(Array)
     CHECK_PTR(buffer)
     CHECK_PTR(comp)
@@ -471,10 +510,10 @@ int Qsorting(void* Array, int element_amount, size_t element_size, int (*comp)(v
     } while (left <= right);
 
     if (right > 0) {
-        CHECK_FUNC(Qsorting(Arr, right + 1, element_size, comp, buffer))
+        CHECK_FUNC(QsortinGG(Arr, right + 1, element_size, comp, buffer))
     }
     if (left < element_amount) {
-        CHECK_FUNC(Qsorting(Arr + left * element_size, element_amount - left, element_size, comp, buffer))
+        CHECK_FUNC(QsortinGG(Arr + left * element_size, element_amount - left, element_size, comp, buffer))
     }
 
     return 0;
